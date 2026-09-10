@@ -10,8 +10,17 @@
 // instead of failing.
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const url = import.meta.env.PUBLIC_SUPABASE_URL as string | undefined;
-const anon = import.meta.env.PUBLIC_SUPABASE_ANON_KEY as string | undefined;
+// Normalize the URL: trim stray whitespace and add https:// if the scheme was
+// left off (a common env-var mistake that otherwise crashes createClient).
+function normalizeUrl(raw: string | undefined): string | undefined {
+  if (!raw) return undefined;
+  const v = raw.trim().replace(/\/+$/, "");
+  if (!v) return undefined;
+  return /^https?:\/\//i.test(v) ? v : `https://${v}`;
+}
+
+const url = normalizeUrl(import.meta.env.PUBLIC_SUPABASE_URL as string | undefined);
+const anon = (import.meta.env.PUBLIC_SUPABASE_ANON_KEY as string | undefined)?.trim();
 
 /** A tiny localStorage flag the (SDK-free) header reads to show login state. */
 export const AUTH_FLAG = "st_auth_email";
@@ -25,15 +34,20 @@ let client: SupabaseClient | null = null;
 export function getSupabase(): SupabaseClient | null {
   if (!isConfigured()) return null;
   if (!client) {
-    client = createClient(url!, anon!, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        // Magic links return tokens in the URL; parse them on the callback.
-        detectSessionInUrl: true,
-        flowType: "implicit",
-      },
-    });
+    try {
+      client = createClient(url!, anon!, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          // Auth links return tokens in the URL; parse them on the callback.
+          detectSessionInUrl: true,
+          flowType: "implicit",
+        },
+      });
+    } catch (err) {
+      console.error("Supabase client init failed:", err);
+      return null;
+    }
   }
   return client;
 }
