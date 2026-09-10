@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Turnstile from "../components/Turnstile.astro";
 ---
 
 <BaseLayout
@@ -64,6 +65,8 @@ import SiteFooter from "../components/SiteFooter.astro";
         </span>
       </label>
 
+      <Turnstile />
+
       <button
         id="signup-btn"
         type="submit"
@@ -100,6 +103,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 <script>
   import { getSupabase, isConfigured, setAuthFlag } from "../lib/supabaseClient";
   import { isBusinessEmail } from "../lib/emailDomain";
+  import { turnstileToken } from "../lib/turnstile";
 
   const form = document.getElementById("signup-form") as HTMLFormElement;
   const emailInput = document.getElementById("signup-email") as HTMLInputElement;
@@ -160,10 +164,14 @@ import SiteFooter from "../components/SiteFooter.astro";
 
     btn.disabled = true;
     btn.textContent = "Creating…";
+    const captchaToken = turnstileToken(form);
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: `${location.origin}/auth/callback` },
+      options: {
+        emailRedirectTo: `${location.origin}/auth/callback`,
+        ...(captchaToken ? { captchaToken } : {}),
+      },
     });
     if (error) {
       btn.disabled = false;

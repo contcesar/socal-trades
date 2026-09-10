@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Turnstile from "../components/Turnstile.astro";
 ---
 
 <BaseLayout
@@ -40,6 +41,8 @@ import SiteFooter from "../components/SiteFooter.astro";
         />
       </div>
 
+      <Turnstile />
+
       <button
         id="login-btn"
         type="submit"
@@ -68,6 +71,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
 <script>
   import { getSupabase, isConfigured, setAuthFlag } from "../lib/supabaseClient";
+  import { turnstileToken } from "../lib/turnstile";
 
   const form = document.getElementById("login-form") as HTMLFormElement;
   const emailInput = document.getElementById("login-email") as HTMLInputElement;
@@ -102,7 +106,12 @@ import SiteFooter from "../components/SiteFooter.astro";
 
     btn.disabled = true;
     btn.textContent = "Logging in…";
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const captchaToken = turnstileToken(form);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+      options: captchaToken ? { captchaToken } : undefined,
+    });
     if (error) {
       btn.disabled = false;
       btn.textContent = "Log in";

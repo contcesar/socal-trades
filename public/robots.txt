@@ -4,6 +4,7 @@ Disallow: /admin
 Disallow: /account
 Disallow: /login
 Disallow: /signup
+Disallow: /logout
 Disallow: /forgot
 Disallow: /reset
 Disallow: /auth/

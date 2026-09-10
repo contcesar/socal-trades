@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Turnstile from "../components/Turnstile.astro";
 import { getTrades, getCounties } from "../lib/data";
 
 const trades = await getTrades();
@@ -94,6 +95,8 @@ const counties = await getCounties();
 
       <p id="form-error" class="hidden text-lg font-semibold text-brand-red-dark" role="alert"></p>
 
+      <Turnstile />
+
       <button id="submit-btn" type="submit"
         class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90">
         Submit for review
@@ -172,6 +175,11 @@ const counties = await getCounties();
             "Sorry, something went wrong sending your submission. Please try again in a moment.",
         );
         return;
+      }
+      try {
+        localStorage.setItem("st_company", "1");
+      } catch {
+        /* ignore */
       }
       form.hidden = true;
       successPanel.hidden = false;

@@ -45,6 +45,31 @@ const json = (status, body) =>
     headers: { "Content-Type": "application/json" },
   });
 
+async function verifyTurnstile(token, ip) {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true; // not configured: skip
+  if (!token) return false;
+  try {
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret,
+          response: token,
+          ...(ip ? { remoteip: ip } : {}),
+        }),
+      },
+    );
+    const out = await res.json();
+    return Boolean(out.success);
+  } catch (err) {
+    console.error("Turnstile verify failed:", err);
+    return false;
+  }
+}
+
 export default async (req) => {
   if (req.method !== "POST") return json(405, { error: "Method not allowed" });
 
@@ -53,6 +78,14 @@ export default async (req) => {
     data = await req.json();
   } catch {
     return json(400, { error: "Invalid JSON" });
+  }
+
+  const ip =
+    req.headers.get("x-nf-client-connection-ip") ||
+    (req.headers.get("x-forwarded-for") || "").split(",")[0].trim();
+  const ok = await verifyTurnstile(data["cf-turnstile-response"], ip);
+  if (!ok) {
+    return json(400, { error: "Bot check failed. Please try again." });
   }
 
   const name = clean(data.name, 120);

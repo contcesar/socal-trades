@@ -37,6 +37,7 @@
 
       <div class="flex shrink-0 items-center gap-2 sm:justify-self-end">
         <a
+          id="cta-listcompany"
           href="/list-your-company"
           class="tap-target hidden items-center rounded-full px-4 text-base font-semibold text-brand-blue hover:bg-gray-100 sm:inline-flex"
         >
@@ -60,7 +61,8 @@
             <a id="menu-account" href="/account" class="hidden px-4 py-2 font-semibold hover:bg-gray-100" hidden>Account</a>
             <hr class="my-2 border-gray-200" />
             <a href="/saved" class="block px-4 py-2 hover:bg-gray-100">Saved companies</a>
-            <a href="/list-your-company" class="block px-4 py-2 hover:bg-gray-100">List your company</a>
+            <a id="menu-listcompany" href="/list-your-company" class="block px-4 py-2 hover:bg-gray-100">List your company</a>
+            <a id="menu-logout" href="/logout" class="hidden px-4 py-2 hover:bg-gray-100" hidden>Log out</a>
             <hr class="my-2 border-gray-200" />
             <a href="/about" class="block px-4 py-2 hover:bg-gray-100">About</a>
             <a href="/contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
@@ -98,13 +100,34 @@
 <script>
   // Light-weight login state for the menu. Reads the flag set by the auth
   // pages, so the header never loads the auth SDK on directory pages.
+  function show(id: string) {
+    const el = document.getElementById(id);
+    el?.removeAttribute("hidden");
+    el?.classList.remove("hidden");
+  }
+  function hide(id: string) {
+    document.getElementById(id)?.setAttribute("hidden", "");
+  }
   try {
     if (localStorage.getItem("st_auth_email")) {
-      document.getElementById("menu-login")?.setAttribute("hidden", "");
-      document.getElementById("menu-signup")?.setAttribute("hidden", "");
-      const acct = document.getElementById("menu-account");
-      acct?.removeAttribute("hidden");
-      acct?.classList.remove("hidden");
+      hide("menu-login");
+      hide("menu-signup");
+      show("menu-account");
+      show("menu-logout");
+
+      // If they already have a company listed, relabel the CTA + menu item.
+      if (localStorage.getItem("st_company")) {
+        const cta = document.getElementById("cta-listcompany");
+        const item = document.getElementById("menu-listcompany");
+        if (cta) {
+          cta.textContent = "Your Company";
+          cta.setAttribute("href", "/account");
+        }
+        if (item) {
+          item.textContent = "Your company";
+          item.setAttribute("href", "/account");
+        }
+      }
     }
   } catch {
     /* storage blocked; show the logged-out menu */

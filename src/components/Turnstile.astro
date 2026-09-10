@@ -1,0 +1,21 @@
+---
+// Cloudflare Turnstile widget. Renders only when PUBLIC_TURNSTILE_SITE_KEY is
+// set at build time, so forms keep working before Turnstile is configured.
+// Cloudflare's script auto-renders any .cf-turnstile element and injects a
+// hidden input named "cf-turnstile-response" into the surrounding form.
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
+{
+  siteKey && (
+    <>
+      <div class="cf-turnstile my-2" data-sitekey={siteKey} data-theme="light" />
+      <script
+        is:inline
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer
+      />
+    </>
+  )
+}

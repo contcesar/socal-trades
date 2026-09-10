@@ -13,7 +13,7 @@ export default defineConfig({
     sitemap({
       // Keep private/auth pages out of the sitemap.
       filter: (page) =>
-        !/\/(admin|account|login|signup|forgot|reset|auth)(\/|$)/.test(page),
+        !/\/(admin|account|login|signup|logout|forgot|reset|auth)(\/|$)/.test(page),
     }),
   ],
   vite: {

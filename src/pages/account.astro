@@ -90,6 +90,11 @@ import SiteFooter from "../components/SiteFooter.astro";
       logoutBtn.disabled = true;
       await supabase.auth.signOut();
       setAuthFlag(null);
+      try {
+        localStorage.removeItem("st_company");
+      } catch {
+        /* ignore */
+      }
       location.replace("/");
     });
   }
