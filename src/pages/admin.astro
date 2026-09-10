@@ -105,6 +105,9 @@ const refData = JSON.stringify({
             <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Google place_id
               <input id="f-place" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
             </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Google Business Profile URL
+              <input id="f-googleurl" type="text" placeholder="https://maps.google.com/…" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
             <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Address
               <input id="f-address" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
             </label>
@@ -329,6 +332,7 @@ const refData = JSON.stringify({
       setVal("f-email", b?.email);
       setVal("f-website", b?.website);
       setVal("f-place", b?.google_place_id);
+      setVal("f-googleurl", b?.google_url);
       setVal("f-rating", b?.rating);
       setVal("f-reviewcount", b?.review_count);
       setVal("f-address", b?.address);
@@ -383,6 +387,7 @@ const refData = JSON.stringify({
         email: val("f-email") || null,
         website: val("f-website") || null,
         google_place_id: val("f-place") || null,
+        google_url: val("f-googleurl") || null,
         rating: num("f-rating"),
         review_count: num("f-reviewcount"),
         address: val("f-address") || null,

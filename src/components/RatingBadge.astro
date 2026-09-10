@@ -1,22 +1,46 @@
 ---
-// Small star rating display for a stored (manually entered) rating.
+// Star rating for a stored (manually entered) rating.
+//   default: compact "★ 4.8 (32)"
+//   full:    five stars filled to the rating, then "4.8 (32)"
 interface Props {
   rating?: number | null;
   count?: number | null;
+  full?: boolean;
   class?: string;
 }
-const { rating, count, class: className = "" } = Astro.props;
+const { rating, count, full = false, class: className = "" } = Astro.props;
+const pct = rating != null ? Math.max(0, Math.min(100, (rating / 5) * 100)) : 0;
 ---
 
 {
-  rating != null && (
-    <span class={`inline-flex items-center gap-1 text-base ${className}`}>
-      <span class="text-amber-500" aria-hidden="true">★</span>
-      <span class="font-semibold text-gray-900">{rating.toFixed(1)}</span>
-      {count != null && count > 0 && <span class="text-gray-500">({count})</span>}
-      <span class="sr-only">
-        {rating} out of 5{count ? `, ${count} reviews` : ""}
+  rating != null &&
+    (full ? (
+      <span class={`inline-flex items-center gap-2 ${className}`}>
+        <span class="relative inline-block text-3xl leading-none" aria-hidden="true">
+          <span class="tracking-[0.1em] text-gray-300">★★★★★</span>
+          <span
+            class="absolute inset-0 overflow-hidden tracking-[0.1em] text-amber-500"
+            style={`width:${pct}%`}
+          >
+            ★★★★★
+          </span>
+        </span>
+        <span class="font-semibold text-gray-900">{rating.toFixed(1)}</span>
+        {count != null && count > 0 && (
+          <span class="text-gray-500">({count} reviews)</span>
+        )}
+        <span class="sr-only">
+          {rating} out of 5{count ? `, ${count} reviews` : ""}
+        </span>
       </span>
-    </span>
-  )
+    ) : (
+      <span class={`inline-flex items-center gap-1 text-base ${className}`}>
+        <span class="text-amber-500" aria-hidden="true">★</span>
+        <span class="font-semibold text-gray-900">{rating.toFixed(1)}</span>
+        {count != null && count > 0 && <span class="text-gray-500">({count})</span>}
+        <span class="sr-only">
+          {rating} out of 5{count ? `, ${count} reviews` : ""}
+        </span>
+      </span>
+    ))
 }

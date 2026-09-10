@@ -35,6 +35,8 @@ export interface Business {
   /** Manually entered rating (0–5) and review count, shown on cards/profile. */
   rating?: number | null;
   review_count?: number | null;
+  /** Link to the company's Google Business Profile / Maps listing. */
+  google_url?: string | null;
   short_description: string;
   long_description: string | null;
   logo_url: string | null;

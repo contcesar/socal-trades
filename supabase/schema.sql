@@ -50,6 +50,7 @@ create table if not exists businesses (
   google_place_id   text,
   rating            real,
   review_count      integer,
+  google_url        text,
   short_description text not null default '',
   long_description  text,
   logo_url          text,

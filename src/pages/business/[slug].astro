@@ -30,6 +30,15 @@ const secondary = business.secondary_trades
 const counties = await getCounties();
 const county = counties.find((c) => c.name === business.county);
 
+// Google Business Profile link: an explicit URL, or one built from place_id.
+const googleUrl =
+  business.google_url ||
+  (business.google_place_id
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        `${business.name} ${business.city}`,
+      )}&query_place_id=${business.google_place_id}`
+    : null);
+
 const title = `${business.name} — ${trade?.name ?? ""} in ${business.city}, CA | SoCal Trades`;
 const description = business.short_description;
 const canonical = new URL(`/business/${business.slug}`, Astro.site).href;
@@ -129,7 +138,26 @@ if (business.rating != null) {
         <p class="mt-1 text-lg text-gray-700">
           {trade?.name}{" "}&middot; {business.city}, {business.county} County
         </p>
-        <RatingBadge rating={business.rating} count={business.review_count} class="mt-2 text-lg" />
+        <RatingBadge rating={business.rating} count={business.review_count} full class="mt-2 text-lg" />
+        {
+          business.rating != null && (
+            <p class="mt-1 text-sm text-gray-500">
+              Rating from company{" "}
+              {googleUrl ? (
+                <a
+                  href={googleUrl}
+                  target="_blank"
+                  rel="nofollow noopener"
+                  class="text-brand-blue underline"
+                >
+                  Google Business Profile
+                </a>
+              ) : (
+                "Google Business Profile"
+              )}
+            </p>
+          )
+        }
       </div>
       <BookmarkButton slug={business.slug} variant="inline" class="mt-1 shrink-0" />
     </header>
