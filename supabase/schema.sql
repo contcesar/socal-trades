@@ -98,10 +98,14 @@ create table if not exists admins (
   created_at timestamptz not null default now()
 );
 
+-- SECURITY DEFINER so this can read the admins table without being subject to
+-- the admins RLS policy (which would otherwise recurse into is_admin()).
 create or replace function is_admin()
 returns boolean
 language sql
 stable
+security definer
+set search_path = public
 as $$
   select exists (select 1 from admins where user_id = auth.uid());
 $$;
@@ -166,7 +170,7 @@ drop policy if exists subscribers_admin_all on subscribers;
 create policy subscribers_admin_all on subscribers
   for all using (is_admin()) with check (is_admin());
 
--- Admins table: readable by admins only
+-- Admins table: a user can read their own admin row (no recursion).
 drop policy if exists admins_self_read on admins;
 create policy admins_self_read on admins
-  for select using (is_admin());
+  for select using (user_id = auth.uid());
