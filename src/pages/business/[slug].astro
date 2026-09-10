@@ -45,7 +45,8 @@ const jsonLd: Record<string, unknown> = {
 if (business.phone) jsonLd.telephone = business.phone;
 if (business.email) jsonLd.email = business.email;
 if (business.website) jsonLd.sameAs = [business.website];
-if (business.logo_url) jsonLd.image = business.logo_url;
+const heroImage = business.photo_urls[0] || business.logo_url;
+if (heroImage) jsonLd.image = heroImage;
 jsonLd.address = {
   "@type": "PostalAddress",
   ...(business.address ? { streetAddress: business.address } : {}),
@@ -92,6 +93,17 @@ if (business.service_areas.length > 0) {
       }
       <span>{business.name}</span>
     </nav>
+
+    {
+      business.photo_urls[0] && (
+        <img
+          src={business.photo_urls[0]}
+          alt={business.name}
+          loading="eager"
+          class="mt-4 aspect-[16/9] w-full rounded-2xl object-cover"
+        />
+      )
+    }
 
     <header class="mt-4 flex items-start gap-4">
       <span class="mt-1 shrink-0 text-brand-red-dark">
