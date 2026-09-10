@@ -15,16 +15,19 @@ const photo = business.photo_urls[0] ?? null;
   <div class="relative">
     <a
       href={`/business/${business.slug}`}
-      class="block aspect-[4/3] overflow-hidden rounded-2xl bg-brand-cream"
+      class="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-brand-cream"
     >
       {
         photo ? (
-          <img
-            src={photo}
-            alt={business.name}
-            loading="lazy"
-            class="h-full w-full object-cover transition group-hover:scale-[1.03]"
-          />
+          <>
+            <img
+              src={photo}
+              alt={business.name}
+              loading="lazy"
+              class="h-full w-full object-cover transition group-hover:scale-[1.03]"
+            />
+            <span class="pointer-events-none absolute inset-0 bg-brand-blue/25 transition-opacity duration-300 group-hover:opacity-0" />
+          </>
         ) : (
           <span class="flex h-full w-full flex-col items-center justify-center gap-2 text-brand-blue">
             <TradeIcon icon={trade?.icon ?? "wrench"} class="h-14 w-14" />

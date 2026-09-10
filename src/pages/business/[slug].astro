@@ -96,12 +96,15 @@ if (business.service_areas.length > 0) {
 
     {
       business.photo_urls[0] && (
-        <img
-          src={business.photo_urls[0]}
-          alt={business.name}
-          loading="eager"
-          class="mt-4 aspect-[16/9] w-full rounded-2xl object-cover"
-        />
+        <div class="group relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-2xl">
+          <img
+            src={business.photo_urls[0]}
+            alt={business.name}
+            loading="eager"
+            class="h-full w-full object-cover"
+          />
+          <span class="pointer-events-none absolute inset-0 bg-brand-blue/25 transition-opacity duration-300 group-hover:opacity-0" />
+        </div>
       )
     }
 
