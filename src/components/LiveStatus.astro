@@ -1,63 +1,121 @@
 ---
-// Live open/closed badge + live rating. Renders only when the business has a
-// Google place_id. The small script calls the `place-details` Netlify Function
-// (added in Phase 2) and fills in fresh data at view time. Nothing about
-// reviews or hours is stored; it is fetched live per Google's terms.
+// Live Google data. Renders only when the business has a place_id. Two
+// placements share ONE network call:
+//   variant="summary" -> Open/Closed badge + live rating (near the top)
+//   variant="reviews" -> up to 5 review snippets (further down the page)
+// Nothing about reviews or hours is stored, per Google's terms.
 interface Props {
   placeId: string | null;
+  variant?: "summary" | "reviews";
 }
-const { placeId } = Astro.props;
+const { placeId, variant = "summary" } = Astro.props;
 ---
 
 {
-  placeId && (
-    <div
-      class="live-status flex flex-wrap items-center gap-3"
-      data-place-id={placeId}
-    >
-      <span
-        class="badge-opennow tap-target hidden items-center rounded-lg px-4 text-base font-semibold"
-        hidden
-      />
-      <span class="live-rating text-lg text-gray-700" aria-live="polite" />
+  placeId && variant === "summary" && (
+    <div class="live-status flex flex-wrap items-center gap-3" data-place-id={placeId} data-variant="summary">
+      <span class="badge-opennow tap-target hidden items-center rounded-lg px-4 text-base font-semibold" hidden />
+      <span class="live-rating text-lg text-gray-800" aria-live="polite" />
     </div>
   )
 }
 
+{
+  placeId && variant === "reviews" && (
+    <section class="live-status hidden" data-place-id={placeId} data-variant="reviews" hidden aria-label="Google reviews">
+      <h2 class="text-2xl font-bold text-brand-blue">Reviews from Google</h2>
+      <div class="reviews-list mt-3 flex flex-col gap-4" />
+      <p class="mt-2 text-sm text-gray-500">
+        Ratings and reviews are provided live by Google.
+      </p>
+    </section>
+  )
+}
+
 <script>
-  // Phase 1: this runs only if a place_id is present (none in the seed yet).
-  // Phase 2 adds the /.netlify/functions/place-details endpoint it calls.
+  interface Review {
+    author: string;
+    rating: number | null;
+    text: string;
+    relativeTime: string;
+  }
   interface PlaceDetails {
-    openNow?: boolean;
-    rating?: number;
+    openNow?: boolean | null;
+    rating?: number | null;
     userRatingCount?: number;
+    reviews?: Review[];
   }
 
-  document.querySelectorAll<HTMLElement>(".live-status").forEach(async (el) => {
-    const placeId = el.dataset.placeId;
-    if (!placeId) return;
+  const stars = (n: number): string =>
+    "★".repeat(Math.round(n)) + "☆".repeat(Math.max(0, 5 - Math.round(n)));
 
+  const escapeHtml = (s: string): string =>
+    s.replace(
+      /[&<>"']/g,
+      (c) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+          c
+        ]!,
+    );
+
+  function fillSummary(el: HTMLElement, data: PlaceDetails): void {
+    const badge = el.querySelector<HTMLElement>(".badge-opennow");
+    if (badge && typeof data.openNow === "boolean") {
+      badge.textContent = data.openNow ? "Open now" : "Closed";
+      badge.classList.add(data.openNow ? "bg-green-700" : "bg-gray-600", "text-white");
+      badge.hidden = false;
+      badge.classList.remove("hidden");
+    }
+    const rating = el.querySelector<HTMLElement>(".live-rating");
+    if (rating && typeof data.rating === "number") {
+      const count = data.userRatingCount ?? 0;
+      rating.textContent = `${stars(data.rating)} ${data.rating.toFixed(1)} (${count} Google review${count === 1 ? "" : "s"})`;
+    }
+  }
+
+  function fillReviews(el: HTMLElement, data: PlaceDetails): void {
+    const reviews = data.reviews ?? [];
+    const list = el.querySelector<HTMLElement>(".reviews-list");
+    if (!list || reviews.length === 0) return;
+    list.innerHTML = reviews
+      .map((r) => {
+        const head = [
+          escapeHtml(r.author),
+          r.rating ? stars(r.rating) : "",
+          r.relativeTime ? escapeHtml(r.relativeTime) : "",
+        ]
+          .filter(Boolean)
+          .join(" &middot; ");
+        return `
+          <article class="rounded-xl border border-gray-200 bg-white p-4">
+            <p class="text-base font-semibold text-gray-700">${head}</p>
+            <p class="mt-2 text-lg text-gray-800">${escapeHtml(r.text)}</p>
+          </article>`;
+      })
+      .join("");
+    el.hidden = false;
+    el.classList.remove("hidden");
+  }
+
+  // Group placements by place_id so both variants share one request.
+  const groups = new Map<string, HTMLElement[]>();
+  document.querySelectorAll<HTMLElement>(".live-status").forEach((el) => {
+    const id = el.dataset.placeId;
+    if (!id) return;
+    (groups.get(id) ?? groups.set(id, []).get(id)!).push(el);
+  });
+
+  groups.forEach(async (els, placeId) => {
     try {
       const res = await fetch(
         `/.netlify/functions/place-details?place_id=${encodeURIComponent(placeId)}`,
       );
       if (!res.ok) return;
       const data: PlaceDetails = await res.json();
-
-      const badge = el.querySelector<HTMLElement>(".badge-opennow");
-      if (badge && typeof data.openNow === "boolean") {
-        badge.textContent = data.openNow ? "Open now" : "Closed";
-        badge.classList.add(data.openNow ? "bg-green-700" : "bg-gray-600");
-        badge.classList.add("text-white");
-        badge.hidden = false;
-        badge.classList.remove("hidden");
-      }
-
-      const rating = el.querySelector<HTMLElement>(".live-rating");
-      if (rating && typeof data.rating === "number") {
-        const count = data.userRatingCount ?? 0;
-        rating.textContent = `★ ${data.rating.toFixed(1)} (${count} Google reviews)`;
-      }
+      els.forEach((el) => {
+        if (el.dataset.variant === "reviews") fillReviews(el, data);
+        else fillSummary(el, data);
+      });
     } catch {
       // Live data is best-effort. The static page stands on its own.
     }

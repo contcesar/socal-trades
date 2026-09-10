@@ -201,6 +201,11 @@ if (business.service_areas.length > 0) {
       </dl>
     </section>
 
+    {/* Live Google reviews (shares the one fetch with the summary island). */}
+    <div class="mt-10">
+      <LiveStatus placeId={business.google_place_id} variant="reviews" />
+    </div>
+
     <section class="mt-10 rounded-xl border border-gray-200 bg-white p-5">
       <h2 class="text-xl font-bold text-brand-blue">Is this your business?</h2>
       <p class="mt-2 text-lg text-gray-800">
