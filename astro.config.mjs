@@ -9,7 +9,13 @@ export default defineConfig({
   // Production domain. Used for canonical tags and sitemap generation.
   site: 'https://socaltrades.net',
   output: 'static',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Keep private/auth pages out of the sitemap.
+      filter: (page) =>
+        !/\/(admin|account|login|signup|forgot|reset|auth)(\/|$)/.test(page),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

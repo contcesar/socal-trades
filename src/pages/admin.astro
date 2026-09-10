@@ -1,0 +1,453 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { getTrades, getCounties } from "../lib/data";
+
+const trades = await getTrades();
+const counties = await getCounties();
+const refData = JSON.stringify({
+  trades: trades.map((t) => ({ slug: t.slug, name: t.name })),
+  counties: counties.map((c) => c.name),
+});
+---
+
+<BaseLayout title="Admin | SoCal Trades" description="SoCal Trades admin backend.">
+  <SiteHeader slot="header" />
+
+  <script type="application/json" id="ref-data" is:inline set:html={refData} />
+
+  <section class="mx-auto max-w-6xl px-4 py-8">
+    <div id="admin-loading" class="text-lg text-gray-700">Loading…</div>
+
+    <div id="admin-denied" class="hidden rounded-xl border border-gray-200 bg-white p-6" hidden>
+      <h1 class="text-2xl font-bold text-brand-blue">Admins only</h1>
+      <p class="mt-3 text-lg text-gray-800">
+        This area is for administrators. <a href="/account" class="text-brand-blue underline">Your account</a>.
+      </p>
+    </div>
+
+    <div id="admin-panel" class="hidden" hidden>
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h1 class="text-3xl font-bold text-brand-blue">Admin</h1>
+        <div class="flex flex-wrap gap-2">
+          <button id="rebuild-btn" class="tap-target rounded-lg bg-brand-red-dark px-4 text-base font-semibold text-white hover:opacity-90">
+            Rebuild site
+          </button>
+          <button id="admin-logout" class="tap-target rounded-lg border-2 border-brand-blue px-4 text-base font-semibold text-brand-blue hover:bg-brand-blue hover:text-white">
+            Log out
+          </button>
+        </div>
+      </div>
+      <p id="rebuild-msg" class="mt-2 hidden text-base" role="status"></p>
+
+      <nav class="mt-6 flex flex-wrap gap-2 border-b border-gray-200" aria-label="Admin sections">
+        <button data-tab="businesses" class="admin-tab tap-target border-b-4 border-brand-blue px-4 text-lg font-semibold text-brand-blue">Businesses</button>
+        <button data-tab="claims" class="admin-tab tap-target border-b-4 border-transparent px-4 text-lg font-semibold text-gray-600">Claims</button>
+        <button data-tab="subscribers" class="admin-tab tap-target border-b-4 border-transparent px-4 text-lg font-semibold text-gray-600">Subscribers</button>
+      </nav>
+
+      {/* Businesses tab */}
+      <div id="tab-businesses" class="admin-section mt-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <label for="status-filter" class="text-lg font-semibold text-gray-800">Show</label>
+            <select id="status-filter" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg">
+              <option value="">All</option>
+              <option value="draft">Draft (pending review)</option>
+              <option value="published">Published</option>
+              <option value="hidden">Hidden</option>
+            </select>
+          </div>
+          <button id="add-business" class="tap-target rounded-lg bg-brand-blue px-4 text-base font-semibold text-white hover:opacity-90">
+            Add business
+          </button>
+        </div>
+
+        <div id="biz-list" class="mt-4 overflow-x-auto"></div>
+
+        {/* Editor */}
+        <form id="biz-form" class="mt-6 hidden flex-col gap-4 rounded-xl border border-gray-200 bg-white p-5" hidden novalidate>
+          <h2 id="biz-form-title" class="text-2xl font-bold text-brand-blue">Add business</h2>
+          <input type="hidden" id="f-id" />
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Name*
+              <input id="f-name" type="text" required class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Slug (blank = auto)
+              <input id="f-slug" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Trade*
+              <select id="f-trade" required class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal"></select>
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">County*
+              <select id="f-county" required class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal"></select>
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">City*
+              <input id="f-city" type="text" required class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Status
+              <select id="f-status" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+                <option value="hidden">Hidden</option>
+              </select>
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Phone
+              <input id="f-phone" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Email
+              <input id="f-email" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Website
+              <input id="f-website" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Google place_id
+              <input id="f-place" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Address
+              <input id="f-address" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Secondary trades (slugs, comma-separated)
+              <input id="f-secondary" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Service areas (comma-separated)
+              <input id="f-areas" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Latitude
+              <input id="f-lat" type="number" step="any" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Longitude
+              <input id="f-lng" type="number" step="any" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Logo URL
+              <input id="f-logo" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Photo URLs (comma-separated)
+              <input id="f-photos" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+          </div>
+          <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Short description
+            <textarea id="f-short" rows="2" maxlength="200" class="rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-lg font-normal"></textarea>
+          </label>
+          <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Long description
+            <textarea id="f-long" rows="4" class="rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-lg font-normal"></textarea>
+          </label>
+          <p id="biz-form-msg" class="hidden text-lg font-semibold text-brand-red-dark" role="alert"></p>
+          <div class="flex gap-3">
+            <button type="submit" class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90">Save</button>
+            <button type="button" id="biz-cancel" class="tap-target rounded-lg border-2 border-gray-400 px-6 text-lg font-semibold text-gray-700 hover:bg-gray-100">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      {/* Claims tab */}
+      <div id="tab-claims" class="admin-section mt-6 hidden" hidden>
+        <div id="claims-list" class="overflow-x-auto"></div>
+      </div>
+
+      {/* Subscribers tab */}
+      <div id="tab-subscribers" class="admin-section mt-6 hidden" hidden>
+        <button id="export-subs" class="tap-target rounded-lg border-2 border-brand-blue px-4 text-base font-semibold text-brand-blue hover:bg-brand-blue hover:text-white">Export CSV</button>
+        <div id="subs-list" class="mt-4 overflow-x-auto"></div>
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  import { getSupabase, isConfigured, setAuthFlag } from "../lib/supabaseClient";
+  import { slugify } from "../lib/slug";
+
+  const loading = document.getElementById("admin-loading")!;
+  const denied = document.getElementById("admin-denied")!;
+  const panel = document.getElementById("admin-panel")!;
+
+  const ref = JSON.parse(document.getElementById("ref-data")!.textContent || "{}");
+  const TRADES: { slug: string; name: string }[] = ref.trades || [];
+  const COUNTIES: string[] = ref.counties || [];
+
+  const esc = (s: unknown): string =>
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
+    );
+
+  function showDenied(): void {
+    loading.hidden = true;
+    denied.hidden = false;
+    denied.classList.remove("hidden");
+  }
+
+  async function main(): Promise<void> {
+    if (!isConfigured()) return showDenied();
+    const supabase = getSupabase()!;
+    const { data: userData } = await supabase.auth.getUser();
+    const user = userData.user;
+    if (!user) {
+      location.replace("/login?next=/admin");
+      return;
+    }
+    const { data: adminRow } = await supabase
+      .from("admins")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    if (!adminRow) return showDenied();
+
+    setAuthFlag(user.email ?? "account");
+    loading.hidden = true;
+    panel.hidden = false;
+    panel.classList.remove("hidden");
+
+    // --- populate selects ---
+    const tradeOpts = TRADES.map((t) => `<option value="${esc(t.slug)}">${esc(t.name)}</option>`).join("");
+    const countyOpts = COUNTIES.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+    (document.getElementById("f-trade") as HTMLSelectElement).innerHTML = tradeOpts;
+    (document.getElementById("f-county") as HTMLSelectElement).innerHTML = countyOpts;
+
+    // --- tabs ---
+    const tabs = document.querySelectorAll<HTMLElement>(".admin-tab");
+    tabs.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        tabs.forEach((b) => {
+          b.classList.toggle("border-brand-blue", b === btn);
+          b.classList.toggle("text-brand-blue", b === btn);
+          b.classList.toggle("border-transparent", b !== btn);
+          b.classList.toggle("text-gray-600", b !== btn);
+        });
+        document.querySelectorAll<HTMLElement>(".admin-section").forEach((s) => (s.hidden = true));
+        const target = document.getElementById(`tab-${btn.dataset.tab}`)!;
+        target.hidden = false;
+        if (btn.dataset.tab === "subscribers") loadSubscribers();
+        if (btn.dataset.tab === "claims") loadClaims();
+      }),
+    );
+
+    // --- businesses ---
+    const bizList = document.getElementById("biz-list")!;
+    const statusFilter = document.getElementById("status-filter") as HTMLSelectElement;
+    const form = document.getElementById("biz-form") as HTMLFormElement;
+    const formMsg = document.getElementById("biz-form-msg")!;
+    const val = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
+    const setVal = (id: string, v: unknown) =>
+      ((document.getElementById(id) as HTMLInputElement).value = v == null ? "" : String(v));
+    const arr = (id: string) => val(id).split(",").map((s) => s.trim()).filter(Boolean);
+    const num = (id: string) => (val(id) === "" ? null : Number(val(id)));
+
+    async function loadBusinesses(): Promise<void> {
+      let q = supabase.from("businesses").select("*").order("updated_at", { ascending: false });
+      const f = statusFilter.value;
+      if (f) q = supabase.from("businesses").select("*").eq("status", f).order("updated_at", { ascending: false });
+      const { data, error } = await q;
+      if (error) {
+        bizList.innerHTML = `<p class="text-lg text-brand-red-dark">${esc(error.message)}</p>`;
+        return;
+      }
+      const rows = (data || [])
+        .map(
+          (b: any) => `
+        <tr class="border-b border-gray-200">
+          <td class="py-2 pr-3"><a href="/business/${esc(b.slug)}" class="text-brand-blue underline">${esc(b.name)}</a></td>
+          <td class="py-2 pr-3 text-gray-600">${esc(b.trade)}</td>
+          <td class="py-2 pr-3 text-gray-600">${esc(b.city)}, ${esc(b.county)}</td>
+          <td class="py-2 pr-3"><span class="rounded px-2 py-0.5 text-sm font-semibold ${b.status === "published" ? "bg-green-100 text-green-800" : b.status === "draft" ? "bg-yellow-100 text-yellow-800" : "bg-gray-200 text-gray-700"}">${esc(b.status)}</span></td>
+          <td class="py-2 whitespace-nowrap">
+            <button data-edit="${esc(b.id)}" class="mr-2 text-brand-blue underline">Edit</button>
+            ${b.status !== "published" ? `<button data-pub="${esc(b.id)}" class="mr-2 text-green-700 underline">Publish</button>` : `<button data-hide="${esc(b.id)}" class="mr-2 text-gray-700 underline">Hide</button>`}
+            <button data-del="${esc(b.id)}" class="text-brand-red-dark underline">Delete</button>
+          </td>
+        </tr>`,
+        )
+        .join("");
+      bizList.innerHTML = `
+        <table class="w-full text-left text-lg">
+          <thead><tr class="border-b-2 border-gray-300 text-base text-gray-600">
+            <th class="py-2 pr-3">Name</th><th class="py-2 pr-3">Trade</th><th class="py-2 pr-3">Location</th><th class="py-2 pr-3">Status</th><th class="py-2">Actions</th>
+          </tr></thead>
+          <tbody>${rows || `<tr><td class="py-3 text-gray-600" colspan="5">No businesses.</td></tr>`}</tbody>
+        </table>`;
+
+      bizList.querySelectorAll<HTMLElement>("[data-edit]").forEach((b) =>
+        b.addEventListener("click", () => openEditor((data || []).find((x: any) => x.id === b.dataset.edit))),
+      );
+      bizList.querySelectorAll<HTMLElement>("[data-pub]").forEach((b) =>
+        b.addEventListener("click", () => setStatus(b.dataset.pub!, "published")),
+      );
+      bizList.querySelectorAll<HTMLElement>("[data-hide]").forEach((b) =>
+        b.addEventListener("click", () => setStatus(b.dataset.hide!, "hidden")),
+      );
+      bizList.querySelectorAll<HTMLElement>("[data-del]").forEach((b) =>
+        b.addEventListener("click", () => removeBusiness(b.dataset.del!)),
+      );
+    }
+
+    function openEditor(b: any | null): void {
+      formMsg.classList.add("hidden");
+      document.getElementById("biz-form-title")!.textContent = b ? "Edit business" : "Add business";
+      setVal("f-id", b?.id ?? "");
+      setVal("f-name", b?.name);
+      setVal("f-slug", b?.slug);
+      (document.getElementById("f-trade") as HTMLSelectElement).value = b?.trade ?? TRADES[0]?.slug ?? "";
+      (document.getElementById("f-county") as HTMLSelectElement).value = b?.county ?? COUNTIES[0] ?? "";
+      setVal("f-city", b?.city);
+      (document.getElementById("f-status") as HTMLSelectElement).value = b?.status ?? "draft";
+      setVal("f-phone", b?.phone);
+      setVal("f-email", b?.email);
+      setVal("f-website", b?.website);
+      setVal("f-place", b?.google_place_id);
+      setVal("f-address", b?.address);
+      setVal("f-secondary", (b?.secondary_trades || []).join(", "));
+      setVal("f-areas", (b?.service_areas || []).join(", "));
+      setVal("f-lat", b?.latitude);
+      setVal("f-lng", b?.longitude);
+      setVal("f-logo", b?.logo_url);
+      setVal("f-photos", (b?.photo_urls || []).join(", "));
+      setVal("f-short", b?.short_description);
+      setVal("f-long", b?.long_description);
+      form.hidden = false;
+      form.classList.remove("hidden");
+      form.classList.add("flex");
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    async function setStatus(id: string, status: string): Promise<void> {
+      const { error } = await supabase.from("businesses").update({ status }).eq("id", id);
+      if (error) alert(error.message);
+      else loadBusinesses();
+    }
+
+    async function removeBusiness(id: string): Promise<void> {
+      if (!confirm("Delete this business? This cannot be undone.")) return;
+      const { error } = await supabase.from("businesses").delete().eq("id", id);
+      if (error) alert(error.message);
+      else loadBusinesses();
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      formMsg.classList.add("hidden");
+      const name = val("f-name");
+      if (!name || !val("f-city")) {
+        formMsg.textContent = "Name and city are required.";
+        formMsg.classList.remove("hidden");
+        return;
+      }
+      const record: any = {
+        name,
+        slug: val("f-slug") || slugify(name),
+        trade: (document.getElementById("f-trade") as HTMLSelectElement).value,
+        county: (document.getElementById("f-county") as HTMLSelectElement).value,
+        city: val("f-city"),
+        status: (document.getElementById("f-status") as HTMLSelectElement).value,
+        phone: val("f-phone") || null,
+        email: val("f-email") || null,
+        website: val("f-website") || null,
+        google_place_id: val("f-place") || null,
+        address: val("f-address") || null,
+        secondary_trades: arr("f-secondary"),
+        service_areas: arr("f-areas"),
+        latitude: num("f-lat"),
+        longitude: num("f-lng"),
+        logo_url: val("f-logo") || null,
+        photo_urls: arr("f-photos"),
+        short_description: val("f-short"),
+        long_description: val("f-long") || null,
+      };
+      const id = val("f-id");
+      const res = id
+        ? await supabase.from("businesses").update(record).eq("id", id)
+        : await supabase.from("businesses").insert(record);
+      if (res.error) {
+        formMsg.textContent = res.error.message;
+        formMsg.classList.remove("hidden");
+        return;
+      }
+      form.hidden = true;
+      loadBusinesses();
+    });
+
+    document.getElementById("add-business")!.addEventListener("click", () => openEditor(null));
+    document.getElementById("biz-cancel")!.addEventListener("click", () => (form.hidden = true));
+    statusFilter.addEventListener("change", loadBusinesses);
+
+    // --- subscribers ---
+    let subsCache: any[] = [];
+    async function loadSubscribers(): Promise<void> {
+      const list = document.getElementById("subs-list")!;
+      const { data, error } = await supabase.from("subscribers").select("*").order("created_at", { ascending: false });
+      if (error) {
+        list.innerHTML = `<p class="text-lg text-brand-red-dark">${esc(error.message)}</p>`;
+        return;
+      }
+      subsCache = data || [];
+      const rows = subsCache
+        .map(
+          (s: any) => `<tr class="border-b border-gray-200"><td class="py-2 pr-3">${esc(s.email)}</td><td class="py-2 pr-3">${s.confirmed ? "Confirmed" : "Pending"}</td><td class="py-2 text-gray-600">${esc((s.created_at || "").slice(0, 10))}</td></tr>`,
+        )
+        .join("");
+      list.innerHTML = `<table class="w-full text-left text-lg"><thead><tr class="border-b-2 border-gray-300 text-base text-gray-600"><th class="py-2 pr-3">Email</th><th class="py-2 pr-3">Status</th><th class="py-2">Joined</th></tr></thead><tbody>${rows || `<tr><td class="py-3 text-gray-600" colspan="3">No subscribers.</td></tr>`}</tbody></table>`;
+    }
+    document.getElementById("export-subs")!.addEventListener("click", () => {
+      const csv = ["email,confirmed,created_at"]
+        .concat(subsCache.map((s) => `${s.email},${s.confirmed},${s.created_at}`))
+        .join("\n");
+      const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "subscribers.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // --- claims ---
+    async function loadClaims(): Promise<void> {
+      const list = document.getElementById("claims-list")!;
+      const { data, error } = await supabase.from("claims").select("*").order("created_at", { ascending: false });
+      if (error) {
+        list.innerHTML = `<p class="text-lg text-brand-red-dark">${esc(error.message)}</p>`;
+        return;
+      }
+      const rows = (data || [])
+        .map(
+          (c: any) => `<tr class="border-b border-gray-200"><td class="py-2 pr-3">${esc(c.email)}</td><td class="py-2 pr-3">${c.domain_matched ? "Domain match" : "No match"}</td><td class="py-2 pr-3">${c.verified ? "Verified" : "Unverified"}</td><td class="py-2 text-gray-600">${esc((c.created_at || "").slice(0, 10))}</td></tr>`,
+        )
+        .join("");
+      list.innerHTML = `<table class="w-full text-left text-lg"><thead><tr class="border-b-2 border-gray-300 text-base text-gray-600"><th class="py-2 pr-3">Email</th><th class="py-2 pr-3">Domain</th><th class="py-2 pr-3">Verified</th><th class="py-2">Created</th></tr></thead><tbody>${rows || `<tr><td class="py-3 text-gray-600" colspan="4">No claims yet.</td></tr>`}</tbody></table>`;
+    }
+
+    // --- rebuild ---
+    const rebuildMsg = document.getElementById("rebuild-msg")!;
+    document.getElementById("rebuild-btn")!.addEventListener("click", async () => {
+      rebuildMsg.classList.remove("hidden");
+      rebuildMsg.textContent = "Requesting rebuild…";
+      const { data: sess } = await supabase.auth.getSession();
+      const token = sess.session?.access_token;
+      if (!token) {
+        rebuildMsg.textContent = "Not signed in.";
+        return;
+      }
+      const res = await fetch("/.netlify/functions/trigger-rebuild", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const body = await res.json().catch(() => ({}));
+      rebuildMsg.textContent = res.ok
+        ? "Rebuild triggered. The site updates in a minute or two."
+        : `Rebuild failed: ${body.error || res.status}`;
+    });
+
+    // --- logout ---
+    document.getElementById("admin-logout")!.addEventListener("click", async () => {
+      await supabase.auth.signOut();
+      setAuthFlag(null);
+      location.replace("/");
+    });
+
+    loadBusinesses();
+  }
+
+  main();
+</script>
