@@ -56,9 +56,19 @@ import SiteFooter from "../../components/SiteFooter.astro";
       return;
     }
     setAuthFlag(data.session.user.email ?? "account");
-    // Send them where they were headed, or to their account.
-    const params = new URLSearchParams(location.search);
-    const next = params.get("next");
+    // Send them where they were headed: a stored intent (e.g. business owners
+    // go to add their company), then a ?next= param, then their account.
+    let next: string | null = null;
+    try {
+      const stored = localStorage.getItem("st_post_login_next");
+      if (stored) {
+        next = stored;
+        localStorage.removeItem("st_post_login_next");
+      }
+    } catch {
+      /* storage blocked */
+    }
+    if (!next) next = new URLSearchParams(location.search).get("next");
     location.replace(next && next.startsWith("/") ? next : "/account");
   }
 

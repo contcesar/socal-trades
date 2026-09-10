@@ -21,6 +21,11 @@ const counties = await getCounties();
       it goes live.
     </p>
 
+    <p id="owner-note" class="mt-4 hidden rounded-lg bg-brand-cream px-4 py-3 text-lg text-gray-800" hidden>
+      Signed in as <span id="owner-email" class="font-semibold"></span>. We will
+      link this company to your account.
+    </p>
+
     <form id="list-form" class="mt-8 flex flex-col gap-5" novalidate>
       <div>
         <label class="text-lg font-semibold text-gray-800" for="name">
@@ -120,6 +125,23 @@ const counties = await getCounties();
   function showError(msg: string): void {
     errorEl.textContent = msg;
     errorEl.classList.remove("hidden");
+  }
+
+  // If the visitor is signed in, prefill and lock their email and greet them.
+  try {
+    const email = localStorage.getItem("st_auth_email");
+    if (email && email.includes("@")) {
+      const emailInput = document.getElementById("email") as HTMLInputElement;
+      emailInput.value = email;
+      emailInput.readOnly = true;
+      emailInput.classList.add("bg-gray-100");
+      const note = document.getElementById("owner-note")!;
+      document.getElementById("owner-email")!.textContent = email;
+      note.hidden = false;
+      note.classList.remove("hidden");
+    }
+  } catch {
+    /* storage blocked; form still works */
   }
 
   form.addEventListener("submit", async (e) => {

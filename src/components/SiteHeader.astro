@@ -55,7 +55,8 @@
             class="absolute right-0 mt-2 w-56 rounded-xl border border-gray-200 bg-white py-2 text-lg shadow-lg"
             aria-label="Main menu"
           >
-            <a id="menu-login" href="/login" class="block px-4 py-2 font-semibold hover:bg-gray-100">Log in</a>
+            <a id="menu-signup" href="/signup" class="block px-4 py-2 font-semibold hover:bg-gray-100">Sign up</a>
+            <a id="menu-login" href="/login" class="block px-4 py-2 hover:bg-gray-100">Log in</a>
             <a id="menu-account" href="/account" class="hidden px-4 py-2 font-semibold hover:bg-gray-100" hidden>Account</a>
             <hr class="my-2 border-gray-200" />
             <a href="/saved" class="block px-4 py-2 hover:bg-gray-100">Saved companies</a>
@@ -100,6 +101,7 @@
   try {
     if (localStorage.getItem("st_auth_email")) {
       document.getElementById("menu-login")?.setAttribute("hidden", "");
+      document.getElementById("menu-signup")?.setAttribute("hidden", "");
       const acct = document.getElementById("menu-account");
       acct?.removeAttribute("hidden");
       acct?.classList.remove("hidden");
@@ -107,4 +109,15 @@
   } catch {
     /* storage blocked; show the logged-out menu */
   }
+
+  // Close the menu dropdown after a selection. Clicking a link navigates to a
+  // fresh page (naturally closed), but the browser's back/forward cache can
+  // restore the open state, so close it on show too.
+  const menu = document.querySelector<HTMLDetailsElement>("header details");
+  menu?.addEventListener("click", (e) => {
+    if ((e.target as Element)?.closest("a")) menu.open = false;
+  });
+  window.addEventListener("pageshow", () => {
+    if (menu) menu.open = false;
+  });
 </script>
