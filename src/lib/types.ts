@@ -32,6 +32,9 @@ export interface Business {
   website: string | null;
   /** Permanent Google Places id. Live data is fetched via this at view time. */
   google_place_id: string | null;
+  /** Manually entered rating (0–5) and review count, shown on cards/profile. */
+  rating?: number | null;
+  review_count?: number | null;
   short_description: string;
   long_description: string | null;
   logo_url: string | null;

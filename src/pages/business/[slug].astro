@@ -5,6 +5,7 @@ import SiteFooter from "../../components/SiteFooter.astro";
 import TradeIcon from "../../components/TradeIcon.astro";
 import LiveStatus from "../../components/LiveStatus.astro";
 import BookmarkButton from "../../components/BookmarkButton.astro";
+import RatingBadge from "../../components/RatingBadge.astro";
 import {
   getPublishedBusinesses,
   getBusinessBySlug,
@@ -64,6 +65,15 @@ if (business.latitude != null && business.longitude != null) {
 if (business.service_areas.length > 0) {
   jsonLd.areaServed = business.service_areas;
 }
+if (business.rating != null) {
+  jsonLd.aggregateRating = {
+    "@type": "AggregateRating",
+    ratingValue: business.rating,
+    ...(business.review_count
+      ? { reviewCount: business.review_count }
+      : { ratingCount: 1 }),
+  };
+}
 ---
 
 <BaseLayout title={title} description={description}>
@@ -119,6 +129,7 @@ if (business.service_areas.length > 0) {
         <p class="mt-1 text-lg text-gray-700">
           {trade?.name}{" "}&middot; {business.city}, {business.county} County
         </p>
+        <RatingBadge rating={business.rating} count={business.review_count} class="mt-2 text-lg" />
       </div>
       <BookmarkButton slug={business.slug} variant="inline" class="mt-1 shrink-0" />
     </header>

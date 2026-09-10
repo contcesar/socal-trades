@@ -32,6 +32,8 @@ export const GET: APIRoute = async () => {
     countySlug: countyBySlug.get(b.county) ?? slugify(b.county),
     serviceAreas: b.service_areas,
     shortDescription: b.short_description,
+    rating: b.rating ?? null,
+    reviewCount: b.review_count ?? null,
   }));
 
   return new Response(JSON.stringify(index), {

@@ -48,6 +48,8 @@ create table if not exists businesses (
   email             text,
   website           text,
   google_place_id   text,
+  rating            real,
+  review_count      integer,
   short_description text not null default '',
   long_description  text,
   logo_url          text,

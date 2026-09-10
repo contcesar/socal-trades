@@ -115,7 +115,11 @@ export async function getBusinessBySlug(slug: string): Promise<Business | undefi
  * ratings exist, this returns the first N published businesses.
  */
 export async function getFeaturedBusinesses(limit = 8): Promise<Business[]> {
-  return (await getPublishedBusinesses()).slice(0, limit);
+  const all = await getPublishedBusinesses();
+  // Highest rating first (unrated last), then keep name order as a tiebreak.
+  return [...all]
+    .sort((a, b) => (b.rating ?? -1) - (a.rating ?? -1))
+    .slice(0, limit);
 }
 
 /** Published businesses in a trade (primary or secondary), sorted by name. */

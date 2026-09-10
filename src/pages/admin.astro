@@ -108,6 +108,12 @@ const refData = JSON.stringify({
             <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Address
               <input id="f-address" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
             </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Rating (0–5)
+              <input id="f-rating" type="number" step="0.1" min="0" max="5" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
+            <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Review count
+              <input id="f-reviewcount" type="number" min="0" step="1" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            </label>
             <label class="flex flex-col gap-1 text-base font-semibold text-gray-800">Secondary trades (slugs, comma-separated)
               <input id="f-secondary" type="text" class="tap-target rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
             </label>
@@ -323,6 +329,8 @@ const refData = JSON.stringify({
       setVal("f-email", b?.email);
       setVal("f-website", b?.website);
       setVal("f-place", b?.google_place_id);
+      setVal("f-rating", b?.rating);
+      setVal("f-reviewcount", b?.review_count);
       setVal("f-address", b?.address);
       setVal("f-secondary", (b?.secondary_trades || []).join(", "));
       setVal("f-areas", (b?.service_areas || []).join(", "));
@@ -375,6 +383,8 @@ const refData = JSON.stringify({
         email: val("f-email") || null,
         website: val("f-website") || null,
         google_place_id: val("f-place") || null,
+        rating: num("f-rating"),
+        review_count: num("f-reviewcount"),
         address: val("f-address") || null,
         secondary_trades: arr("f-secondary"),
         service_areas: arr("f-areas"),

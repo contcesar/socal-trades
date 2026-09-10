@@ -1,0 +1,22 @@
+---
+// Small star rating display for a stored (manually entered) rating.
+interface Props {
+  rating?: number | null;
+  count?: number | null;
+  class?: string;
+}
+const { rating, count, class: className = "" } = Astro.props;
+---
+
+{
+  rating != null && (
+    <span class={`inline-flex items-center gap-1 text-base ${className}`}>
+      <span class="text-amber-500" aria-hidden="true">★</span>
+      <span class="font-semibold text-gray-900">{rating.toFixed(1)}</span>
+      {count != null && count > 0 && <span class="text-gray-500">({count})</span>}
+      <span class="sr-only">
+        {rating} out of 5{count ? `, ${count} reviews` : ""}
+      </span>
+    </span>
+  )
+}
