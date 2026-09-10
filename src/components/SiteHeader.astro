@@ -55,6 +55,9 @@
             class="absolute right-0 mt-2 w-56 rounded-xl border border-gray-200 bg-white py-2 text-lg shadow-lg"
             aria-label="Main menu"
           >
+            <a id="menu-login" href="/login" class="block px-4 py-2 font-semibold hover:bg-gray-100">Log in</a>
+            <a id="menu-account" href="/account" class="hidden px-4 py-2 font-semibold hover:bg-gray-100" hidden>Account</a>
+            <hr class="my-2 border-gray-200" />
             <a href="/saved" class="block px-4 py-2 hover:bg-gray-100">Saved companies</a>
             <a href="/list-your-company" class="block px-4 py-2 hover:bg-gray-100">List your company</a>
             <hr class="my-2 border-gray-200" />
@@ -90,3 +93,18 @@
     </form>
   </div>
 </header>
+
+<script>
+  // Light-weight login state for the menu. Reads the flag set by the auth
+  // pages, so the header never loads the auth SDK on directory pages.
+  try {
+    if (localStorage.getItem("st_auth_email")) {
+      document.getElementById("menu-login")?.setAttribute("hidden", "");
+      const acct = document.getElementById("menu-account");
+      acct?.removeAttribute("hidden");
+      acct?.classList.remove("hidden");
+    }
+  } catch {
+    /* storage blocked; show the logged-out menu */
+  }
+</script>

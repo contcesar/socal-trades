@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Signing you in… | SoCal Trades"
+  description="Completing your sign-in."
+>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-md px-4 py-16 text-center">
+    <h1 id="cb-heading" class="text-2xl font-bold text-brand-blue">
+      Signing you in…
+    </h1>
+    <p id="cb-msg" class="mt-3 text-lg text-gray-800">One moment.</p>
+    <a
+      id="cb-link"
+      href="/login"
+      class="tap-target mt-6 hidden items-center justify-center rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+    >
+      Back to log in
+    </a>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  import { getSupabase, isConfigured, setAuthFlag } from "../../lib/supabaseClient";
+
+  const heading = document.getElementById("cb-heading")!;
+  const msg = document.getElementById("cb-msg")!;
+  const link = document.getElementById("cb-link")!;
+
+  function fail(text: string): void {
+    heading.textContent = "Sign-in link problem";
+    msg.textContent = text;
+    link.hidden = false;
+    link.classList.remove("hidden");
+  }
+
+  async function run(): Promise<void> {
+    if (!isConfigured()) {
+      fail("Login is not switched on yet.");
+      return;
+    }
+    const supabase = getSupabase()!;
+    // detectSessionInUrl parses the magic-link tokens; give it a tick, then
+    // confirm we have a session.
+    await new Promise((r) => setTimeout(r, 400));
+    const { data, error } = await supabase.auth.getSession();
+    if (error || !data.session) {
+      fail("This link is invalid or has expired. Please request a new one.");
+      return;
+    }
+    setAuthFlag(data.session.user.email ?? "account");
+    // Send them where they were headed, or to their account.
+    const params = new URLSearchParams(location.search);
+    const next = params.get("next");
+    location.replace(next && next.startsWith("/") ? next : "/account");
+  }
+
+  run();
+</script>

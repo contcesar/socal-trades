@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout title="Your account | SoCal Trades" description="Your SoCal Trades account.">
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-md px-4 py-12">
+    <h1 class="text-3xl font-bold text-brand-blue">Your account</h1>
+
+    <div id="acct-loading" class="mt-6 text-lg text-gray-700">Loading…</div>
+
+    <div id="acct-body" class="mt-6 hidden" hidden>
+      <p class="text-lg text-gray-800">
+        Signed in as <span id="acct-email" class="font-semibold"></span>.
+      </p>
+
+      <a
+        id="admin-link"
+        href="/admin"
+        class="tap-target mt-6 hidden items-center rounded-lg border-2 border-brand-blue px-6 text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
+      >
+        Go to admin
+      </a>
+
+      <div class="mt-6">
+        <a href="/saved" class="text-lg text-brand-blue underline">Saved companies</a>
+      </div>
+
+      <button
+        id="logout-btn"
+        type="button"
+        class="tap-target mt-8 rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+      >
+        Log out
+      </button>
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  import { getSupabase, isConfigured, setAuthFlag } from "../lib/supabaseClient";
+
+  const loading = document.getElementById("acct-loading")!;
+  const body = document.getElementById("acct-body")!;
+  const emailEl = document.getElementById("acct-email")!;
+  const adminLink = document.getElementById("admin-link")!;
+  const logoutBtn = document.getElementById("logout-btn") as HTMLButtonElement;
+
+  async function run(): Promise<void> {
+    if (!isConfigured()) {
+      location.replace("/login");
+      return;
+    }
+    const supabase = getSupabase()!;
+    const { data } = await supabase.auth.getUser();
+    const user = data.user;
+    if (!user) {
+      location.replace("/login?next=/account");
+      return;
+    }
+
+    setAuthFlag(user.email ?? "account");
+    emailEl.textContent = user.email ?? "your account";
+    loading.hidden = true;
+    body.hidden = false;
+    body.classList.remove("hidden");
+
+    // Show the admin link only if this user has an admins row (RLS allows a
+    // user to read their own admin row).
+    try {
+      const { data: adminRow } = await supabase
+        .from("admins")
+        .select("user_id")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      if (adminRow) {
+        adminLink.hidden = false;
+        adminLink.classList.remove("hidden");
+      }
+    } catch {
+      /* admins table may not exist yet; ignore */
+    }
+
+    logoutBtn.addEventListener("click", async () => {
+      logoutBtn.disabled = true;
+      await supabase.auth.signOut();
+      setAuthFlag(null);
+      location.replace("/");
+    });
+  }
+
+  run();
+</script>
