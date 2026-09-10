@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Serverless functions (live status, claim flow, email) are added in later
+# phases under netlify/functions. Secrets are set as Netlify environment
+# variables in the site dashboard, never committed. See .env.example.

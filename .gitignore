@@ -1,0 +1,19 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# secrets — never commit
+.env
+.env.*
+!.env.example
+
+# netlify
+.netlify/
+
+# logs / os
+*.log
+npm-debug.log*
+.DS_Store

@@ -1,0 +1,21 @@
+{
+  "name": "socal-trades",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SoCal Trades — a directory of trades companies in Southern California.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.3.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
