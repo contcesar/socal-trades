@@ -61,6 +61,15 @@ export async function getBusinessBySlug(slug: string): Promise<Business | undefi
   return published().find((b) => b.slug === slug);
 }
 
+/**
+ * Featured ("popular") businesses for the home carousel. Until live Google
+ * ratings exist (Phase 2), this returns the first N published businesses.
+ * Later this can sort by a cached rating.
+ */
+export async function getFeaturedBusinesses(limit = 8): Promise<Business[]> {
+  return (await getPublishedBusinesses()).slice(0, limit);
+}
+
 /** Published businesses in a trade (primary or secondary), sorted by name. */
 export async function getBusinessesByTrade(tradeSlug: string): Promise<Business[]> {
   return published()

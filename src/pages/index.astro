@@ -3,26 +3,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import TradeIcon from "../components/TradeIcon.astro";
-import { getTrades } from "../lib/data";
+import CompanyCarousel from "../components/CompanyCarousel.astro";
+import { getTrades, getFeaturedBusinesses, getTradeMap } from "../lib/data";
 
 const trades = await getTrades();
+const featured = await getFeaturedBusinesses(8);
+const tradeMap = await getTradeMap();
 ---
 
 <BaseLayout title="SoCal Trades — Find trades companies in Southern California">
   <SiteHeader slot="header" />
 
-  <section class="mx-auto max-w-4xl px-4 py-10 text-center">
-    <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">
-      Find trusted trades companies in Southern California
-    </h1>
-    <p class="mt-4 text-lg text-gray-700">
-      Plumbers, electricians, roofers and more. Pick a trade or search by city.
-    </p>
-  </section>
+  {
+    featured.length > 0 && (
+      <CompanyCarousel
+        heading="Popular companies in Southern California"
+        href="/search"
+        businesses={featured}
+        tradeMap={tradeMap}
+      />
+    )
+  }
 
-  <section aria-labelledby="cat-heading" class="mx-auto max-w-4xl px-4 pb-16">
-    <h2 id="cat-heading" class="sr-only">Trade categories</h2>
-    <ul class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+  <section aria-labelledby="cat-heading" class="mx-auto max-w-7xl px-4 py-8">
+    <h2 id="cat-heading" class="text-2xl font-bold text-gray-900">
+      Browse by trade
+    </h2>
+    <ul class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {
         trades.map((trade) => (
           <li>

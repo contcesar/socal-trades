@@ -1,0 +1,40 @@
+---
+// Tappable bookmark toggle. State is handled site-wide by the script in
+// BaseLayout via the .bookmark-btn class + data-slug. Fill is driven by
+// aria-pressed in global.css.
+interface Props {
+  slug: string;
+  /** "overlay" sits on a card image; "inline" sits in a row of controls. */
+  variant?: "overlay" | "inline";
+  class?: string;
+}
+const { slug, variant = "overlay", class: className = "" } = Astro.props;
+
+const base =
+  "bookmark-btn tap-target inline-flex h-11 w-11 items-center justify-center rounded-full text-brand-blue";
+const skin =
+  variant === "overlay"
+    ? "bg-white/90 shadow-md hover:bg-white"
+    : "border border-gray-300 hover:bg-gray-100";
+---
+
+<button
+  type="button"
+  class={`${base} ${skin} ${className}`}
+  data-slug={slug}
+  aria-pressed="false"
+  aria-label="Save company"
+  title="Save company"
+>
+  <svg
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="h-6 w-6"
+    aria-hidden="true"
+  >
+    <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path>
+  </svg>
+</button>

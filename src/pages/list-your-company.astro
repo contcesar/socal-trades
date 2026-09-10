@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { getTrades, getCounties } from "../lib/data";
+
+const trades = await getTrades();
+const counties = await getCounties();
+---
+
+<BaseLayout
+  title="List Your Company | SoCal Trades"
+  description="Add your trades company to the SoCal Trades directory. Submissions are reviewed before they go live."
+>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-2xl px-4 py-10">
+    <h1 class="text-3xl font-bold text-brand-blue">List your company</h1>
+    <p class="mt-3 text-lg text-gray-800">
+      Add your trades company to SoCal Trades. We review every submission before
+      it goes live.
+    </p>
+
+    <form id="list-form" class="mt-8 flex flex-col gap-5" novalidate>
+      <div>
+        <label class="text-lg font-semibold text-gray-800" for="name">
+          Company name
+        </label>
+        <input id="name" name="name" type="text" required
+          class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+      </div>
+
+      <div class="flex flex-col gap-5 sm:flex-row">
+        <div class="flex-1">
+          <label class="text-lg font-semibold text-gray-800" for="trade">Trade</label>
+          <select id="trade" name="trade" required
+            class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-3 text-lg text-gray-900 focus:border-brand-blue">
+            <option value="">Choose a trade</option>
+            {trades.map((t) => <option value={t.slug}>{t.name}</option>)}
+          </select>
+        </div>
+        <div class="flex-1">
+          <label class="text-lg font-semibold text-gray-800" for="county">County</label>
+          <select id="county" name="county" required
+            class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-3 text-lg text-gray-900 focus:border-brand-blue">
+            <option value="">Choose a county</option>
+            {counties.map((c) => <option value={c.name}>{c.name}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="text-lg font-semibold text-gray-800" for="city">City</label>
+        <input id="city" name="city" type="text" required
+          class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+      </div>
+
+      <div class="flex flex-col gap-5 sm:flex-row">
+        <div class="flex-1">
+          <label class="text-lg font-semibold text-gray-800" for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel"
+            class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+        </div>
+        <div class="flex-1">
+          <label class="text-lg font-semibold text-gray-800" for="email">
+            Work email
+          </label>
+          <input id="email" name="email" type="email" required
+            class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+        </div>
+      </div>
+
+      <div>
+        <label class="text-lg font-semibold text-gray-800" for="website">
+          Website
+        </label>
+        <input id="website" name="website" type="url" placeholder="https://"
+          class="tap-target mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+      </div>
+
+      <div>
+        <label class="text-lg font-semibold text-gray-800" for="short_description">
+          Short description
+        </label>
+        <textarea id="short_description" name="short_description" rows="3" maxlength="200"
+          class="mt-1 w-full rounded-lg border-2 border-gray-300 bg-white px-4 py-2 text-lg text-gray-900 focus:border-brand-blue"
+        ></textarea>
+      </div>
+
+      <p id="form-error" class="hidden text-lg font-semibold text-brand-red-dark" role="alert"></p>
+
+      <button id="submit-btn" type="submit"
+        class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90">
+        Submit for review
+      </button>
+    </form>
+
+    {/* Shown after a successful submit. */}
+    <div id="success-panel" class="mt-8 hidden rounded-xl border border-gray-200 bg-white p-6" hidden>
+      <h2 class="text-2xl font-bold text-brand-blue">Submitted for review</h2>
+      <p class="mt-3 text-lg text-gray-800">
+        Thanks. Your company has been submitted for review. We will check the
+        details and publish your listing soon.
+      </p>
+      <a href="/" class="tap-target mt-5 inline-flex items-center rounded-lg border-2 border-brand-blue px-6 text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white">
+        Back to home
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  const form = document.getElementById("list-form") as HTMLFormElement;
+  const errorEl = document.getElementById("form-error")!;
+  const successPanel = document.getElementById("success-panel")!;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  function showError(msg: string): void {
+    errorEl.textContent = msg;
+    errorEl.classList.remove("hidden");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.classList.add("hidden");
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data.name || !data.trade || !data.county || !data.city || !data.email) {
+      showError("Please fill in the required fields.");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting…";
+
+    try {
+      const res = await fetch("/.netlify/functions/submit-company", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      form.hidden = true;
+      successPanel.hidden = false;
+      successPanel.classList.remove("hidden");
+      successPanel.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit for review";
+      showError(
+        "Sorry, something went wrong sending your submission. Please try again in a moment.",
+      );
+    }
+  });
+</script>

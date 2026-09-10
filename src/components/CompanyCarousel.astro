@@ -1,0 +1,75 @@
+---
+import type { Business, Trade } from "../lib/types";
+import BusinessCard from "./BusinessCard.astro";
+
+interface Props {
+  heading: string;
+  href?: string;
+  businesses: Business[];
+  tradeMap: Map<string, Trade>;
+}
+const { heading, href, businesses, tradeMap } = Astro.props;
+// A stable id so the scroll buttons target this carousel only.
+const railId = `rail-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<section class="mx-auto max-w-7xl px-4 py-6">
+  <div class="flex items-center justify-between gap-3">
+    <h2 class="text-2xl font-bold text-gray-900">
+      {
+        href ? (
+          <a href={href} class="inline-flex items-center gap-2 hover:underline">
+            {heading}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        ) : (
+          heading
+        )
+      }
+    </h2>
+    <div class="hidden gap-2 sm:flex">
+      <button
+        type="button"
+        class="carousel-prev tap-target flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100"
+        aria-label="Scroll left"
+        data-rail={railId}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-5 w-5" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>
+      </button>
+      <button
+        type="button"
+        class="carousel-next tap-target flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100"
+        aria-label="Scroll right"
+        data-rail={railId}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-5 w-5" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <ul
+    id={railId}
+    class="carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+  >
+    {
+      businesses.map((b) => (
+        <li class="w-64 shrink-0 snap-start sm:w-72">
+          <BusinessCard business={b} trade={tradeMap.get(b.trade)} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<script>
+  function scrollRail(railId: string, dir: number) {
+    const rail = document.getElementById(railId);
+    if (rail) rail.scrollBy({ left: dir * rail.clientWidth * 0.8, behavior: "smooth" });
+  }
+  document.querySelectorAll<HTMLElement>(".carousel-prev").forEach((btn) =>
+    btn.addEventListener("click", () => scrollRail(btn.dataset.rail!, -1)),
+  );
+  document.querySelectorAll<HTMLElement>(".carousel-next").forEach((btn) =>
+    btn.addEventListener("click", () => scrollRail(btn.dataset.rail!, 1)),
+  );
+</script>

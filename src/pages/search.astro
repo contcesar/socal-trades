@@ -9,7 +9,6 @@ const businesses = await getPublishedBusinesses();
 const trades = await getTrades();
 const tradeMap = await getTradeMap();
 
-// Distinct city names for the filter dropdown.
 const cities = [...new Set(businesses.map((b) => b.city))].sort((a, b) =>
   a.localeCompare(b),
 );
@@ -22,10 +21,10 @@ const description =
 <BaseLayout title={title} description={description}>
   <SiteHeader slot="header" />
 
-  <section class="mx-auto max-w-4xl px-4 py-8">
+  <section class="mx-auto max-w-7xl px-4 py-8">
     <h1 class="text-3xl font-bold text-brand-blue">Search results</h1>
 
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row">
       <div class="flex-1">
         <label for="filter-trade" class="sr-only">Filter by trade</label>
         <select
@@ -52,9 +51,10 @@ const description =
       {businesses.length} companies
     </p>
 
-    {/* Server-rendered default list. The client script replaces this once it
-        has run, but crawlers and no-JS visitors still see full results. */}
-    <div id="results" class="mt-4 grid gap-4 sm:grid-cols-2">
+    <div
+      id="results"
+      class="mt-4 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4"
+    >
       {businesses.map((b) => <BusinessCard business={b} trade={tradeMap.get(b.trade)} />)}
     </div>
 
@@ -89,30 +89,35 @@ const description =
   const noResultsEl = document.getElementById("no-results")!;
   const tradeSel = document.getElementById("filter-trade") as HTMLSelectElement;
   const citySel = document.getElementById("filter-city") as HTMLSelectElement;
-  const searchInput = document.getElementById("site-search") as HTMLInputElement | null;
+  const searchInputs = Array.from(
+    document.querySelectorAll<HTMLInputElement>(".site-search-input"),
+  );
 
-  function escapeHtml(s: string): string {
-    return s.replace(
+  const escapeHtml = (s: string): string =>
+    s.replace(
       /[&<>"']/g,
       (c) =>
         ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
           c
         ]!,
     );
-  }
 
   function card(item: IndexItem): string {
-    const call = item.slug; // profile link
     return `
-      <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md">
-        <h3 class="text-xl font-bold leading-snug">
-          <a href="/business/${item.slug}" class="text-brand-blue hover:underline">${escapeHtml(item.name)}</a>
-        </h3>
-        <p class="mt-1 text-base text-gray-600">${escapeHtml(item.tradeName)} &middot; ${escapeHtml(item.city)}, ${escapeHtml(item.county)} County</p>
-        <p class="mt-3 text-lg text-gray-800">${escapeHtml(item.shortDescription)}</p>
-        <div class="mt-4">
-          <a href="/business/${call}" class="tap-target inline-flex items-center rounded-lg border-2 border-brand-blue px-4 text-base font-semibold text-brand-blue hover:bg-brand-blue hover:text-white">View profile</a>
+      <article class="group">
+        <div class="relative">
+          <a href="/business/${item.slug}" class="block aspect-[4/3] overflow-hidden rounded-2xl bg-brand-cream">
+            <span class="flex h-full w-full items-center justify-center px-3 text-center text-base font-semibold text-brand-blue">${escapeHtml(item.tradeName)}</span>
+          </a>
+          <button type="button" class="bookmark-btn tap-target absolute right-3 top-3 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-brand-blue shadow-md hover:bg-white" data-slug="${item.slug}" aria-pressed="false" aria-label="Save company" title="Save company">
+            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path></svg>
+          </button>
         </div>
+        <a href="/business/${item.slug}" class="mt-3 block">
+          <h3 class="text-lg font-bold leading-snug text-gray-900">${escapeHtml(item.name)}</h3>
+          <p class="mt-0.5 text-base text-gray-600">${escapeHtml(item.tradeName)} &middot; ${escapeHtml(item.city)}, ${escapeHtml(item.county)} County</p>
+          <p class="mt-1 line-clamp-2 text-base text-gray-700">${escapeHtml(item.shortDescription)}</p>
+        </a>
       </article>`;
   }
 
@@ -120,6 +125,8 @@ const description =
     resultsEl.innerHTML = items.map(card).join("");
     countEl.textContent = `${items.length} ${items.length === 1 ? "company" : "companies"}`;
     noResultsEl.classList.toggle("hidden", items.length !== 0);
+    // Let the site-wide bookmark script paint the new buttons.
+    document.dispatchEvent(new CustomEvent("cards:rendered"));
   }
 
   async function init(): Promise<void> {
@@ -128,7 +135,7 @@ const description =
       const res = await fetch("/businesses.json");
       data = await res.json();
     } catch {
-      return; // leave the server-rendered list in place
+      return; // keep the server-rendered list
     }
 
     const fuse = new Fuse(data, {
@@ -149,12 +156,20 @@ const description =
     const q0 = params.get("q") ?? "";
     const trade0 = params.get("trade") ?? "";
     const city0 = params.get("city") ?? "";
-    if (searchInput) searchInput.value = q0;
+    searchInputs.forEach((i) => (i.value = q0));
     if (trade0) tradeSel.value = trade0;
     if (city0) citySel.value = city0;
 
+    function currentQuery(): string {
+      const withValue = searchInputs.find((i) => i.value.trim() !== "");
+      return (withValue?.value ?? searchInputs[0]?.value ?? "").trim();
+    }
+
     function apply(): void {
-      const q = (searchInput?.value ?? "").trim();
+      const q = currentQuery();
+      searchInputs.forEach((i) => {
+        if (i.value !== q) i.value = q;
+      });
       const trade = tradeSel.value;
       const city = citySel.value;
 
@@ -174,10 +189,8 @@ const description =
 
     tradeSel.addEventListener("change", apply);
     citySel.addEventListener("change", apply);
-    searchInput?.addEventListener("input", apply);
+    searchInputs.forEach((i) => i.addEventListener("input", apply));
 
-    // Only re-render from the index if there is an active query/filter,
-    // otherwise keep the server-rendered list as-is on first paint.
     if (q0 || trade0 || city0) apply();
   }
 

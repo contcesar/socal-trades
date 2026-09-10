@@ -33,5 +33,55 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       <slot />
     </main>
     <slot name="footer" />
+
+    <script>
+      // Site-wide bookmarks, stored per-visitor in localStorage. Any element
+      // with class "bookmark-btn" and a data-slug toggles here via delegation,
+      // so it works on cards rendered at build time and by the search script.
+      const KEY = "st_bookmarks";
+      const read = (): Set<string> => {
+        try {
+          return new Set(JSON.parse(localStorage.getItem(KEY) || "[]"));
+        } catch {
+          return new Set();
+        }
+      };
+      const write = (s: Set<string>) => {
+        try {
+          localStorage.setItem(KEY, JSON.stringify([...s]));
+        } catch {
+          /* storage blocked; bookmarks are best-effort */
+        }
+      };
+      const paint = (btn: Element, on: boolean) =>
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+
+      const sync = () => {
+        const s = read();
+        document.querySelectorAll<HTMLElement>(".bookmark-btn").forEach((b) => {
+          if (b.dataset.slug) paint(b, s.has(b.dataset.slug));
+        });
+      };
+
+      document.addEventListener("click", (e) => {
+        const btn = (e.target as Element)?.closest?.(".bookmark-btn") as
+          | HTMLElement
+          | null;
+        if (!btn || !btn.dataset.slug) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const s = read();
+        const slug = btn.dataset.slug;
+        if (s.has(slug)) s.delete(slug);
+        else s.add(slug);
+        write(s);
+        paint(btn, s.has(slug));
+        document.dispatchEvent(new CustomEvent("bookmarks:changed"));
+      });
+
+      // Re-sync after the search script (or any script) injects new cards.
+      document.addEventListener("cards:rendered", sync);
+      sync();
+    </script>
   </body>
 </html>

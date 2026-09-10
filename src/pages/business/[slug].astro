@@ -4,6 +4,7 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import TradeIcon from "../../components/TradeIcon.astro";
 import LiveStatus from "../../components/LiveStatus.astro";
+import BookmarkButton from "../../components/BookmarkButton.astro";
 import {
   getPublishedBusinesses,
   getBusinessBySlug,
@@ -96,7 +97,7 @@ if (business.service_areas.length > 0) {
       <span class="mt-1 shrink-0 text-brand-red-dark">
         <TradeIcon icon={trade?.icon ?? "wrench"} class="h-12 w-12" />
       </span>
-      <div>
+      <div class="flex-1">
         <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">
           {business.name}
         </h1>
@@ -104,6 +105,7 @@ if (business.service_areas.length > 0) {
           {trade?.name}{" "}&middot; {business.city}, {business.county} County
         </p>
       </div>
+      <BookmarkButton slug={business.slug} variant="inline" class="mt-1 shrink-0" />
     </header>
 
     {/* Live open/closed + rating (Phase 2). Absent until a place_id is set. */}

@@ -1,29 +1,92 @@
 ---
-// Sticky, centered search bar on every page. Submitting navigates to /search,
-// which runs client-side Fuse.js filtering and is crawlable server-side.
+// Sticky white header, Airbnb-style: logo left, centered pill search (blank
+// with a red search button), "List Your Company" CTA + menu on the right.
+// Submitting navigates to /search, which is crawlable and enhanced with Fuse.js.
 ---
 
-<header class="sticky top-0 z-50 bg-brand-blue shadow-md">
-  <div class="mx-auto max-w-3xl px-4 py-3 flex flex-col items-center gap-3">
-    <a href="/" class="text-brand-cream text-2xl font-bold tracking-tight">
-      SoCal Trades
-    </a>
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <div class="mx-auto max-w-7xl px-4 py-3">
+    <div class="flex items-center justify-between gap-4">
+      <a href="/" class="shrink-0" aria-label="SoCal Trades home">
+        <img src="/logo.png" alt="SoCal Trades" class="h-11 w-auto" />
+      </a>
+
+      {/* Desktop search sits in the bar. */}
+      <form
+        class="hidden sm:flex flex-1 max-w-xl items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm focus-within:shadow-md"
+        role="search"
+        aria-label="Search trades companies"
+        action="/search"
+        method="get"
+      >
+        <input
+          type="search"
+          name="q"
+          aria-label="Search companies, trades, or cities"
+          autocomplete="off"
+          class="site-search-input flex-1 bg-transparent text-lg text-gray-900 outline-none"
+        />
+        <button
+          type="submit"
+          aria-label="Search"
+          class="tap-target flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-red text-white hover:opacity-90"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" class="h-5 w-5" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        </button>
+      </form>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <a
+          href="/list-your-company"
+          class="tap-target hidden items-center rounded-full px-4 text-base font-semibold text-brand-blue hover:bg-gray-100 sm:inline-flex"
+        >
+          List Your Company
+        </a>
+
+        <details class="relative">
+          <summary
+            class="tap-target flex cursor-pointer list-none items-center gap-2 rounded-full border border-gray-300 px-3 hover:shadow-md"
+            aria-label="Menu"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-5 w-5 text-gray-700" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7 text-gray-500" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v0h18v0c0-4-5-6-9-6z"></path></svg>
+          </summary>
+          <nav
+            class="absolute right-0 mt-2 w-56 rounded-xl border border-gray-200 bg-white py-2 text-lg shadow-lg"
+            aria-label="Main menu"
+          >
+            <a href="/saved" class="block px-4 py-2 hover:bg-gray-100">Saved companies</a>
+            <a href="/list-your-company" class="block px-4 py-2 hover:bg-gray-100">List your company</a>
+            <hr class="my-2 border-gray-200" />
+            <a href="/about" class="block px-4 py-2 hover:bg-gray-100">About</a>
+            <a href="/contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+          </nav>
+        </details>
+      </div>
+    </div>
+
+    {/* Mobile search drops below the bar and spans full width. */}
     <form
-      class="w-full"
+      class="mt-3 flex items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm sm:hidden"
       role="search"
       aria-label="Search trades companies"
       action="/search"
       method="get"
     >
-      <label for="site-search" class="sr-only">Search trades and cities</label>
       <input
-        id="site-search"
         type="search"
         name="q"
-        placeholder="Search a trade or city…"
+        aria-label="Search companies, trades, or cities"
         autocomplete="off"
-        class="tap-target w-full rounded-lg border-2 border-transparent bg-white px-4 text-lg text-gray-900 placeholder:text-gray-500 focus:border-brand-red"
+        class="site-search-input flex-1 bg-transparent text-lg text-gray-900 outline-none"
       />
+      <button
+        type="submit"
+        aria-label="Search"
+        class="tap-target flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-red text-white hover:opacity-90"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" class="h-5 w-5" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      </button>
     </form>
   </div>
 </header>
