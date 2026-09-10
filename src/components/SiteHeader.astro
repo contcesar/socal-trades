@@ -6,14 +6,14 @@
 
 <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
   <div class="mx-auto max-w-7xl px-4 py-3">
-    <div class="flex items-center justify-between gap-4">
-      <a href="/" class="shrink-0" aria-label="SoCal Trades home">
+    <div class="flex items-center justify-between gap-4 sm:grid sm:grid-cols-[1fr_minmax(0,36rem)_1fr]">
+      <a href="/" class="shrink-0 sm:justify-self-start" aria-label="SoCal Trades home">
         <img src="/socal-trades.png" alt="SoCal Trades" class="h-12 w-auto sm:h-14" />
       </a>
 
-      {/* Desktop search sits in the bar. */}
+      {/* Desktop search, centered in the bar. */}
       <form
-        class="hidden sm:flex flex-1 max-w-xl items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm focus-within:shadow-md"
+        class="hidden sm:flex sm:w-full items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm focus-within:shadow-md"
         role="search"
         aria-label="Search trades companies"
         action="/search"
@@ -35,7 +35,7 @@
         </button>
       </form>
 
-      <div class="flex shrink-0 items-center gap-2">
+      <div class="flex shrink-0 items-center gap-2 sm:justify-self-end">
         <a
           href="/list-your-company"
           class="tap-target hidden items-center rounded-full px-4 text-base font-semibold text-brand-blue hover:bg-gray-100 sm:inline-flex"
