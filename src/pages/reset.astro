@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Set a new password | SoCal Trades"
+  description="Set a new password for your account."
+>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-md px-4 py-12">
+    <h1 class="text-3xl font-bold text-brand-blue">Set a new password</h1>
+
+    <div id="reset-loading" class="mt-6 text-lg text-gray-700">One moment…</div>
+
+    <form id="reset-form" class="mt-8 hidden flex-col gap-4" hidden novalidate>
+      <label class="text-lg font-semibold text-gray-800" for="reset-password">
+        New password
+        <span class="font-normal text-base text-gray-600">(at least 8 characters)</span>
+      </label>
+      <input
+        id="reset-password"
+        name="password"
+        type="password"
+        required
+        autocomplete="new-password"
+        minlength="8"
+        class="tap-target rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue"
+      />
+      <button
+        id="reset-btn"
+        type="submit"
+        class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+      >
+        Save new password
+      </button>
+      <p id="reset-msg" class="hidden text-lg" role="alert"></p>
+    </form>
+
+    <div id="reset-invalid" class="mt-8 hidden rounded-xl border border-gray-200 bg-white p-6" hidden>
+      <p class="text-lg text-gray-800">
+        This reset link is invalid or has expired.
+        <a href="/forgot" class="text-brand-blue underline">Request a new one</a>.
+      </p>
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  import { getSupabase, isConfigured, setAuthFlag } from "../lib/supabaseClient";
+
+  const loading = document.getElementById("reset-loading")!;
+  const form = document.getElementById("reset-form") as HTMLFormElement;
+  const passwordInput = document.getElementById("reset-password") as HTMLInputElement;
+  const btn = document.getElementById("reset-btn") as HTMLButtonElement;
+  const msg = document.getElementById("reset-msg")!;
+  const invalid = document.getElementById("reset-invalid")!;
+
+  function showInvalid(): void {
+    loading.hidden = true;
+    invalid.hidden = false;
+    invalid.classList.remove("hidden");
+  }
+
+  async function run(): Promise<void> {
+    if (!isConfigured()) return showInvalid();
+    const supabase = getSupabase()!;
+    // The recovery link establishes a temporary session via the URL.
+    await new Promise((r) => setTimeout(r, 400));
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) return showInvalid();
+
+    loading.hidden = true;
+    form.hidden = false;
+    form.classList.remove("hidden");
+    form.classList.add("flex");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msg.classList.add("hidden");
+      const password = passwordInput.value;
+      if (password.length < 8) {
+        msg.textContent = "Password must be at least 8 characters.";
+        msg.classList.remove("hidden");
+        msg.classList.add("text-brand-red-dark", "font-semibold");
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Saving…";
+      const { data: upd, error } = await supabase.auth.updateUser({ password });
+      if (error) {
+        btn.disabled = false;
+        btn.textContent = "Save new password";
+        msg.textContent = error.message;
+        msg.classList.remove("hidden");
+        msg.classList.add("text-brand-red-dark", "font-semibold");
+        return;
+      }
+      setAuthFlag(upd.user?.email ?? "account");
+      location.replace("/account");
+    });
+  }
+
+  run();
+</script>

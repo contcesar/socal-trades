@@ -1,7 +1,20 @@
-# Login setup (magic link)
+# Login setup (email + password)
 
 Login uses Supabase Auth, entirely in the browser. It turns on once these are
 set. Until then the login page shows a "not switched on yet" notice.
+
+## Email confirmation (important right now)
+
+By default Supabase requires new users to confirm their email before they can
+log in, which needs working email delivery. While email is not set up:
+
+- Supabase → Authentication → Providers → Email → turn **Confirm email OFF** so
+  sign up works without email. Login and sign up then need no email at all.
+- Password reset still sends an email, so it only works once email delivery is
+  connected (see step 4).
+
+Once you connect SMTP (step 4), turn Confirm email back ON so new accounts are
+verified.
 
 ## 1. Create the Supabase project
 
@@ -24,11 +37,14 @@ Redeploy so the build bakes them in.
 Supabase → Authentication → URL Configuration:
 
 - Site URL: `https://socaltrades.net`
-- Additional redirect URLs: add
-  `https://socaltrades.net/auth/callback` and your Netlify preview URL
-  `https://<your-site>.netlify.app/auth/callback`
+- Additional redirect URLs: add each of these, with the `https://` scheme:
+  - `https://socaltrades.net/auth/callback`
+  - `https://socaltrades.net/reset`
+  - `https://<your-site>.netlify.app/auth/callback`
+  - `https://<your-site>.netlify.app/reset`
 
-Without the callback URL on this list, the login link will be rejected.
+`/auth/callback` is used by the sign-up confirmation email, `/reset` by the
+password-reset email. Without these on the list, those links are rejected.
 
 ## 4. Email delivery (recommended for production)
 
@@ -50,8 +66,9 @@ itself is Phase 4).
 
 ## How it works
 
-- The login page sends a one-time link to the email (`signInWithOtp`).
-- The link returns to `/auth/callback`, which stores the session and sends the
-  user to `/account`.
-- The header shows "Log in" or "Account" based on a small localStorage flag, so
-  directory pages never load the auth SDK and stay fast.
+- Sign up creates an account with email + password (`signUp`). Log in uses
+  `signInWithPassword`. Forgot password sends a reset link to `/reset`.
+- The sign-up confirmation link (when Confirm email is on) returns to
+  `/auth/callback`, which stores the session and routes the user on.
+- The header shows "Log in / Sign up" or "Account" based on a small localStorage
+  flag, so directory pages never load the auth SDK and stay fast.
