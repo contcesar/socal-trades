@@ -95,14 +95,18 @@ import SiteFooter from "../components/SiteFooter.astro";
 
     btn.disabled = true;
     btn.textContent = "Sending…";
+    const redirectTo = `${location.origin}/auth/callback`;
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${location.origin}/auth/callback` },
+      options: { emailRedirectTo: redirectTo },
     });
     if (error) {
       btn.disabled = false;
       btn.textContent = "Send me a login link";
-      showError("Sorry, we could not send the link. Please try again.");
+      // Surface the real reason so setup issues are obvious.
+      const status = (error as { status?: number }).status;
+      console.error("signInWithOtp error", status, error.message, "redirectTo:", redirectTo);
+      showError(`Could not send the link. ${error.message}${status ? ` (status ${status})` : ""}. Redirect used: ${redirectTo}`);
       return;
     }
     form.hidden = true;
