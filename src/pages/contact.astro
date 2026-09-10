@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+// Update to your real address when the domain email is set up.
+const contactEmail = "hello@socaltrades.net";
+---
+
+<BaseLayout
+  title="Contact | SoCal Trades"
+  description="Get in touch with SoCal Trades."
+>
+  <SiteHeader slot="header" />
+  <section class="mx-auto max-w-2xl px-4 py-10 text-lg text-gray-800">
+    <h1 class="text-3xl font-bold text-brand-blue">Contact us</h1>
+    <p class="mt-4">
+      Questions about a listing, or want to add your company? Email us and we
+      will get back to you.
+    </p>
+    <a
+      href={`mailto:${contactEmail}`}
+      class="tap-target mt-6 inline-flex items-center rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+    >
+      Email {contactEmail}
+    </a>
+  </section>
+  <SiteFooter slot="footer" />
+</BaseLayout>

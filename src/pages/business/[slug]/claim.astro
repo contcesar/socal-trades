@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import { getPublishedBusinesses, getBusinessBySlug } from "../../../lib/data";
+
+export async function getStaticPaths() {
+  const businesses = await getPublishedBusinesses();
+  return businesses.map((b) => ({ params: { slug: b.slug } }));
+}
+
+const { slug } = Astro.params;
+const business = await getBusinessBySlug(slug!);
+if (!business) return Astro.redirect("/404");
+
+const title = `Claim ${business.name} | SoCal Trades`;
+---
+
+<BaseLayout title={title} description={`Claim the ${business.name} profile on SoCal Trades.`}>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-xl px-4 py-10">
+    <h1 class="text-3xl font-bold text-brand-blue">Claim {business.name}</h1>
+    <p class="mt-3 text-lg text-gray-800">
+      Enter a work email that matches your business website domain. We will send
+      a verification link. Once you confirm, you can edit your profile.
+    </p>
+
+    <form class="mt-6 flex flex-col gap-4" aria-describedby="claim-note">
+      <input type="hidden" name="business_id" value={business.id} />
+      <label class="text-lg font-semibold text-gray-800" for="claim-email">
+        Work email
+      </label>
+      <input
+        id="claim-email"
+        type="email"
+        name="email"
+        required
+        placeholder={`you@${business.website ? business.website.replace(/^https?:\/\/(www\.)?/, "") : "yourcompany.com"}`}
+        class="tap-target rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue"
+      />
+      <button
+        type="submit"
+        disabled
+        class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white opacity-60"
+      >
+        Send verification email
+      </button>
+      <p id="claim-note" class="text-base text-gray-600">
+        Verification goes live in Phase 3. The email domain must match your
+        website domain.
+      </p>
+    </form>
+
+    <p class="mt-6">
+      <a href={`/business/${business.slug}`} class="text-brand-blue underline">
+        Back to {business.name}
+      </a>
+    </p>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>

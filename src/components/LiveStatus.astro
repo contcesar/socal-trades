@@ -1,0 +1,65 @@
+---
+// Live open/closed badge + live rating. Renders only when the business has a
+// Google place_id. The small script calls the `place-details` Netlify Function
+// (added in Phase 2) and fills in fresh data at view time. Nothing about
+// reviews or hours is stored; it is fetched live per Google's terms.
+interface Props {
+  placeId: string | null;
+}
+const { placeId } = Astro.props;
+---
+
+{
+  placeId && (
+    <div
+      class="live-status flex flex-wrap items-center gap-3"
+      data-place-id={placeId}
+    >
+      <span
+        class="badge-opennow tap-target hidden items-center rounded-lg px-4 text-base font-semibold"
+        hidden
+      />
+      <span class="live-rating text-lg text-gray-700" aria-live="polite" />
+    </div>
+  )
+}
+
+<script>
+  // Phase 1: this runs only if a place_id is present (none in the seed yet).
+  // Phase 2 adds the /.netlify/functions/place-details endpoint it calls.
+  interface PlaceDetails {
+    openNow?: boolean;
+    rating?: number;
+    userRatingCount?: number;
+  }
+
+  document.querySelectorAll<HTMLElement>(".live-status").forEach(async (el) => {
+    const placeId = el.dataset.placeId;
+    if (!placeId) return;
+
+    try {
+      const res = await fetch(
+        `/.netlify/functions/place-details?place_id=${encodeURIComponent(placeId)}`,
+      );
+      if (!res.ok) return;
+      const data: PlaceDetails = await res.json();
+
+      const badge = el.querySelector<HTMLElement>(".badge-opennow");
+      if (badge && typeof data.openNow === "boolean") {
+        badge.textContent = data.openNow ? "Open now" : "Closed";
+        badge.classList.add(data.openNow ? "bg-green-700" : "bg-gray-600");
+        badge.classList.add("text-white");
+        badge.hidden = false;
+        badge.classList.remove("hidden");
+      }
+
+      const rating = el.querySelector<HTMLElement>(".live-rating");
+      if (rating && typeof data.rating === "number") {
+        const count = data.userRatingCount ?? 0;
+        rating.textContent = `★ ${data.rating.toFixed(1)} (${count} Google reviews)`;
+      }
+    } catch {
+      // Live data is best-effort. The static page stands on its own.
+    }
+  });
+</script>

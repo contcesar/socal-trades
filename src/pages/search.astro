@@ -1,0 +1,185 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import BusinessCard from "../components/BusinessCard.astro";
+import { getPublishedBusinesses, getTrades, getTradeMap } from "../lib/data";
+
+const businesses = await getPublishedBusinesses();
+const trades = await getTrades();
+const tradeMap = await getTradeMap();
+
+// Distinct city names for the filter dropdown.
+const cities = [...new Set(businesses.map((b) => b.city))].sort((a, b) =>
+  a.localeCompare(b),
+);
+
+const title = "Search trades companies | SoCal Trades";
+const description =
+  "Search trades companies across Southern California by trade and city.";
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="text-3xl font-bold text-brand-blue">Search results</h1>
+
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <div class="flex-1">
+        <label for="filter-trade" class="sr-only">Filter by trade</label>
+        <select
+          id="filter-trade"
+          class="tap-target w-full rounded-lg border-2 border-gray-300 bg-white px-3 text-lg text-gray-900"
+        >
+          <option value="">All trades</option>
+          {trades.map((t) => <option value={t.slug}>{t.name}</option>)}
+        </select>
+      </div>
+      <div class="flex-1">
+        <label for="filter-city" class="sr-only">Filter by city</label>
+        <select
+          id="filter-city"
+          class="tap-target w-full rounded-lg border-2 border-gray-300 bg-white px-3 text-lg text-gray-900"
+        >
+          <option value="">All cities</option>
+          {cities.map((c) => <option value={c}>{c}</option>)}
+        </select>
+      </div>
+    </div>
+
+    <p id="result-count" class="mt-6 text-lg text-gray-700" aria-live="polite">
+      {businesses.length} companies
+    </p>
+
+    {/* Server-rendered default list. The client script replaces this once it
+        has run, but crawlers and no-JS visitors still see full results. */}
+    <div id="results" class="mt-4 grid gap-4 sm:grid-cols-2">
+      {businesses.map((b) => <BusinessCard business={b} trade={tradeMap.get(b.trade)} />)}
+    </div>
+
+    <p id="no-results" class="mt-4 hidden text-lg text-gray-700">
+      No companies match your search. Try a different trade or city.
+    </p>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  import Fuse from "fuse.js";
+
+  interface IndexItem {
+    id: string;
+    name: string;
+    slug: string;
+    trade: string;
+    tradeName: string;
+    secondaryTradeNames: string[];
+    city: string;
+    citySlug: string;
+    county: string;
+    countySlug: string;
+    serviceAreas: string[];
+    shortDescription: string;
+  }
+
+  const resultsEl = document.getElementById("results")!;
+  const countEl = document.getElementById("result-count")!;
+  const noResultsEl = document.getElementById("no-results")!;
+  const tradeSel = document.getElementById("filter-trade") as HTMLSelectElement;
+  const citySel = document.getElementById("filter-city") as HTMLSelectElement;
+  const searchInput = document.getElementById("site-search") as HTMLInputElement | null;
+
+  function escapeHtml(s: string): string {
+    return s.replace(
+      /[&<>"']/g,
+      (c) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+          c
+        ]!,
+    );
+  }
+
+  function card(item: IndexItem): string {
+    const call = item.slug; // profile link
+    return `
+      <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md">
+        <h3 class="text-xl font-bold leading-snug">
+          <a href="/business/${item.slug}" class="text-brand-blue hover:underline">${escapeHtml(item.name)}</a>
+        </h3>
+        <p class="mt-1 text-base text-gray-600">${escapeHtml(item.tradeName)} &middot; ${escapeHtml(item.city)}, ${escapeHtml(item.county)} County</p>
+        <p class="mt-3 text-lg text-gray-800">${escapeHtml(item.shortDescription)}</p>
+        <div class="mt-4">
+          <a href="/business/${call}" class="tap-target inline-flex items-center rounded-lg border-2 border-brand-blue px-4 text-base font-semibold text-brand-blue hover:bg-brand-blue hover:text-white">View profile</a>
+        </div>
+      </article>`;
+  }
+
+  function render(items: IndexItem[]): void {
+    resultsEl.innerHTML = items.map(card).join("");
+    countEl.textContent = `${items.length} ${items.length === 1 ? "company" : "companies"}`;
+    noResultsEl.classList.toggle("hidden", items.length !== 0);
+  }
+
+  async function init(): Promise<void> {
+    let data: IndexItem[] = [];
+    try {
+      const res = await fetch("/businesses.json");
+      data = await res.json();
+    } catch {
+      return; // leave the server-rendered list in place
+    }
+
+    const fuse = new Fuse(data, {
+      threshold: 0.4,
+      ignoreLocation: true,
+      keys: [
+        { name: "name", weight: 3 },
+        { name: "tradeName", weight: 2 },
+        { name: "secondaryTradeNames", weight: 1 },
+        { name: "city", weight: 2 },
+        { name: "county", weight: 1 },
+        { name: "serviceAreas", weight: 1 },
+        { name: "shortDescription", weight: 1 },
+      ],
+    });
+
+    const params = new URLSearchParams(location.search);
+    const q0 = params.get("q") ?? "";
+    const trade0 = params.get("trade") ?? "";
+    const city0 = params.get("city") ?? "";
+    if (searchInput) searchInput.value = q0;
+    if (trade0) tradeSel.value = trade0;
+    if (city0) citySel.value = city0;
+
+    function apply(): void {
+      const q = (searchInput?.value ?? "").trim();
+      const trade = tradeSel.value;
+      const city = citySel.value;
+
+      let items = q ? fuse.search(q).map((r) => r.item) : data.slice();
+      if (trade) items = items.filter((i) => i.trade === trade);
+      if (city) items = items.filter((i) => i.city === city);
+
+      render(items);
+
+      const next = new URLSearchParams();
+      if (q) next.set("q", q);
+      if (trade) next.set("trade", trade);
+      if (city) next.set("city", city);
+      const qs = next.toString();
+      history.replaceState(null, "", qs ? `/search?${qs}` : "/search");
+    }
+
+    tradeSel.addEventListener("change", apply);
+    citySel.addEventListener("change", apply);
+    searchInput?.addEventListener("input", apply);
+
+    // Only re-render from the index if there is an active query/filter,
+    // otherwise keep the server-rendered list as-is on first paint.
+    if (q0 || trade0 || city0) apply();
+  }
+
+  init();
+</script>

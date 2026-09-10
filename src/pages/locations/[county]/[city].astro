@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import BusinessCard from "../../../components/BusinessCard.astro";
+import {
+  getAllCities,
+  getCountyBySlug,
+  getBusinessesByCity,
+  getTradeMap,
+} from "../../../lib/data";
+
+// One page per (county, city) pair that has a published business.
+export async function getStaticPaths() {
+  const cities = await getAllCities();
+  return cities.map((city) => ({
+    params: { county: city.county.slug, city: city.slug },
+    props: { cityName: city.name },
+  }));
+}
+
+const { county: countySlug, city: citySlug } = Astro.params;
+const { cityName } = Astro.props;
+const county = await getCountyBySlug(countySlug!);
+if (!county) return Astro.redirect("/404");
+
+const businesses = await getBusinessesByCity(county.slug, citySlug!);
+const tradeMap = await getTradeMap();
+
+const title = `Trades companies in ${cityName}, CA | SoCal Trades`;
+const description = `Trades companies serving ${cityName} in ${county.name} County, Southern California. Contact details and profiles.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-4xl px-4 py-10">
+    <nav aria-label="Breadcrumb" class="text-base text-gray-600">
+      <a href={`/locations/${county.slug}`} class="text-brand-blue hover:underline">
+        {county.name} County
+      </a>
+      <span aria-hidden="true"> / </span>
+      <span>{cityName}</span>
+    </nav>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold text-brand-blue">
+      Trades companies in {cityName}
+    </h1>
+    <p class="mt-3 text-lg text-gray-700">
+      {businesses.length}
+      {businesses.length === 1 ? "company" : "companies"} serving {cityName}.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 pb-16">
+    <div class="grid gap-4 sm:grid-cols-2">
+      {businesses.map((b) => <BusinessCard business={b} trade={tradeMap.get(b.trade)} />)}
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>

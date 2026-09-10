@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout title="Page not found | SoCal Trades" description="This page could not be found.">
+  <SiteHeader slot="header" />
+  <section class="mx-auto max-w-2xl px-4 py-16 text-center">
+    <h1 class="text-4xl font-bold text-brand-blue">Page not found</h1>
+    <p class="mt-4 text-lg text-gray-700">
+      The page you were looking for is not here.
+    </p>
+    <a
+      href="/"
+      class="tap-target mt-6 inline-flex items-center rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+    >
+      Back to home
+    </a>
+  </section>
+  <SiteFooter slot="footer" />
+</BaseLayout>

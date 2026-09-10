@@ -1,6 +1,6 @@
 ---
-// Sticky, centered search bar on every page.
-// Phase 0: visual placeholder. Wired to client-side Fuse.js search in Phase 1.
+// Sticky, centered search bar on every page. Submitting navigates to /search,
+// which runs client-side Fuse.js filtering and is crawlable server-side.
 ---
 
 <header class="sticky top-0 z-50 bg-brand-blue shadow-md">
@@ -8,7 +8,13 @@
     <a href="/" class="text-brand-cream text-2xl font-bold tracking-tight">
       SoCal Trades
     </a>
-    <form class="w-full" role="search" aria-label="Search trades companies">
+    <form
+      class="w-full"
+      role="search"
+      aria-label="Search trades companies"
+      action="/search"
+      method="get"
+    >
       <label for="site-search" class="sr-only">Search trades and cities</label>
       <input
         id="site-search"

@@ -1,0 +1,223 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import TradeIcon from "../../components/TradeIcon.astro";
+import LiveStatus from "../../components/LiveStatus.astro";
+import {
+  getPublishedBusinesses,
+  getBusinessBySlug,
+  getTradeMap,
+  getCounties,
+} from "../../lib/data";
+
+export async function getStaticPaths() {
+  const businesses = await getPublishedBusinesses();
+  return businesses.map((b) => ({ params: { slug: b.slug } }));
+}
+
+const { slug } = Astro.params;
+const business = await getBusinessBySlug(slug!);
+if (!business) return Astro.redirect("/404");
+
+const tradeMap = await getTradeMap();
+const trade = tradeMap.get(business.trade);
+const secondary = business.secondary_trades
+  .map((s) => tradeMap.get(s))
+  .filter((t): t is NonNullable<typeof t> => Boolean(t));
+const counties = await getCounties();
+const county = counties.find((c) => c.name === business.county);
+
+const title = `${business.name} — ${trade?.name ?? ""} in ${business.city}, CA | SoCal Trades`;
+const description = business.short_description;
+const canonical = new URL(`/business/${business.slug}`, Astro.site).href;
+
+// LocalBusiness JSON-LD. No opening hours or review text stored (Google terms);
+// aggregateRating is added in Phase 2 only when a cached rating exists.
+const jsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: business.name,
+  url: canonical,
+  description: business.short_description,
+};
+if (business.phone) jsonLd.telephone = business.phone;
+if (business.email) jsonLd.email = business.email;
+if (business.website) jsonLd.sameAs = [business.website];
+if (business.logo_url) jsonLd.image = business.logo_url;
+jsonLd.address = {
+  "@type": "PostalAddress",
+  ...(business.address ? { streetAddress: business.address } : {}),
+  addressLocality: business.city,
+  addressRegion: "CA",
+  addressCountry: "US",
+};
+if (business.latitude != null && business.longitude != null) {
+  jsonLd.geo = {
+    "@type": "GeoCoordinates",
+    latitude: business.latitude,
+    longitude: business.longitude,
+  };
+}
+if (business.service_areas.length > 0) {
+  jsonLd.areaServed = business.service_areas;
+}
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader slot="header" />
+
+  <article class="mx-auto max-w-3xl px-4 py-10">
+    <nav aria-label="Breadcrumb" class="text-base text-gray-600">
+      {
+        trade && (
+          <>
+            <a href={`/trades/${trade.slug}`} class="text-brand-blue hover:underline">
+              {trade.name}
+            </a>
+            <span aria-hidden="true"> / </span>
+          </>
+        )
+      }
+      {
+        county && (
+          <>
+            <a href={`/locations/${county.slug}`} class="text-brand-blue hover:underline">
+              {county.name} County
+            </a>
+            <span aria-hidden="true"> / </span>
+          </>
+        )
+      }
+      <span>{business.name}</span>
+    </nav>
+
+    <header class="mt-4 flex items-start gap-4">
+      <span class="mt-1 shrink-0 text-brand-red-dark">
+        <TradeIcon icon={trade?.icon ?? "wrench"} class="h-12 w-12" />
+      </span>
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">
+          {business.name}
+        </h1>
+        <p class="mt-1 text-lg text-gray-700">
+          {trade?.name}{" "}&middot; {business.city}, {business.county} County
+        </p>
+      </div>
+    </header>
+
+    {/* Live open/closed + rating (Phase 2). Absent until a place_id is set. */}
+    <div class="mt-4">
+      <LiveStatus placeId={business.google_place_id} />
+    </div>
+
+    {/* Big, obvious contact actions. */}
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      {
+        business.phone && (
+          <a
+            href={`tel:${business.phone}`}
+            class="tap-target flex flex-1 items-center justify-center rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+          >
+            Call {business.name}
+          </a>
+        )
+      }
+      {
+        business.email && (
+          <a
+            href={`mailto:${business.email}`}
+            class="tap-target flex flex-1 items-center justify-center rounded-lg bg-brand-red-dark px-6 text-lg font-semibold text-white hover:opacity-90"
+          >
+            Email
+          </a>
+        )
+      }
+    </div>
+
+    {
+      business.long_description && (
+        <section class="mt-8">
+          <h2 class="text-2xl font-bold text-brand-blue">About</h2>
+          <p class="mt-3 text-lg text-gray-800">{business.long_description}</p>
+        </section>
+      )
+    }
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-brand-blue">Details</h2>
+      <dl class="mt-3 space-y-3 text-lg">
+        {
+          business.address && (
+            <div>
+              <dt class="font-semibold text-gray-700">Address</dt>
+              <dd class="text-gray-900">{business.address}</dd>
+            </div>
+          )
+        }
+        {
+          business.website && (
+            <div>
+              <dt class="font-semibold text-gray-700">Website</dt>
+              <dd>
+                <a
+                  href={business.website}
+                  rel="nofollow noopener"
+                  class="text-brand-blue underline break-words"
+                >
+                  {business.website.replace(/^https?:\/\//, "")}
+                </a>
+              </dd>
+            </div>
+          )
+        }
+        {
+          business.service_areas.length > 0 && (
+            <div>
+              <dt class="font-semibold text-gray-700">Service areas</dt>
+              <dd class="text-gray-900">{business.service_areas.join(", ")}</dd>
+            </div>
+          )
+        }
+        {
+          secondary.length > 0 && (
+            <div>
+              <dt class="font-semibold text-gray-700">Also does</dt>
+              <dd class="flex flex-wrap gap-2 pt-1">
+                {secondary.map((t) => (
+                  <a
+                    href={`/trades/${t.slug}`}
+                    class="inline-flex rounded-lg border border-brand-blue px-3 py-1 text-base text-brand-blue hover:bg-brand-blue hover:text-white"
+                  >
+                    {t.name}
+                  </a>
+                ))}
+              </dd>
+            </div>
+          )
+        }
+      </dl>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-gray-200 bg-white p-5">
+      <h2 class="text-xl font-bold text-brand-blue">Is this your business?</h2>
+      <p class="mt-2 text-lg text-gray-800">
+        Claim this profile with your work email to keep it up to date.
+      </p>
+      <a
+        href={`/business/${business.slug}/claim`}
+        class="tap-target mt-4 inline-flex items-center rounded-lg border-2 border-brand-blue px-6 text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
+      >
+        Claim this profile
+      </a>
+    </section>
+  </article>
+
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(jsonLd)}
+  />
+
+  <SiteFooter slot="footer" />
+</BaseLayout>

@@ -1,0 +1,59 @@
+---
+// Inline SVG trade icons. No icon font, no runtime JS. Uses currentColor so
+// the surrounding text color controls it. Unknown keys fall back to a wrench.
+interface Props {
+  icon: string;
+  class?: string;
+}
+const { icon, class: className = "" } = Astro.props;
+
+// Inner SVG markup keyed by the trade `icon` field (see src/lib/trades.ts).
+const paths: Record<string, string> = {
+  droplet: '<path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z"/>',
+  bolt: '<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>',
+  wind: '<path d="M3 8h11a3 3 0 1 0-3-3M3 16h15a3 3 0 1 1-3 3M3 12h9"/>',
+  home: '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>',
+  hardhat:
+    '<path d="M4 16a8 8 0 0 1 16 0"/><path d="M10 8V5a2 2 0 0 1 4 0v3"/><path d="M3 16h18v2H3z"/>',
+  leaf: '<path d="M4 20C4 10 12 4 20 4c0 8-6 16-16 16z"/><path d="M4 20C8 16 12 13 18 8"/>',
+  brush:
+    '<path d="M15 3l6 6-8 8-6-6z"/><path d="M7 11l-3 3a3 3 0 0 0 4 4l3-3"/>',
+  grid: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
+  brick:
+    '<rect x="3" y="5" width="18" height="5"/><rect x="3" y="14" width="18" height="5"/><path d="M9 5v5M15 14v5"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/>',
+  wave: '<path d="M2 9c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 15c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/>',
+  fence:
+    '<path d="M4 8l2-2 2 2v12H4zM16 8l2-2 2 2v12h-4z"/><path d="M2 12h20M2 16h20"/>',
+  garage:
+    '<path d="M3 10 12 4l9 6v10H3z"/><path d="M6 20v-6h12v6M6 16h12"/>',
+  wrench:
+    '<path d="M14 6a4 4 0 0 0-5 5l-6 6 3 3 6-6a4 4 0 0 0 5-5l-3 3-3-3z"/>',
+  bug: '<rect x="8" y="8" width="8" height="10" rx="4"/><path d="M12 8V5M9 5l-2-2M15 5l2-2M8 12H4M20 12h-4M8 16H4M20 16h-4"/>',
+  tower:
+    '<path d="M8 3h8l-2 18h-4z"/><path d="M6 8h12M7 13h10"/>',
+  "house-tools":
+    '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+  hammer:
+    '<path d="M14 4l6 6-3 3-6-6z"/><path d="M11 7 4 14a2 2 0 0 0 0 3l1 1a2 2 0 0 0 3 0l7-7"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/>',
+  plug: '<path d="M9 2v6M15 2v6"/><path d="M7 8h10v3a5 5 0 0 1-10 0z"/><path d="M12 16v6"/>',
+  road: '<path d="M6 3 3 21M18 3l3 18M12 5v3M12 11v3M12 17v3"/>',
+};
+
+const inner = paths[icon] ?? paths.wrench;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  set:html={inner}
+>
+</svg>

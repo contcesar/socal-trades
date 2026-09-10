@@ -34,10 +34,13 @@ live in the Netlify dashboard, never in the repo.
 
 ## Phases
 
-- **Phase 0 (this):** scaffold, Tailwind + brand tokens, Netlify config, blank
+- **Phase 0 (done):** scaffold, Tailwind + brand tokens, Netlify config, blank
   site deploying.
-- **Phase 1:** static directory (home, category, city, combined, profile pages)
-  from Supabase; client-side search; SEO (JSON-LD, sitemap, robots).
+- **Phase 1 (done):** static directory (home, trade, county, city, combined,
+  profile pages); client-side Fuse.js search; SEO (LocalBusiness JSON-LD,
+  sitemap, robots); support pages. Data comes from a swappable layer
+  (`src/lib/data.ts`) backed by a local seed today; swap to Supabase by editing
+  that one module. Table SQL lives in `supabase/schema.sql` + `supabase/seed.sql`.
 - **Phase 2:** live Google Places data (rating + open/closed island).
 - **Phase 3:** profile claim with email domain match + verification.
 - **Phase 4:** admin backend (CRUD, claims, subscribers, rebuild button).

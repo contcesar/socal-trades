@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="About | SoCal Trades"
+  description="SoCal Trades is a directory of trades companies across Southern California."
+>
+  <SiteHeader slot="header" />
+  <section class="mx-auto max-w-2xl px-4 py-10 text-lg text-gray-800">
+    <h1 class="text-3xl font-bold text-brand-blue">About SoCal Trades</h1>
+    <p class="mt-4">
+      SoCal Trades is a directory of trades companies across Southern California.
+      We list plumbers, electricians, roofers, HVAC pros, and more so both trades
+      workers and the public can find reliable local companies.
+    </p>
+    <p class="mt-4">
+      Each listing has its own profile page with contact details, a description,
+      and live ratings pulled from Google. Business owners can claim their
+      profile and keep it current.
+    </p>
+    <p class="mt-4">
+      We cover eight counties: Los Angeles, Orange, San Diego, Riverside, San
+      Bernardino, Ventura, Imperial, and Kern.
+    </p>
+  </section>
+  <SiteFooter slot="footer" />
+</BaseLayout>

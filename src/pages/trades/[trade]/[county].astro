@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import BusinessCard from "../../../components/BusinessCard.astro";
+import {
+  getTrades,
+  getCounties,
+  getTradeBySlug,
+  getCountyBySlug,
+  getBusinessesByTradeAndCounty,
+} from "../../../lib/data";
+
+// Only generate trade+county pages that actually have listings.
+export async function getStaticPaths() {
+  const trades = await getTrades();
+  const counties = await getCounties();
+  const paths = [];
+  for (const trade of trades) {
+    for (const county of counties) {
+      const businesses = await getBusinessesByTradeAndCounty(trade.slug, county.slug);
+      if (businesses.length > 0) {
+        paths.push({ params: { trade: trade.slug, county: county.slug } });
+      }
+    }
+  }
+  return paths;
+}
+
+const { trade: tradeSlug, county: countySlug } = Astro.params;
+const trade = await getTradeBySlug(tradeSlug!);
+const county = await getCountyBySlug(countySlug!);
+if (!trade || !county) return Astro.redirect("/404");
+
+const businesses = await getBusinessesByTradeAndCounty(trade.slug, county.slug);
+
+const title = `${trade.name} in ${county.name} County | SoCal Trades`;
+const description = `${trade.name} companies serving ${county.name} County, Southern California. Contact details and profiles for each listing.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-4xl px-4 py-10">
+    <nav aria-label="Breadcrumb" class="text-base text-gray-600">
+      <a href={`/trades/${trade.slug}`} class="text-brand-blue hover:underline">
+        {trade.name}
+      </a>
+      <span aria-hidden="true"> / </span>
+      <span>{county.name} County</span>
+    </nav>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold text-brand-blue">
+      {trade.name} in {county.name} County
+    </h1>
+    <p class="mt-3 text-lg text-gray-700">
+      {businesses.length}
+      {businesses.length === 1 ? "company" : "companies"} serving {county.name} County.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 pb-16">
+    <div class="grid gap-4 sm:grid-cols-2">
+      {businesses.map((b) => <BusinessCard business={b} trade={trade} />)}
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>

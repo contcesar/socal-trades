@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Terms of Use | SoCal Trades"
+  description="The terms for using SoCal Trades."
+>
+  <SiteHeader slot="header" />
+  <section class="mx-auto max-w-2xl px-4 py-10 text-lg text-gray-800">
+    <h1 class="text-3xl font-bold text-brand-blue">Terms of Use</h1>
+    <p class="mt-3 text-base text-gray-600">
+      This is a starting draft. Have it reviewed before launch.
+    </p>
+
+    <h2 class="mt-6 text-2xl font-bold text-brand-blue">The listings</h2>
+    <p class="mt-3">
+      SoCal Trades is a directory. We list companies for convenience and do not
+      endorse, license, or guarantee any company. Check licenses and references
+      before hiring. Confirm details directly with the company.
+    </p>
+
+    <h2 class="mt-6 text-2xl font-bold text-brand-blue">Claiming a profile</h2>
+    <p class="mt-3">
+      To claim a profile you must use a work email that matches the company
+      website domain. You are responsible for keeping your listing accurate.
+    </p>
+
+    <h2 class="mt-6 text-2xl font-bold text-brand-blue">Third-party data</h2>
+    <p class="mt-3">
+      Ratings and reviews are provided by Google and shown under Google's terms.
+      We are not responsible for the content of third-party reviews.
+    </p>
+
+    <h2 class="mt-6 text-2xl font-bold text-brand-blue">Contact</h2>
+    <p class="mt-3">
+      Questions? Email
+      <a href="mailto:hello@socaltrades.net" class="text-brand-blue underline">
+        hello@socaltrades.net
+      </a>.
+    </p>
+  </section>
+  <SiteFooter slot="footer" />
+</BaseLayout>

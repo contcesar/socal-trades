@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import BusinessCard from "../../components/BusinessCard.astro";
+import {
+  getCounties,
+  getCountyBySlug,
+  getBusinessesByCounty,
+  getCitiesForCounty,
+  getTradeMap,
+} from "../../lib/data";
+
+export async function getStaticPaths() {
+  const counties = await getCounties();
+  return counties.map((county) => ({ params: { county: county.slug } }));
+}
+
+const { county: countySlug } = Astro.params;
+const county = await getCountyBySlug(countySlug!);
+if (!county) return Astro.redirect("/404");
+
+const businesses = await getBusinessesByCounty(county.slug);
+const cities = await getCitiesForCounty(county.slug);
+const tradeMap = await getTradeMap();
+
+const title = `Trades companies in ${county.name} County | SoCal Trades`;
+const description = `Browse trades companies across ${county.name} County, Southern California. Filter by city and trade.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-4xl px-4 py-10">
+    <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">
+      {county.name} County
+    </h1>
+    <p class="mt-3 text-lg text-gray-700">
+      {businesses.length}
+      {businesses.length === 1 ? "company" : "companies"} listed.
+    </p>
+
+    {
+      cities.length > 0 && (
+        <nav aria-label="Cities in this county" class="mt-6 flex flex-wrap gap-2">
+          {cities.map((city) => (
+            <a
+              href={`/locations/${county.slug}/${city.slug}`}
+              class="tap-target inline-flex items-center rounded-lg border border-brand-blue px-4 text-base text-brand-blue hover:bg-brand-blue hover:text-white"
+            >
+              {city.name} ({city.count})
+            </a>
+          ))}
+        </nav>
+      )
+    }
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 pb-16">
+    {
+      businesses.length === 0 ? (
+        <p class="text-lg text-gray-700">No companies listed here yet.</p>
+      ) : (
+        <div class="grid gap-4 sm:grid-cols-2">
+          {businesses.map((b) => (
+            <BusinessCard business={b} trade={tradeMap.get(b.trade)} />
+          ))}
+        </div>
+      )
+    }
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
