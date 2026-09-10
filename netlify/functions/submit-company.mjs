@@ -10,6 +10,8 @@
 //   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY   -> persist the draft
 //   RESEND_API_KEY, EMAIL_FROM, ADMIN_ALLOWED_EMAILS -> optional admin notice
 
+import { isBusinessEmail } from "./lib/freeEmailDomains.mjs";
+
 const TRADE_SLUGS = new Set([
   "plumbing", "electrical", "hvac", "roofing", "general-contractor",
   "landscaping", "painting", "flooring", "concrete-masonry", "solar",
@@ -68,6 +70,12 @@ export default async (req) => {
   }
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return json(400, { error: "Invalid email" });
+  }
+  if (!isBusinessEmail(email)) {
+    return json(400, {
+      error:
+        "Please use a company email that matches your business website. If you only have a personal email, email hello@socaltrades.net and we will add your business for you.",
+    });
   }
   if (!TRADE_SLUGS.has(trade)) return json(400, { error: "Unknown trade" });
   if (!COUNTIES.has(county)) return json(400, { error: "Unknown county" });

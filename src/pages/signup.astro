@@ -58,7 +58,8 @@ import SiteFooter from "../components/SiteFooter.astro";
         <span class="text-lg text-gray-800">
           I own a business in the trades
           <span class="mt-1 block text-base text-gray-600">
-            We will take you to add your company after you sign up.
+            Use your company email (matching your website domain), not a personal
+            one. We will take you to add your company after you sign up.
           </span>
         </span>
       </label>
@@ -98,6 +99,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
 <script>
   import { getSupabase, isConfigured, setAuthFlag } from "../lib/supabaseClient";
+  import { isBusinessEmail } from "../lib/emailDomain";
 
   const form = document.getElementById("signup-form") as HTMLFormElement;
   const emailInput = document.getElementById("signup-email") as HTMLInputElement;
@@ -137,6 +139,13 @@ import SiteFooter from "../components/SiteFooter.astro";
     }
     if (password !== confirmInput.value) {
       showError("The passwords do not match.");
+      return;
+    }
+    // Business owners must use a company email (not a free/personal provider).
+    if (ownerInput.checked && !isBusinessEmail(email)) {
+      showError(
+        "Business owners need to sign up with a company email that matches your website domain. If you only have a personal email, email us at hello@socaltrades.net and we will verify and add your business for you.",
+      );
       return;
     }
     const supabase = getSupabase();

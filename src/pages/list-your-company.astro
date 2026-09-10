@@ -163,7 +163,16 @@ const counties = await getCounties();
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error(`status ${res.status}`);
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit for review";
+        showError(
+          body.error ||
+            "Sorry, something went wrong sending your submission. Please try again in a moment.",
+        );
+        return;
+      }
       form.hidden = true;
       successPanel.hidden = false;
       successPanel.classList.remove("hidden");
