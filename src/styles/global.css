@@ -30,6 +30,9 @@
 html {
   font-size: 18px;
   scroll-behavior: smooth;
+  /* Stop iOS Safari from inflating text (and thus layout width) on rotate/focus. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /*
