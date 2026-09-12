@@ -76,6 +76,11 @@ summary::-webkit-details-marker {
 /* Horizontal carousel: hide scrollbar, keep scroll-snap. */
 .carousel {
   scrollbar-width: none;
+  /* Keep this scroll fully self-contained so it can't pan or resize the page
+     (iOS Safari shifted the whole page left when the search box was focused). */
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
 }
 .carousel::-webkit-scrollbar {
   display: none;

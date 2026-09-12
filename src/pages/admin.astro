@@ -138,6 +138,18 @@ const refData = JSON.stringify({
           </div>
 
           <div class="rounded-lg border border-gray-200 p-4">
+            <label for="f-keywords" class="text-base font-semibold text-gray-800">Tags / keywords</label>
+            <p class="mt-1 text-sm text-gray-600">
+              Comma-separated. These are searchable and shown as chips on the
+              listing. Add, edit, or remove tags here.
+            </p>
+            <input id="f-keywords" type="text"
+              placeholder="drain cleaning, water heater, repipe, tankless"
+              class="tap-target mt-2 w-full rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal" />
+            <div id="f-keywords-chips" class="mt-3 flex flex-wrap gap-2"></div>
+          </div>
+
+          <div class="rounded-lg border border-gray-200 p-4">
             <p class="text-base font-semibold text-gray-800">Featured image</p>
             <p class="mt-1 text-sm text-gray-600">
               JPG, PNG, or WebP, up to 8 MB. Large images are resized to 1600px
@@ -258,6 +270,41 @@ const refData = JSON.stringify({
     const arr = (id: string) => val(id).split(",").map((s) => s.trim()).filter(Boolean);
     const num = (id: string) => (val(id) === "" ? null : Number(val(id)));
 
+    // Live tag chips under the keywords input, each with a remove button.
+    const keywordsInput = document.getElementById("f-keywords") as HTMLInputElement;
+    const keywordChips = document.getElementById("f-keywords-chips")!;
+    function currentKeywords(): string[] {
+      const seen = new Set<string>();
+      return keywordsInput.value
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => {
+          if (!s) return false;
+          const k = s.toLowerCase();
+          if (seen.has(k)) return false;
+          seen.add(k);
+          return true;
+        });
+    }
+    function renderKeywordChips(): void {
+      const kws = currentKeywords();
+      keywordChips.innerHTML = kws
+        .map(
+          (kw, i) =>
+            `<span class="inline-flex items-center gap-1 rounded-full border border-brand-blue/30 bg-brand-cream px-3 py-1 text-base text-brand-blue">${esc(kw)}<button type="button" data-kw="${i}" aria-label="Remove ${esc(kw)}" class="text-brand-blue/70 hover:text-brand-red-dark">&times;</button></span>`,
+        )
+        .join("");
+      keywordChips.querySelectorAll<HTMLElement>("[data-kw]").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          const kws2 = currentKeywords();
+          kws2.splice(Number(btn.dataset.kw), 1);
+          keywordsInput.value = kws2.join(", ");
+          renderKeywordChips();
+        }),
+      );
+    }
+    keywordsInput.addEventListener("input", renderKeywordChips);
+
     function showFeaturedPreview(url: string): void {
       const img = document.getElementById("f-featured-preview") as HTMLImageElement;
       if (url) {
@@ -342,6 +389,8 @@ const refData = JSON.stringify({
       setVal("f-lng", b?.longitude);
       setVal("f-logo", b?.logo_url);
       setVal("f-photos", (b?.photo_urls || []).join(", "));
+      setVal("f-keywords", (b?.keywords || []).join(", "));
+      renderKeywordChips();
       showFeaturedPreview((b?.photo_urls || [])[0] || "");
       const statusEl0 = document.getElementById("f-featured-status")!;
       statusEl0.classList.add("hidden");
@@ -397,6 +446,7 @@ const refData = JSON.stringify({
         longitude: num("f-lng"),
         logo_url: val("f-logo") || null,
         photo_urls: arr("f-photos"),
+        keywords: arr("f-keywords"),
         short_description: val("f-short"),
         long_description: val("f-long") || null,
       };
