@@ -7,7 +7,7 @@ export const TRADES: Trade[] = [
   { id: "t02", name: "Electrical", slug: "electrical", icon: "bolt", sort_order: 2 },
   { id: "t03", name: "HVAC (Heating & Air)", slug: "hvac", icon: "wind", sort_order: 3 },
   { id: "t04", name: "Roofing", slug: "roofing", icon: "home", sort_order: 4 },
-  { id: "t05", name: "General Contractor", slug: "general-contractor", icon: "hardhat", sort_order: 5 },
+  { id: "t05", name: "General Contractor", slug: "general-contractor", icon: "hammer", sort_order: 5 },
   { id: "t06", name: "Landscaping", slug: "landscaping", icon: "leaf", sort_order: 6 },
   { id: "t07", name: "Painting", slug: "painting", icon: "brush", sort_order: 7 },
   { id: "t08", name: "Flooring", slug: "flooring", icon: "grid", sort_order: 8 },
@@ -26,5 +26,5 @@ export const TRADES: Trade[] = [
   { id: "t21", name: "Paving", slug: "paving", icon: "road", sort_order: 21 },
   { id: "t22", name: "Underground Utility Contractors", slug: "underground-utility-contractors", icon: "plug", sort_order: 22 },
   { id: "t23", name: "Site Utility Contractors", slug: "site-utility-contractors", icon: "road", sort_order: 23 },
-  { id: "t24", name: "Site Services", slug: "site-services", icon: "hardhat", sort_order: 24 },
+  { id: "t24", name: "Site Services", slug: "site-services", icon: "porta-potty", sort_order: 24 },
 ];

@@ -39,6 +39,27 @@ function slugify(input) {
 const clean = (v, max) =>
   typeof v === "string" ? v.trim().slice(0, max) : "";
 
+// Comma-separated keywords -> a clean, de-duplicated array. Accepts either a
+// string ("a, b, c") or an array. Caps count and length so a submission can't
+// bloat the row.
+const MAX_KEYWORDS = 20;
+const MAX_KEYWORD_LEN = 40;
+function parseKeywords(v) {
+  const parts = Array.isArray(v) ? v : String(v ?? "").split(",");
+  const seen = new Set();
+  const out = [];
+  for (const raw of parts) {
+    const kw = clean(raw, MAX_KEYWORD_LEN);
+    if (!kw) continue;
+    const key = kw.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(kw);
+    if (out.length >= MAX_KEYWORDS) break;
+  }
+  return out;
+}
+
 const json = (status, body) =>
   new Response(JSON.stringify(body), {
     status,
@@ -96,6 +117,7 @@ export default async (req) => {
   const phone = clean(data.phone, 40);
   const website = clean(data.website, 200);
   const shortDescription = clean(data.short_description, 200);
+  const keywords = parseKeywords(data.keywords);
 
   // Validation
   if (!name || !trade || !county || !city || !email) {
@@ -123,6 +145,7 @@ export default async (req) => {
     phone: phone || null,
     website: website || null,
     short_description: shortDescription,
+    keywords,
     status: "draft",
   };
 
@@ -130,8 +153,8 @@ export default async (req) => {
   const SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (SUPABASE_URL && SERVICE_ROLE) {
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/businesses`, {
+    const insert = (body) =>
+      fetch(`${SUPABASE_URL}/rest/v1/businesses`, {
         method: "POST",
         headers: {
           apikey: SERVICE_ROLE,
@@ -139,12 +162,25 @@ export default async (req) => {
           "Content-Type": "application/json",
           Prefer: "return=minimal",
         },
-        body: JSON.stringify(record),
+        body: JSON.stringify(body),
       });
+
+    try {
+      let res = await insert(record);
+      // If the DB hasn't had the keywords column added yet, don't lose the
+      // submission — retry once without it so listings keep working until the
+      // migration in supabase/schema.sql is applied.
       if (!res.ok) {
         const detail = await res.text();
-        console.error("Supabase insert failed:", res.status, detail);
-        return json(502, { error: "Could not save submission" });
+        if (/keywords/.test(detail) && "keywords" in record) {
+          console.warn("Retrying insert without keywords column:", detail);
+          const { keywords: _omit, ...withoutKeywords } = record;
+          res = await insert(withoutKeywords);
+        }
+        if (!res.ok) {
+          console.error("Supabase insert failed:", res.status, detail);
+          return json(502, { error: "Could not save submission" });
+        }
       }
     } catch (err) {
       console.error("Supabase request error:", err);

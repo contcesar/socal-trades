@@ -81,6 +81,7 @@ const description =
     county: string;
     countySlug: string;
     serviceAreas: string[];
+    keywords: string[];
     shortDescription: string;
     rating: number | null;
     reviewCount: number | null;
@@ -148,6 +149,7 @@ const description =
       ignoreLocation: true,
       keys: [
         { name: "name", weight: 3 },
+        { name: "keywords", weight: 3 },
         { name: "tradeName", weight: 2 },
         { name: "secondaryTradeNames", weight: 1 },
         { name: "city", weight: 2 },

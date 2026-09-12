@@ -41,6 +41,7 @@ create table if not exists businesses (
   city              text not null,
   county            text not null,
   service_areas     text[] not null default '{}',
+  keywords          text[] not null default '{}',
   address           text,
   latitude          double precision,
   longitude         double precision,
@@ -62,9 +63,14 @@ create table if not exists businesses (
   updated_at        timestamptz not null default now()
 );
 
+-- Add keywords to an already-created table (no-op on a fresh install above).
+alter table businesses add column if not exists keywords text[] not null default '{}';
+
 create index if not exists businesses_trade_idx  on businesses(trade);
 create index if not exists businesses_county_idx on businesses(county);
 create index if not exists businesses_status_idx on businesses(status);
+-- GIN index so keyword containment lookups stay fast if search moves server-side.
+create index if not exists businesses_keywords_idx on businesses using gin(keywords);
 
 -- ---------------------------------------------------------------------------
 -- Claims (profile ownership requests)

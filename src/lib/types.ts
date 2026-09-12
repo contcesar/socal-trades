@@ -24,6 +24,12 @@ export interface Business {
   county: string;
   /** Cities/areas served beyond the home city. */
   service_areas: string[];
+  /**
+   * Free-form keywords/tags the company enters (services, specialties, brands
+   * they work with). Indexed for search so customers can find them by the
+   * words they actually type, not just the trade name.
+   */
+  keywords?: string[];
   address: string | null;
   latitude: number | null;
   longitude: number | null;
