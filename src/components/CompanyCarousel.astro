@@ -47,13 +47,18 @@ const railId = `rail-${Math.random().toString(36).slice(2, 8)}`;
     </div>
   </div>
 
+  {/*
+    Phones: a plain 2-column grid — nothing overflows the viewport, so iOS
+    Safari can't widen/shift the page when the search box is focused.
+    sm and up: the horizontal, snap-scrolling carousel.
+  */}
   <ul
     id={railId}
-    class="carousel mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+    class="carousel mt-4 grid grid-cols-2 gap-4 sm:flex sm:snap-x sm:snap-mandatory sm:overflow-x-auto sm:pb-2"
   >
     {
       businesses.map((b) => (
-        <li class="w-64 shrink-0 snap-start sm:w-72">
+        <li class="w-full snap-start sm:w-72 sm:shrink-0">
           <BusinessCard business={b} trade={tradeMap.get(b.trade)} />
         </li>
       ))
