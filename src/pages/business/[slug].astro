@@ -200,6 +200,26 @@ if (business.rating != null) {
       )
     }
 
+    {
+      business.keywords && business.keywords.length > 0 && (
+        <section class="mt-8">
+          <h2 class="text-2xl font-bold text-brand-blue">Services &amp; specialties</h2>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {business.keywords.map((kw) => (
+              <li>
+                <a
+                  href={`/search?q=${encodeURIComponent(kw)}`}
+                  class="tap-target inline-flex items-center rounded-full border border-brand-blue/30 bg-brand-cream px-4 py-1 text-base font-medium text-brand-blue hover:bg-brand-blue hover:text-white"
+                >
+                  {kw}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
     <section class="mt-8">
       <h2 class="text-2xl font-bold text-brand-blue">Details</h2>
       <dl class="mt-3 space-y-3 text-lg">

@@ -93,6 +93,20 @@ const counties = await getCounties();
         ></textarea>
       </div>
 
+      <div>
+        <label class="text-lg font-semibold text-gray-800" for="keywords">
+          Keywords
+        </label>
+        <p class="mt-1 text-base text-gray-600">
+          The services and terms customers search for, separated by commas.
+          These help people find you even when they don't search your company
+          name.
+        </p>
+        <input id="keywords" name="keywords" type="text"
+          placeholder="e.g. drain cleaning, water heater, repipe, tankless, emergency"
+          class="tap-target mt-2 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue placeholder:text-gray-500" />
+      </div>
+
       <p id="form-error" class="hidden text-lg font-semibold text-brand-red-dark" role="alert"></p>
 
       <Turnstile />
