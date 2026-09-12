@@ -17,7 +17,7 @@ export const TRADES: Trade[] = [
   { id: "t12", name: "Fencing", slug: "fencing", icon: "fence", sort_order: 12 },
   { id: "t13", name: "Garage Doors", slug: "garage-doors", icon: "garage", sort_order: 13 },
   { id: "t14", name: "Handyman", slug: "handyman", icon: "wrench", sort_order: 14 },
-  { id: "t15", name: "Generator Services", slug: "generator-services", icon: "generator", sort_order: 15 },
+  { id: "t15", name: "Power Generator Services", slug: "generator-services", icon: "generator", sort_order: 15 },
   { id: "t16", name: "Scaffolding", slug: "scaffolding", icon: "tower", sort_order: 16 },
   { id: "t17", name: "Excavation Services", slug: "excavation-services", icon: "excavator", sort_order: 17 },
   { id: "t18", name: "Remodelers", slug: "remodelers", icon: "hammer", sort_order: 18 },
@@ -27,4 +27,5 @@ export const TRADES: Trade[] = [
   { id: "t22", name: "Underground Utility Contractors", slug: "underground-utility-contractors", icon: "plug", sort_order: 22 },
   { id: "t23", name: "Site Utility Contractors", slug: "site-utility-contractors", icon: "road", sort_order: 23 },
   { id: "t24", name: "Site Services", slug: "site-services", icon: "porta-potty", sort_order: 24 },
+  { id: "t25", name: "Dump Truck Hauling Service", slug: "dump-truck-hauling", icon: "dump-truck", sort_order: 25 },
 ];

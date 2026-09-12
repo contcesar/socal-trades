@@ -18,7 +18,7 @@ const TRADE_SLUGS = new Set([
   "pool-spa", "fencing", "garage-doors", "handyman", "generator-services",
   "scaffolding", "excavation-services", "remodelers", "restoration-services",
   "utility-contractors", "paving", "underground-utility-contractors",
-  "site-utility-contractors", "site-services",
+  "site-utility-contractors", "site-services", "dump-truck-hauling",
 ]);
 
 const COUNTIES = new Set([
