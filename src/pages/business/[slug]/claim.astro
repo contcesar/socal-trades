@@ -21,6 +21,21 @@ const title = `Claim ${business.name} | SoCal Trades`;
 
   <section class="mx-auto max-w-xl px-4 py-10">
     <h1 class="text-3xl font-bold text-brand-blue">Claim {business.name}</h1>
+
+    {business.claimable === false ? (
+      <div>
+        <p class="mt-3 text-lg text-gray-800">
+          Claiming is not available for this profile. If you believe this is
+          your business, please <a href="/contact" class="text-brand-blue underline">contact us</a>.
+        </p>
+        <p class="mt-6">
+          <a href={`/business/${business.slug}`} class="text-brand-blue underline">
+            Back to {business.name}
+          </a>
+        </p>
+      </div>
+    ) : (
+    <>
     <p class="mt-3 text-lg text-gray-800">
       Enter a work email that matches your business website domain. We will send
       a verification link. Once you confirm, you can edit your profile.
@@ -57,6 +72,8 @@ const title = `Claim ${business.name} | SoCal Trades`;
         Back to {business.name}
       </a>
     </p>
+    </>
+    )}
   </section>
 
   <SiteFooter slot="footer" />
