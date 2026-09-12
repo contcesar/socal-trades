@@ -15,7 +15,7 @@ const pct = rating != null ? Math.max(0, Math.min(100, (rating / 5) * 100)) : 0;
 {
   rating != null &&
     (full ? (
-      <span class={`inline-flex items-center gap-2 ${className}`}>
+      <span class={`inline-flex flex-wrap items-center gap-x-2 gap-y-1 ${className}`}>
         <span class="relative inline-block text-3xl leading-none" aria-hidden="true">
           <span class="tracking-[0.1em] text-gray-300">★★★★★</span>
           <span
