@@ -48,6 +48,11 @@ export interface Business {
   logo_url: string | null;
   photo_urls: string[];
   status: BusinessStatus;
+  /**
+   * Whether visitors may claim this profile. Admin-controlled. Undefined/true
+   * means claimable (the default); false hides the claim option.
+   */
+  claimable?: boolean;
   claimed_by: string | null;
   claimed_at: string | null;
   created_at: string;

@@ -62,6 +62,7 @@ create table if not exists businesses (
   logo_url          text,
   photo_urls        text[] not null default '{}',
   status            business_status not null default 'draft',
+  claimable         boolean not null default true,
   claimed_by        uuid references auth.users(id),
   claimed_at        timestamptz,
   created_at        timestamptz not null default now(),
@@ -75,6 +76,9 @@ alter table businesses add column if not exists keywords text[] not null default
 -- the app now, so this constraint only blocked saving businesses under newly
 -- added categories. No-op if it was never there.
 alter table businesses drop constraint if exists businesses_trade_fkey;
+
+-- Per-business "allow claiming" toggle on already-created tables (no-op fresh).
+alter table businesses add column if not exists claimable boolean not null default true;
 
 create index if not exists businesses_trade_idx  on businesses(trade);
 create index if not exists businesses_county_idx on businesses(county);

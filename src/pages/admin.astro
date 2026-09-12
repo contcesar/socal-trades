@@ -137,6 +137,11 @@ const refData = JSON.stringify({
             </label>
           </div>
 
+          <label class="flex items-center gap-3 rounded-lg border border-gray-200 p-4 text-base font-semibold text-gray-800">
+            <input id="f-claimable" type="checkbox" class="h-5 w-5 shrink-0 rounded border-gray-300 accent-brand-blue" />
+            Allow others to claim this profile
+          </label>
+
           <div class="rounded-lg border border-gray-200 p-4">
             <label for="f-keywords" class="text-base font-semibold text-gray-800">Tags / keywords</label>
             <p class="mt-1 text-sm text-gray-600">
@@ -390,6 +395,8 @@ const refData = JSON.stringify({
       setVal("f-logo", b?.logo_url);
       setVal("f-photos", (b?.photo_urls || []).join(", "));
       setVal("f-keywords", (b?.keywords || []).join(", "));
+      (document.getElementById("f-claimable") as HTMLInputElement).checked =
+        b?.claimable !== false;
       renderKeywordChips();
       showFeaturedPreview((b?.photo_urls || [])[0] || "");
       const statusEl0 = document.getElementById("f-featured-status")!;
@@ -447,6 +454,7 @@ const refData = JSON.stringify({
         logo_url: val("f-logo") || null,
         photo_urls: arr("f-photos"),
         keywords: arr("f-keywords"),
+        claimable: (document.getElementById("f-claimable") as HTMLInputElement).checked,
         short_description: val("f-short"),
         long_description: val("f-long") || null,
       };

@@ -280,18 +280,22 @@ if (business.rating != null) {
       <LiveStatus placeId={business.google_place_id} variant="reviews" />
     </div>
 
-    <section class="mt-10 rounded-xl border border-gray-200 bg-white p-5">
-      <h2 class="text-xl font-bold text-brand-blue">Is this your business?</h2>
-      <p class="mt-2 text-lg text-gray-800">
-        Claim this profile with your work email to keep it up to date.
-      </p>
-      <a
-        href={`/business/${business.slug}/claim`}
-        class="tap-target mt-4 inline-flex items-center rounded-lg border-2 border-brand-blue px-6 text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
-      >
-        Claim this profile
-      </a>
-    </section>
+    {
+      business.claimable !== false && (
+        <section class="mt-10 rounded-xl border border-gray-200 bg-white p-5">
+          <h2 class="text-xl font-bold text-brand-blue">Is this your business?</h2>
+          <p class="mt-2 text-lg text-gray-800">
+            Claim this profile with your work email to keep it up to date.
+          </p>
+          <a
+            href={`/business/${business.slug}/claim`}
+            class="tap-target mt-4 inline-flex items-center rounded-lg border-2 border-brand-blue px-6 text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
+          >
+            Claim this profile
+          </a>
+        </section>
+      )
+    }
   </article>
 
   <script
