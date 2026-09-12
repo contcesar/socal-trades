@@ -36,7 +36,12 @@ create table if not exists businesses (
   id                uuid primary key default gen_random_uuid(),
   slug              text not null unique,
   name              text not null,
-  trade             text not null references trades(slug),
+  -- Categories are defined in the app (src/lib/trades.ts) and validated by the
+  -- admin UI and the submit-company function, so `trade` is a plain slug with
+  -- no foreign key. This lets categories change with a code deploy alone, with
+  -- no matching database migration. (Older databases: run
+  --   alter table businesses drop constraint if exists businesses_trade_fkey;)
+  trade             text not null,
   secondary_trades  text[] not null default '{}',
   city              text not null,
   county            text not null,
@@ -65,6 +70,11 @@ create table if not exists businesses (
 
 -- Add keywords to an already-created table (no-op on a fresh install above).
 alter table businesses add column if not exists keywords text[] not null default '{}';
+
+-- Drop the old trade foreign key on already-created tables. Categories live in
+-- the app now, so this constraint only blocked saving businesses under newly
+-- added categories. No-op if it was never there.
+alter table businesses drop constraint if exists businesses_trade_fkey;
 
 create index if not exists businesses_trade_idx  on businesses(trade);
 create index if not exists businesses_county_idx on businesses(county);
