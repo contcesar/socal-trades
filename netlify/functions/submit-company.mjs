@@ -14,8 +14,8 @@ import { isBusinessEmail } from "./lib/freeEmailDomains.mjs";
 
 const TRADE_SLUGS = new Set([
   "plumbing", "electrical", "hvac", "roofing", "general-contractor",
-  "landscaping", "painting", "flooring", "concrete-masonry", "solar",
-  "pool-spa", "fencing", "garage-doors", "handyman", "generator-services",
+  "landscaping", "painting", "flooring", "concrete-masonry",
+  "fencing", "garage-doors", "generator-services",
   "scaffolding", "excavation-services", "remodelers", "restoration-services",
   "utility-contractors", "paving", "site-services", "dump-truck-hauling",
 ]);
