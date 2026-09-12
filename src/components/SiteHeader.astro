@@ -51,7 +51,7 @@
             aria-label="Menu"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-5 w-5 text-gray-700" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7 text-gray-500" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v0h18v0c0-4-5-6-9-6z"></path></svg>
+            <svg id="menu-avatar" viewBox="0 0 24 24" fill="currentColor" class="hidden h-7 w-7 text-gray-500" aria-hidden="true" hidden><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v0h18v0c0-4-5-6-9-6z"></path></svg>
           </summary>
           <nav
             class="absolute right-0 mt-2 w-56 rounded-xl border border-gray-200 bg-white py-2 text-lg shadow-lg"
@@ -112,6 +112,8 @@
   }
   try {
     if (localStorage.getItem("st_auth_email")) {
+      // Show the avatar only for signed-in visitors.
+      show("menu-avatar");
       hide("menu-login");
       hide("menu-signup");
       show("menu-account");
