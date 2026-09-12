@@ -17,7 +17,7 @@ const tradeMap = await getTradeMap();
   {
     featured.length > 0 && (
       <CompanyCarousel
-        heading="Explore Top Rated Companies in Southern California"
+        heading="Explore Top Rated Local Trades in Southern California"
         href="/search"
         businesses={featured}
         tradeMap={tradeMap}
@@ -35,7 +35,7 @@ const tradeMap = await getTradeMap();
           <li>
             <a
               href={`/trades/${trade.slug}`}
-              class="tap-target flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-brand-blue bg-white p-5 text-center text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
+              class="tap-target flex h-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-brand-blue bg-white p-5 text-center text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
             >
               <TradeIcon icon={trade.icon} class="h-9 w-9" />
               <span>{trade.name}</span>

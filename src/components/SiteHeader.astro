@@ -13,7 +13,7 @@
 
       {/* Desktop search, centered in the bar. */}
       <form
-        class="hidden sm:flex sm:w-full items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm focus-within:shadow-md"
+        class="hidden sm:flex sm:w-full items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm focus-within:border-brand-blue focus-within:shadow-md"
         role="search"
         aria-label="Search trades companies"
         action="/search"
@@ -22,9 +22,10 @@
         <input
           type="search"
           name="q"
+          placeholder="I'm looking for..."
           aria-label="Search companies, trades, or cities"
           autocomplete="off"
-          class="site-search-input min-w-0 flex-1 bg-transparent text-lg text-gray-900 outline-none"
+          class="site-search-input min-w-0 flex-1 bg-transparent text-lg text-gray-900 outline-none placeholder:text-gray-500"
         />
         <button
           type="submit"
@@ -73,7 +74,7 @@
 
     {/* Mobile search drops below the bar and spans full width. */}
     <form
-      class="mt-3 flex items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm sm:hidden"
+      class="mt-3 flex items-center rounded-full border border-gray-300 bg-white py-1 pl-5 pr-1 shadow-sm focus-within:border-brand-blue focus-within:shadow-md sm:hidden"
       role="search"
       aria-label="Search trades companies"
       action="/search"
@@ -82,9 +83,10 @@
       <input
         type="search"
         name="q"
+        placeholder="I'm looking for..."
         aria-label="Search companies, trades, or cities"
         autocomplete="off"
-        class="site-search-input min-w-0 flex-1 bg-transparent text-lg text-gray-900 outline-none"
+        class="site-search-input min-w-0 flex-1 bg-transparent text-lg text-gray-900 outline-none placeholder:text-gray-500"
       />
       <button
         type="submit"

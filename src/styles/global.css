@@ -32,6 +32,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+  Never let the page grow wider than the screen. Without this, a single
+  too-wide element makes mobile Safari zoom the whole page out on input
+  focus, shifting content left and leaving a blank strip on the right.
+  `clip` (not `hidden`) avoids creating a scroll container, so the sticky
+  header keeps working.
+*/
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   background-color: var(--color-brand-bg);
   color: #1c1c1c;
@@ -69,4 +82,13 @@ summary::-webkit-details-marker {
 :where(a, button, input, select, textarea):focus-visible {
   outline: 3px solid var(--color-brand-blue);
   outline-offset: 2px;
+}
+
+/*
+  The header search box shows focus via the surrounding pill (border +
+  shadow), so suppress the default box outline on the input itself.
+*/
+.site-search-input:focus,
+.site-search-input:focus-visible {
+  outline: none;
 }
