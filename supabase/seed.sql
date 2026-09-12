@@ -15,7 +15,7 @@ insert into trades (name, slug, icon, sort_order) values
   ('Fencing', 'fencing', 'fence', 12),
   ('Garage Doors', 'garage-doors', 'garage', 13),
   ('Handyman', 'handyman', 'wrench', 14),
-  ('Generator Services', 'generator-services', 'generator', 15),
+  ('Power Generator Services', 'generator-services', 'generator', 15),
   ('Scaffolding', 'scaffolding', 'tower', 16),
   ('Excavation Services', 'excavation-services', 'excavator', 17),
   ('Remodelers', 'remodelers', 'hammer', 18),
