@@ -5,7 +5,7 @@ insert into trades (name, slug, icon, sort_order) values
   ('Electrical', 'electrical', 'bolt', 2),
   ('HVAC (Heating & Air)', 'hvac', 'wind', 3),
   ('Roofing', 'roofing', 'home', 4),
-  ('General Contractor', 'general-contractor', 'hardhat', 5),
+  ('General Contractor', 'general-contractor', 'hammer', 5),
   ('Landscaping', 'landscaping', 'leaf', 6),
   ('Painting', 'painting', 'brush', 7),
   ('Flooring', 'flooring', 'grid', 8),
@@ -15,14 +15,14 @@ insert into trades (name, slug, icon, sort_order) values
   ('Fencing', 'fencing', 'fence', 12),
   ('Garage Doors', 'garage-doors', 'garage', 13),
   ('Handyman', 'handyman', 'wrench', 14),
-  ('Pest Control', 'pest-control', 'bug', 15),
+  ('Generator Services', 'generator-services', 'generator', 15),
   ('Scaffolding', 'scaffolding', 'tower', 16),
-  ('Home Improvement', 'home-improvement', 'house-tools', 17),
+  ('Excavation Services', 'excavation-services', 'excavator', 17),
   ('Remodelers', 'remodelers', 'hammer', 18),
   ('Restoration Services', 'restoration-services', 'shield', 19),
   ('Utility Contractors', 'utility-contractors', 'plug', 20),
   ('Paving', 'paving', 'road', 21),
   ('Underground Utility Contractors', 'underground-utility-contractors', 'plug', 22),
   ('Site Utility Contractors', 'site-utility-contractors', 'road', 23),
-  ('Site Services', 'site-services', 'hardhat', 24)
+  ('Site Services', 'site-services', 'porta-potty', 24)
 on conflict (slug) do nothing;
