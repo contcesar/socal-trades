@@ -26,7 +26,7 @@ const tradeMap = await getTradeMap();
   }
 
   <section aria-labelledby="cat-heading" class="mx-auto max-w-7xl px-4 py-8">
-    <h2 id="cat-heading" class="text-2xl font-bold text-gray-900">
+    <h2 id="cat-heading" class="text-2xl font-bold text-brand-blue">
       Browse by trade
     </h2>
     <ul class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -44,6 +44,13 @@ const tradeMap = await getTradeMap();
         ))
       }
     </ul>
+    <p class="mt-6 text-lg text-gray-700">
+      Don't find a trade?{" "}
+      <a href="/contact" class="inline-flex items-center gap-1 font-semibold text-brand-blue underline hover:no-underline">
+        Let us know
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </p>
   </section>
 
   <SiteFooter slot="footer" />
