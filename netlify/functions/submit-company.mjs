@@ -9,6 +9,8 @@
 // Env used (set in Netlify, never committed):
 //   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY   -> persist the draft
 //   RESEND_API_KEY, EMAIL_FROM, ADMIN_ALLOWED_EMAILS -> optional admin notice
+//   ZAPIER_WEBHOOK_URL -> optional: POST each submission to a Zapier Catch Hook
+//     (fan out to email + SMS from Zapier)
 
 import { isBusinessEmail } from "./lib/freeEmailDomains.mjs";
 
@@ -185,15 +187,42 @@ export default async (req) => {
       console.error("Supabase request error:", err);
       return json(502, { error: "Could not save submission" });
     }
-    await notifyAdmin(record);
+    await Promise.all([notifyAdmin(record), notifyZapier(record)]);
     return json(200, { status: "accepted", persisted: true });
   }
 
   // Supabase not configured yet: capture in the function log so the submission
   // is recoverable, and still confirm to the user.
   console.log("New company submission (not persisted, Supabase unset):", record);
+  await notifyZapier(record);
   return json(200, { status: "accepted", persisted: false });
 };
+
+// POST the submission to a Zapier Catch Hook so a Zap can send email + SMS.
+async function notifyZapier(record) {
+  const url = process.env.ZAPIER_WEBHOOK_URL;
+  if (!url) return;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event: "company_submission",
+        name: record.name,
+        trade: record.trade,
+        city: record.city,
+        county: record.county,
+        email: record.email,
+        phone: record.phone,
+        website: record.website,
+        short_description: record.short_description,
+        submitted_at: new Date().toISOString(),
+      }),
+    });
+  } catch (err) {
+    console.error("Zapier notify failed (non-fatal):", err);
+  }
+}
 
 async function notifyAdmin(record) {
   const key = process.env.RESEND_API_KEY;
