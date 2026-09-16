@@ -39,7 +39,7 @@ const googleUrl =
       )}&query_place_id=${business.google_place_id}`
     : null);
 
-const title = `${business.name} — ${trade?.name ?? ""} in ${business.city}, CA | SoCal Trades`;
+const title = `${business.name} | ${trade?.name ?? ""} in ${business.city}, CA | SoCal Trades`;
 const description = business.short_description;
 const canonical = new URL(`/business/${business.slug}`, Astro.site).href;
 
