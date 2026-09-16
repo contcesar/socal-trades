@@ -1,33 +1,10 @@
 ---
-// Footer with email opt-in placeholder. Double opt-in wiring comes in Phase 5.
 const year = new Date().getFullYear();
 ---
 
 <footer class="bg-brand-blue text-brand-cream mt-16">
-  <div class="mx-auto max-w-3xl px-4 py-10 flex flex-col gap-8">
-    <section aria-labelledby="optin-heading" class="flex flex-col gap-3">
-      <h2 id="optin-heading" class="text-xl font-bold">
-        Get notified when new companies join
-      </h2>
-      <form class="flex flex-col sm:flex-row gap-3">
-        <label for="footer-email" class="sr-only">Email address</label>
-        <input
-          id="footer-email"
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          class="tap-target min-w-0 flex-1 rounded-lg bg-white px-4 text-lg text-gray-900 placeholder:text-gray-500"
-        />
-        <button
-          type="submit"
-          class="tap-target rounded-lg bg-brand-red-dark px-6 text-lg font-semibold text-white hover:opacity-90"
-        >
-          Sign up
-        </button>
-      </form>
-    </section>
-
-    <nav aria-label="Footer" class="flex flex-wrap gap-x-6 gap-y-2 text-lg">
+  <div class="mx-auto max-w-3xl px-4 py-10 flex flex-col items-center gap-6 text-center">
+    <nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg">
       <a href="/list-your-company" class="underline hover:no-underline">List your company</a>
       <a href="/saved" class="underline hover:no-underline">Saved</a>
       <a href="/about" class="underline hover:no-underline">About</a>
