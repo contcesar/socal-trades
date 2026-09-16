@@ -25,6 +25,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     setAuthFlag(null);
     try {
       localStorage.removeItem("st_company");
+      localStorage.removeItem("st_admin");
     } catch {
       /* ignore */
     }

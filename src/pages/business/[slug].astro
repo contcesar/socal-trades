@@ -113,6 +113,15 @@ if (business.rating != null) {
       <span>{business.name}</span>
     </nav>
 
+    <a
+      id="admin-edit"
+      href={`/admin?edit=${business.id}`}
+      class="mt-3 hidden w-fit items-center gap-2 rounded-lg border-2 border-brand-blue px-4 py-2 text-base font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
+      hidden
+    >
+      Edit this profile (admin)
+    </a>
+
     {
       business.photo_urls[0] && (
         <div class="group relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-2xl">
@@ -306,3 +315,18 @@ if (business.rating != null) {
 
   <SiteFooter slot="footer" />
 </BaseLayout>
+
+<script>
+  // Reveal the admin-only edit link for admins. The flag is set on the account
+  // and admin pages; real edit access is enforced by RLS regardless.
+  try {
+    if (localStorage.getItem("st_admin") === "1") {
+      const el = document.getElementById("admin-edit");
+      el?.removeAttribute("hidden");
+      el?.classList.remove("hidden");
+      el?.classList.add("inline-flex");
+    }
+  } catch {
+    /* storage blocked; link stays hidden */
+  }
+</script>

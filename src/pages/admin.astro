@@ -233,9 +233,15 @@ const refData = JSON.stringify({
       .select("user_id")
       .eq("user_id", user.id)
       .maybeSingle();
-    if (!adminRow) return showDenied();
+    if (!adminRow) {
+      try { localStorage.removeItem("st_admin"); } catch { /* ignore */ }
+      return showDenied();
+    }
 
     setAuthFlag(user.email ?? "account");
+    // Lightweight flag so profile pages can show an admin-only edit link without
+    // loading the auth SDK. Real access is still enforced by RLS.
+    try { localStorage.setItem("st_admin", "1"); } catch { /* ignore */ }
     loading.hidden = true;
     panel.hidden = false;
     panel.classList.remove("hidden");
@@ -615,10 +621,23 @@ const refData = JSON.stringify({
     document.getElementById("admin-logout")!.addEventListener("click", async () => {
       await supabase.auth.signOut();
       setAuthFlag(null);
+      try { localStorage.removeItem("st_admin"); } catch { /* ignore */ }
       location.replace("/");
     });
 
-    loadBusinesses();
+    await loadBusinesses();
+
+    // Deep link: /admin?edit=<id> opens that business straight in the editor
+    // (used by the "Edit this profile" link on profile pages).
+    const editId = new URLSearchParams(location.search).get("edit");
+    if (editId) {
+      const { data: b } = await supabase
+        .from("businesses")
+        .select("*")
+        .eq("id", editId)
+        .maybeSingle();
+      if (b) openEditor(b);
+    }
   }
 
   main();
