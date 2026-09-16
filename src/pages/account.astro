@@ -20,7 +20,7 @@ import SiteFooter from "../components/SiteFooter.astro";
       <a
         id="admin-link"
         href="/admin"
-        class="tap-target mt-6 hidden items-center rounded-lg border-2 border-brand-blue px-6 text-lg font-semibold text-brand-blue hover:bg-brand-blue hover:text-white"
+        class="tap-target mt-8 hidden min-h-[56px] items-center justify-center rounded-xl border-2 border-brand-blue px-8 text-xl font-bold text-brand-blue hover:bg-brand-blue hover:text-white"
       >
         Go to admin
       </a>
@@ -105,6 +105,7 @@ import SiteFooter from "../components/SiteFooter.astro";
       if (adminRow) {
         adminLink.hidden = false;
         adminLink.classList.remove("hidden");
+        adminLink.classList.add("inline-flex");
       }
     } catch {
       /* admins table may not exist yet; ignore */
