@@ -39,6 +39,15 @@ const googleUrl =
       )}&query_place_id=${business.google_place_id}`
     : null);
 
+// The stored website may be missing a scheme (e.g. "example.com"). Without one
+// the browser treats it as a relative path and 404s. Prepend https:// so the
+// link always points off-site.
+const websiteHref = business.website
+  ? /^https?:\/\//i.test(business.website)
+    ? business.website
+    : `https://${business.website}`
+  : null;
+
 const title = `${business.name} | ${trade?.name ?? ""} in ${business.city}, CA | SoCal Trades`;
 const description = business.short_description;
 const canonical = new URL(`/business/${business.slug}`, Astro.site).href;
@@ -54,7 +63,7 @@ const jsonLd: Record<string, unknown> = {
 };
 if (business.phone) jsonLd.telephone = business.phone;
 if (business.email) jsonLd.email = business.email;
-if (business.website) jsonLd.sameAs = [business.website];
+if (websiteHref) jsonLd.sameAs = [websiteHref];
 const heroImage = business.photo_urls[0] || business.logo_url;
 if (heroImage) jsonLd.image = heroImage;
 jsonLd.address = {
@@ -246,11 +255,12 @@ if (business.rating != null) {
               <dt class="font-semibold text-gray-700">Website</dt>
               <dd>
                 <a
-                  href={business.website}
+                  href={websiteHref}
+                  target="_blank"
                   rel="nofollow noopener"
                   class="text-brand-blue underline break-words"
                 >
-                  {business.website.replace(/^https?:\/\//, "")}
+                  {business.website.replace(/^https?:\/\//i, "")}
                 </a>
               </dd>
             </div>
