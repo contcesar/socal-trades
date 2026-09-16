@@ -29,6 +29,30 @@ import SiteFooter from "../components/SiteFooter.astro";
         <a href="/saved" class="text-lg text-brand-blue underline">Saved companies</a>
       </div>
 
+      <section class="mt-8 rounded-xl border border-gray-200 bg-white p-5">
+        <h2 class="text-xl font-bold text-brand-blue">Change password</h2>
+        <form id="pw-form" class="mt-4 flex flex-col gap-4" novalidate>
+          <div class="flex flex-col gap-1">
+            <label class="text-base font-semibold text-gray-800" for="pw-new">
+              New password
+              <span class="font-normal text-gray-600">(at least 8 characters)</span>
+            </label>
+            <input id="pw-new" type="password" autocomplete="new-password" minlength="8"
+              class="tap-target rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-base font-semibold text-gray-800" for="pw-confirm">Confirm new password</label>
+            <input id="pw-confirm" type="password" autocomplete="new-password"
+              class="tap-target rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue" />
+          </div>
+          <p id="pw-msg" class="hidden text-base" role="alert"></p>
+          <button id="pw-btn" type="submit"
+            class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90">
+            Update password
+          </button>
+        </form>
+      </section>
+
       <button
         id="logout-btn"
         type="button"
@@ -85,6 +109,42 @@ import SiteFooter from "../components/SiteFooter.astro";
     } catch {
       /* admins table may not exist yet; ignore */
     }
+
+    // Change password (the active session authorizes the update).
+    const pwForm = document.getElementById("pw-form") as HTMLFormElement;
+    const pwNew = document.getElementById("pw-new") as HTMLInputElement;
+    const pwConfirm = document.getElementById("pw-confirm") as HTMLInputElement;
+    const pwBtn = document.getElementById("pw-btn") as HTMLButtonElement;
+    const pwMsg = document.getElementById("pw-msg")!;
+    function pwShow(text: string, ok = false): void {
+      pwMsg.textContent = text;
+      pwMsg.classList.remove("hidden", "text-brand-red-dark", "text-green-700", "font-semibold");
+      pwMsg.classList.add(ok ? "text-green-700" : "text-brand-red-dark", "font-semibold");
+    }
+    pwForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      pwMsg.classList.add("hidden");
+      const pw = pwNew.value;
+      if (pw.length < 8) {
+        pwShow("Password must be at least 8 characters.");
+        return;
+      }
+      if (pw !== pwConfirm.value) {
+        pwShow("The passwords do not match.");
+        return;
+      }
+      pwBtn.disabled = true;
+      pwBtn.textContent = "Updating…";
+      const { error } = await supabase.auth.updateUser({ password: pw });
+      pwBtn.disabled = false;
+      pwBtn.textContent = "Update password";
+      if (error) {
+        pwShow(error.message);
+        return;
+      }
+      pwForm.reset();
+      pwShow("Password updated.", true);
+    });
 
     logoutBtn.addEventListener("click", async () => {
       logoutBtn.disabled = true;
