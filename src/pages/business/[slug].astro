@@ -6,12 +6,14 @@ import TradeIcon from "../../components/TradeIcon.astro";
 import LiveStatus from "../../components/LiveStatus.astro";
 import BookmarkButton from "../../components/BookmarkButton.astro";
 import RatingBadge from "../../components/RatingBadge.astro";
+import RelatedLinks from "../../components/RelatedLinks.astro";
 import {
   getPublishedBusinesses,
   getBusinessBySlug,
   getTradeMap,
   getCounties,
 } from "../../lib/data";
+import { businessGeoLinks } from "../../lib/links";
 
 export async function getStaticPaths() {
   const businesses = await getPublishedBusinesses();
@@ -29,6 +31,7 @@ const secondary = business.secondary_trades
   .filter((t): t is NonNullable<typeof t> => Boolean(t));
 const counties = await getCounties();
 const county = counties.find((c) => c.name === business.county);
+const geoLinks = await businessGeoLinks(business);
 
 // Google Business Profile link: an explicit URL, or one built from place_id.
 const googleUrl =
@@ -298,6 +301,26 @@ if (business.rating != null) {
     <div class="mt-10">
       <LiveStatus placeId={business.google_place_id} variant="reviews" />
     </div>
+
+    {
+      geoLinks.length > 0 && (
+        <nav aria-label="Explore nearby" class="mt-10">
+          <h2 class="text-xl font-bold text-brand-blue">Explore more in the area</h2>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {geoLinks.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="tap-target inline-flex items-center rounded-lg border border-brand-blue px-4 py-1 text-base text-brand-blue hover:bg-brand-blue hover:text-white"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
 
     {
       business.claimable !== false && (

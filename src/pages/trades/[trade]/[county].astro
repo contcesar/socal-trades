@@ -5,6 +5,8 @@ import SiteFooter from "../../../components/SiteFooter.astro";
 import BusinessCard from "../../../components/BusinessCard.astro";
 import SeoIntro from "../../../components/SeoIntro.astro";
 import SeoFaqs from "../../../components/SeoFaqs.astro";
+import RelatedLinks from "../../../components/RelatedLinks.astro";
+import { relatedTradeCountyLinks } from "../../../lib/links";
 import {
   getTrades,
   getCounties,
@@ -67,6 +69,7 @@ const introText =
     ? null
     : genericIntro(`${tradePlural(trade.slug, trade.name).toLowerCase()}`, `${county.name} County`));
 const faqs = content?.faqs ?? [];
+const relatedLinks = await relatedTradeCountyLinks(trade.slug, county.slug);
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
@@ -95,6 +98,8 @@ const faqs = content?.faqs ?? [];
       {businesses.map((b) => <BusinessCard business={b} trade={trade} />)}
     </div>
   </section>
+
+  <RelatedLinks title={`Related trades in ${county.name} County`} links={relatedLinks} />
 
   <SeoFaqs faqs={faqs} />
 

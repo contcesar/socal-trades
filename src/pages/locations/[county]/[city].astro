@@ -5,6 +5,8 @@ import SiteFooter from "../../../components/SiteFooter.astro";
 import BusinessCard from "../../../components/BusinessCard.astro";
 import SeoIntro from "../../../components/SeoIntro.astro";
 import SeoFaqs from "../../../components/SeoFaqs.astro";
+import RelatedLinks from "../../../components/RelatedLinks.astro";
+import { nearbyCityLinks } from "../../../lib/links";
 import {
   getAllCities,
   getCountyBySlug,
@@ -49,6 +51,7 @@ if (!content && !noindex) {
 const introText =
   content?.intro ?? (noindex ? null : genericIntro("trades companies", cityName));
 const faqs = content?.faqs ?? [];
+const nearbyLinks = await nearbyCityLinks(citySlug!);
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
@@ -77,6 +80,8 @@ const faqs = content?.faqs ?? [];
       {businesses.map((b) => <BusinessCard business={b} trade={tradeMap.get(b.trade)} />)}
     </div>
   </section>
+
+  <RelatedLinks title="Trades in nearby cities" links={nearbyLinks} />
 
   <SeoFaqs faqs={faqs} />
 

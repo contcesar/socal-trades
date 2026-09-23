@@ -10,8 +10,11 @@ import {
   getTrades,
   getTradeBySlug,
   getBusinessesByTrade,
+  getBusinessesByTradeAndCounty,
   getCounties,
 } from "../../lib/data";
+import RelatedLinks from "../../components/RelatedLinks.astro";
+import { relatedTradeLandingLinks } from "../../lib/links";
 import {
   isIndexableCount,
   tradeTitle,
@@ -50,6 +53,15 @@ const introText =
   content?.intro ??
   (noindex ? null : genericIntro(tradePlural(trade.slug, trade.name).toLowerCase(), "Southern California"));
 const faqs = content?.faqs ?? [];
+const relatedLinks = await relatedTradeLandingLinks(trade.slug);
+
+// Only link county filters whose trade+county page is indexable; the rest
+// render as plain text so we don't link into thin pages.
+const indexableCountySlugs = new Set<string>();
+for (const c of activeCounties) {
+  const list = await getBusinessesByTradeAndCounty(trade.slug, c.slug);
+  if (isIndexableCount(list.length)) indexableCountySlugs.add(c.slug);
+}
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
@@ -69,14 +81,20 @@ const faqs = content?.faqs ?? [];
     {
       activeCounties.length > 0 && (
         <nav aria-label="Filter by county" class="mt-6 flex flex-wrap gap-2">
-          {activeCounties.map((c) => (
-            <a
-              href={`/trades/${trade.slug}/${c.slug}`}
-              class="tap-target inline-flex items-center rounded-lg border border-brand-blue px-4 text-base text-brand-blue hover:bg-brand-blue hover:text-white"
-            >
-              {c.name} County
-            </a>
-          ))}
+          {activeCounties.map((c) =>
+            indexableCountySlugs.has(c.slug) ? (
+              <a
+                href={`/trades/${trade.slug}/${c.slug}/`}
+                class="tap-target inline-flex items-center rounded-lg border border-brand-blue px-4 text-base text-brand-blue hover:bg-brand-blue hover:text-white"
+              >
+                {c.name} County
+              </a>
+            ) : (
+              <span class="tap-target inline-flex items-center rounded-lg border border-gray-300 px-4 text-base text-gray-500">
+                {c.name} County
+              </span>
+            ),
+          )}
         </nav>
       )
     }
@@ -98,6 +116,8 @@ const faqs = content?.faqs ?? [];
       )
     }
   </section>
+
+  <RelatedLinks title="Related trades" links={relatedLinks} />
 
   <SeoFaqs faqs={faqs} />
 
