@@ -15,6 +15,7 @@ import {
 } from "../../lib/data";
 import RelatedLinks from "../../components/RelatedLinks.astro";
 import { relatedTradeLandingLinks } from "../../lib/links";
+import { itemListSchema, breadcrumbSchema, faqSchema, graph } from "../../lib/schema";
 import {
   isIndexableCount,
   tradeTitle,
@@ -62,12 +63,26 @@ for (const c of activeCounties) {
   const list = await getBusinessesByTradeAndCounty(trade.slug, c.slug);
   if (isIndexableCount(list.length)) indexableCountySlugs.add(c.slug);
 }
+
+const jsonLd = graph([
+  itemListSchema(businesses),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: trade.name },
+  ]),
+  content?.reviewed && faqs.length ? faqSchema(faqs) : null,
+]);
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
   <SiteHeader slot="header" />
 
   <section class="mx-auto max-w-7xl px-4 py-10">
+    <nav aria-label="Breadcrumb" class="mb-2 text-base text-gray-600">
+      <a href="/" class="text-brand-blue hover:underline">Home</a>
+      <span aria-hidden="true"> / </span>
+      <span>{trade.name}</span>
+    </nav>
     <div class="flex items-center gap-3">
       <span class="text-brand-red-dark"><TradeIcon icon={trade.icon} class="h-10 w-10" /></span>
       <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">{h1}</h1>
@@ -120,6 +135,8 @@ for (const c of activeCounties) {
   <RelatedLinks title="Related trades" links={relatedLinks} />
 
   <SeoFaqs faqs={faqs} />
+
+  <script type="application/ld+json" is:inline set:html={jsonLd} />
 
   <SiteFooter slot="footer" />
 </BaseLayout>

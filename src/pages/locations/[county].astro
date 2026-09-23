@@ -20,6 +20,7 @@ import {
   genericIntro,
 } from "../../lib/seo";
 import { getLocalContent } from "../../content/localSeo";
+import { itemListSchema, breadcrumbSchema, faqSchema, graph } from "../../lib/schema";
 
 export async function getStaticPaths() {
   const counties = await getCounties();
@@ -47,13 +48,27 @@ const introText =
   content?.intro ??
   (noindex ? null : genericIntro("trades companies", `${county.name} County`));
 const faqs = content?.faqs ?? [];
+
+const jsonLd = graph([
+  itemListSchema(businesses),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: `${county.name} County` },
+  ]),
+  content?.reviewed && faqs.length ? faqSchema(faqs) : null,
+]);
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
   <SiteHeader slot="header" />
 
   <section class="mx-auto max-w-7xl px-4 py-10">
-    <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">
+    <nav aria-label="Breadcrumb" class="text-base text-gray-600">
+      <a href="/" class="text-brand-blue hover:underline">Home</a>
+      <span aria-hidden="true"> / </span>
+      <span>{county.name} County</span>
+    </nav>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold text-brand-blue">
       {h1}
     </h1>
     <p class="mt-3 text-lg text-gray-700">
@@ -99,6 +114,8 @@ const faqs = content?.faqs ?? [];
   </section>
 
   <SeoFaqs faqs={faqs} />
+
+  <script type="application/ld+json" is:inline set:html={jsonLd} />
 
   <SiteFooter slot="footer" />
 </BaseLayout>

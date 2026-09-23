@@ -7,6 +7,7 @@ import SeoIntro from "../../../components/SeoIntro.astro";
 import SeoFaqs from "../../../components/SeoFaqs.astro";
 import RelatedLinks from "../../../components/RelatedLinks.astro";
 import { nearbyCityLinks } from "../../../lib/links";
+import { itemListSchema, breadcrumbSchema, faqSchema, graph } from "../../../lib/schema";
 import {
   getAllCities,
   getCountyBySlug,
@@ -52,6 +53,16 @@ const introText =
   content?.intro ?? (noindex ? null : genericIntro("trades companies", cityName));
 const faqs = content?.faqs ?? [];
 const nearbyLinks = await nearbyCityLinks(citySlug!);
+
+const jsonLd = graph([
+  itemListSchema(businesses),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: `${county.name} County`, path: `/locations/${county.slug}/` },
+    { name: cityName },
+  ]),
+  content?.reviewed && faqs.length ? faqSchema(faqs) : null,
+]);
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
@@ -59,6 +70,8 @@ const nearbyLinks = await nearbyCityLinks(citySlug!);
 
   <section class="mx-auto max-w-7xl px-4 py-10">
     <nav aria-label="Breadcrumb" class="text-base text-gray-600">
+      <a href="/" class="text-brand-blue hover:underline">Home</a>
+      <span aria-hidden="true"> / </span>
       <a href={`/locations/${county.slug}`} class="text-brand-blue hover:underline">
         {county.name} County
       </a>
@@ -84,6 +97,8 @@ const nearbyLinks = await nearbyCityLinks(citySlug!);
   <RelatedLinks title="Trades in nearby cities" links={nearbyLinks} />
 
   <SeoFaqs faqs={faqs} />
+
+  <script type="application/ld+json" is:inline set:html={jsonLd} />
 
   <SiteFooter slot="footer" />
 </BaseLayout>

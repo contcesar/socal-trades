@@ -5,10 +5,12 @@ import SiteFooter from "../components/SiteFooter.astro";
 import TradeIcon from "../components/TradeIcon.astro";
 import CompanyCarousel from "../components/CompanyCarousel.astro";
 import { getTrades, getFeaturedBusinesses, getTradeMap } from "../lib/data";
+import { organizationSchema, websiteSchema, graph } from "../lib/schema";
 
 const trades = await getTrades();
 const featured = await getFeaturedBusinesses(8);
 const tradeMap = await getTradeMap();
+const jsonLd = graph([organizationSchema(), websiteSchema()]);
 ---
 
 <BaseLayout
@@ -55,6 +57,8 @@ const tradeMap = await getTradeMap();
       </a>
     </p>
   </section>
+
+  <script type="application/ld+json" is:inline set:html={jsonLd} />
 
   <SiteFooter slot="footer" />
 </BaseLayout>

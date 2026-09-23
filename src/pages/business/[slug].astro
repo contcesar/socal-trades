@@ -14,6 +14,7 @@ import {
   getCounties,
 } from "../../lib/data";
 import { businessGeoLinks } from "../../lib/links";
+import { businessSchema, graph } from "../../lib/schema";
 
 export async function getStaticPaths() {
   const businesses = await getPublishedBusinesses();
@@ -53,48 +54,11 @@ const websiteHref = business.website
 
 const title = `${business.name} | ${trade?.name ?? ""} in ${business.city}, CA | SoCal Trades`;
 const description = business.short_description;
-const canonical = new URL(`/business/${business.slug}`, Astro.site).href;
 
-// LocalBusiness JSON-LD. No opening hours or review text stored (Google terms);
-// aggregateRating is added in Phase 2 only when a cached rating exists.
-const jsonLd: Record<string, unknown> = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: business.name,
-  url: canonical,
-  description: business.short_description,
-};
-if (business.phone) jsonLd.telephone = business.phone;
-if (business.email) jsonLd.email = business.email;
-if (websiteHref) jsonLd.sameAs = [websiteHref];
-const heroImage = business.photo_urls[0] || business.logo_url;
-if (heroImage) jsonLd.image = heroImage;
-jsonLd.address = {
-  "@type": "PostalAddress",
-  ...(business.address ? { streetAddress: business.address } : {}),
-  addressLocality: business.city,
-  addressRegion: "CA",
-  addressCountry: "US",
-};
-if (business.latitude != null && business.longitude != null) {
-  jsonLd.geo = {
-    "@type": "GeoCoordinates",
-    latitude: business.latitude,
-    longitude: business.longitude,
-  };
-}
-if (business.service_areas.length > 0) {
-  jsonLd.areaServed = business.service_areas;
-}
-if (business.rating != null) {
-  jsonLd.aggregateRating = {
-    "@type": "AggregateRating",
-    ratingValue: business.rating,
-    ...(business.review_count
-      ? { reviewCount: business.review_count }
-      : { ratingCount: 1 }),
-  };
-}
+// LocalBusiness JSON-LD from the shared builder. No aggregateRating/review:
+// the visible rating comes from Google Business Profile, which Google's policy
+// does not allow in our structured data.
+const jsonLd = graph([businessSchema(business)]);
 ---
 
 <BaseLayout title={title} description={description}>
@@ -343,7 +307,7 @@ if (business.rating != null) {
   <script
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify(jsonLd)}
+    set:html={jsonLd}
   />
 
   <SiteFooter slot="footer" />
