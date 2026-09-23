@@ -151,6 +151,15 @@ export function newestUpdated(
   return max ? new Date(max).toISOString().slice(0, 10) : undefined;
 }
 
+/**
+ * Short, fact-free generic intro for an indexable page that has no reviewed
+ * content entry yet. Deliberately says nothing specific (no prices, no permit
+ * offices) so it can never be wrong.
+ */
+export function genericIntro(subject: string, place: string): string {
+  return `Looking for ${subject} in ${place}? Browse the companies listed below, compare their ratings and service areas, and reach out directly. Each profile has contact details and the areas they cover so you can find a local pro that fits your project.`;
+}
+
 export interface SitemapEntry {
   loc: string;
   lastmod?: string;

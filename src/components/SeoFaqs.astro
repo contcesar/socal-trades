@@ -1,0 +1,25 @@
+---
+// Visible FAQ section for category pages. The same FAQs feed the FAQPage
+// JSON-LD, so they must stay rendered on the page when the schema is emitted.
+import type { FAQ } from "../content/localSeo";
+interface Props {
+  faqs: FAQ[];
+}
+const { faqs } = Astro.props;
+---
+
+{
+  faqs.length > 0 && (
+    <section class="mx-auto max-w-3xl px-4 pb-16">
+      <h2 class="text-2xl font-bold text-brand-blue">Frequently asked questions</h2>
+      <dl class="mt-4 space-y-5">
+        {faqs.map((f) => (
+          <div>
+            <dt class="text-lg font-bold text-gray-900">{f.q}</dt>
+            <dd class="mt-1 text-lg text-gray-800">{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
+}

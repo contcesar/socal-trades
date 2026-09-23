@@ -1,0 +1,13 @@
+---
+// Local intro copy rendered under the H1 on indexable category pages.
+// `text` may contain blank-line-separated paragraphs.
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+const paragraphs = text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+---
+
+<section class="mt-6 max-w-3xl space-y-3 text-lg text-gray-800">
+  {paragraphs.map((p) => <p>{p}</p>)}
+</section>

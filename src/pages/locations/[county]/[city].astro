@@ -3,6 +3,8 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteHeader from "../../../components/SiteHeader.astro";
 import SiteFooter from "../../../components/SiteFooter.astro";
 import BusinessCard from "../../../components/BusinessCard.astro";
+import SeoIntro from "../../../components/SeoIntro.astro";
+import SeoFaqs from "../../../components/SeoFaqs.astro";
 import {
   getAllCities,
   getCountyBySlug,
@@ -14,7 +16,9 @@ import {
   cityTitle,
   cityH1,
   cityDescription,
+  genericIntro,
 } from "../../../lib/seo";
+import { getLocalContent } from "../../../content/localSeo";
 
 // One page per (county, city) pair that has a published business.
 export async function getStaticPaths() {
@@ -37,6 +41,14 @@ const title = cityTitle(cityName);
 const description = cityDescription(businesses.length, cityName);
 const h1 = cityH1(cityName);
 const noindex = !isIndexableCount(businesses.length);
+
+const content = getLocalContent(Astro.url.pathname);
+if (!content && !noindex) {
+  console.warn(`[seo] Missing local content entry for ${Astro.url.pathname} (indexable) — using generic intro.`);
+}
+const introText =
+  content?.intro ?? (noindex ? null : genericIntro("trades companies", cityName));
+const faqs = content?.faqs ?? [];
 ---
 
 <BaseLayout title={title} description={description} noindex={noindex}>
@@ -57,6 +69,7 @@ const noindex = !isIndexableCount(businesses.length);
       {businesses.length}
       {businesses.length === 1 ? "company" : "companies"} serving {cityName}.
     </p>
+    {introText && <SeoIntro text={introText} />}
   </section>
 
   <section class="mx-auto max-w-7xl px-4 pb-16">
@@ -64,6 +77,8 @@ const noindex = !isIndexableCount(businesses.length);
       {businesses.map((b) => <BusinessCard business={b} trade={tradeMap.get(b.trade)} />)}
     </div>
   </section>
+
+  <SeoFaqs faqs={faqs} />
 
   <SiteFooter slot="footer" />
 </BaseLayout>
