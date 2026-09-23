@@ -52,7 +52,7 @@ if (!content && !noindex) {
 }
 const introText =
   content?.intro ??
-  (noindex ? null : genericIntro(tradePlural(trade.slug, trade.name).toLowerCase(), "Southern California"));
+  (noindex ? null : genericIntro(tradePlural(trade.slug, trade.name), "Southern California"));
 const faqs = content?.faqs ?? [];
 const relatedLinks = await relatedTradeLandingLinks(trade.slug);
 

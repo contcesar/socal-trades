@@ -86,7 +86,7 @@ export function tradeCountyDescription(
   name: string,
   county: string,
 ): string {
-  const plural = tradePlural(slug, name).toLowerCase();
+  const plural = tradePlural(slug, name);
   return clampDescription(
     `Compare ${n} ${plural} in ${county} County, CA. See ratings, service areas and contact details on SoCal Trades.`,
     `Compare ${n} ${plural} in ${county} County, CA on SoCal Trades.`,
@@ -101,7 +101,7 @@ export function tradeH1(slug: string, name: string): string {
   return `${tradePlural(slug, name)} in Southern California`;
 }
 export function tradeDescription(n: number, slug: string, name: string): string {
-  const plural = tradePlural(slug, name).toLowerCase();
+  const plural = tradePlural(slug, name);
   return clampDescription(
     `Compare ${n} ${plural} across Southern California. See ratings, service areas and contact details on SoCal Trades.`,
     `Compare ${n} ${plural} across Southern California on SoCal Trades.`,

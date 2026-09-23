@@ -68,7 +68,7 @@ const introText =
   content?.intro ??
   (noindex
     ? null
-    : genericIntro(`${tradePlural(trade.slug, trade.name).toLowerCase()}`, `${county.name} County`));
+    : genericIntro(tradePlural(trade.slug, trade.name), `${county.name} County`));
 const faqs = content?.faqs ?? [];
 const relatedLinks = await relatedTradeCountyLinks(trade.slug, county.slug);
 
