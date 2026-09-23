@@ -179,6 +179,19 @@ const jsonLd = graph([businessSchema(business)]);
     </div>
 
     {
+      business.featured && (
+        <p class="mt-4 text-sm text-gray-500">
+          <span class="font-semibold text-brand-blue">Featured Company</span> ·
+          Want to feature your company?{" "}
+          <a href="/featured" class="font-semibold text-brand-blue underline">
+            Learn how
+          </a>
+          .
+        </p>
+      )
+    }
+
+    {
       business.long_description && (
         <section class="mt-8">
           <h2 class="text-2xl font-bold text-brand-blue">About</h2>

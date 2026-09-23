@@ -179,6 +179,7 @@ const STATIC_PATHS = [
   "/search/",
   "/saved/",
   "/badge/",
+  "/featured/",
 ];
 
 /**
