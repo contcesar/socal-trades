@@ -10,6 +10,7 @@ import {
   getBusinessesByTrade,
   getCounties,
 } from "../../lib/data";
+import { isIndexableCount } from "../../lib/seo";
 
 export async function getStaticPaths() {
   const trades = await getTrades();
@@ -28,9 +29,10 @@ const activeCounties = counties.filter((c) => countyNames.has(c.name));
 
 const title = `${trade.name} in Southern California | SoCal Trades`;
 const description = `Find ${trade.name.toLowerCase()} companies across Southern California. Browse listings by city and county with contact details.`;
+const noindex = !isIndexableCount(businesses.length);
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex={noindex}>
   <SiteHeader slot="header" />
 
   <section class="mx-auto max-w-7xl px-4 py-10">

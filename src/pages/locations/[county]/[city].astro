@@ -9,6 +9,7 @@ import {
   getBusinessesByCity,
   getTradeMap,
 } from "../../../lib/data";
+import { isIndexableCount } from "../../../lib/seo";
 
 // One page per (county, city) pair that has a published business.
 export async function getStaticPaths() {
@@ -29,9 +30,10 @@ const tradeMap = await getTradeMap();
 
 const title = `Trades companies in ${cityName}, CA | SoCal Trades`;
 const description = `Trades companies serving ${cityName} in ${county.name} County, Southern California. Contact details and profiles.`;
+const noindex = !isIndexableCount(businesses.length);
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex={noindex}>
   <SiteHeader slot="header" />
 
   <section class="mx-auto max-w-7xl px-4 py-10">

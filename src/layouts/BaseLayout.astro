@@ -4,11 +4,14 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  /** When true, render <meta name="robots" content="noindex, follow">. */
+  noindex?: boolean;
 }
 
 const {
   title,
   description = "Find trades companies in Southern California | SoCal Trades",
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -38,6 +41,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <link rel="icon" href="/socal-trades.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
