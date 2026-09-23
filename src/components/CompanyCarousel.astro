@@ -4,24 +4,38 @@ import BusinessCard from "./BusinessCard.astro";
 
 interface Props {
   heading: string;
+  /** Optional shorter heading shown on mobile to fit small screens. */
+  headingShort?: string;
   href?: string;
   businesses: Business[];
   tradeMap: Map<string, Trade>;
 }
-const { heading, href, businesses, tradeMap } = Astro.props;
+const { heading, headingShort, href, businesses, tradeMap } = Astro.props;
 // A stable id so the scroll buttons target this carousel only.
 const railId = `rail-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-6">
   <div class="flex items-center justify-between gap-3">
-    <h2 class="text-2xl font-bold text-brand-blue">
+    <h2 class="text-xl sm:text-2xl font-bold text-brand-blue">
       {
         href ? (
           <a href={href} class="inline-flex items-center gap-2 hover:underline">
-            {heading}
+            {headingShort ? (
+              <>
+                <span class="sm:hidden">{headingShort}</span>
+                <span class="hidden sm:inline">{heading}</span>
+              </>
+            ) : (
+              heading
+            )}
             <span aria-hidden="true">&rarr;</span>
           </a>
+        ) : headingShort ? (
+          <>
+            <span class="sm:hidden">{headingShort}</span>
+            <span class="hidden sm:inline">{heading}</span>
+          </>
         ) : (
           heading
         )
