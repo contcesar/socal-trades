@@ -1,16 +1,14 @@
 // Serves the "Find us on SoCal Trades" badge at /badges/featured.svg and logs
 // each request (slug, referrer, date) so we can see which companies display it.
-// Missing or unknown slugs still get the image. Logging is best-effort and
-// env-gated; the image is always returned.
+// The image itself is the uploaded artwork at public/badge.svg; this function
+// fetches that static file and returns it, so updating badge.svg updates the
+// badge everywhere. Missing or unknown slugs still get the image.
 //
 // Env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (for logging only).
 export const config = { path: "/badges/featured.svg" };
 
-const BADGE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="60" viewBox="0 0 160 60" role="img" aria-label="Find us on SoCal Trades">
-  <rect x="1.5" y="1.5" width="157" height="57" rx="11" fill="#ffffff" stroke="#12417F" stroke-width="3"/>
-  <text x="80" y="25" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="0.5" fill="#4B5563">Find us on</text>
-  <text x="80" y="45" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="18" fill="#12417F">SoCal Trades</text>
-</svg>`;
+// Minimal fallback if the static file can't be fetched for some reason.
+const FALLBACK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="51" viewBox="0 0 200 51" role="img" aria-label="Find us on SoCal Trades"><rect x="1.5" y="1.5" width="197" height="48" rx="10" fill="#ffffff" stroke="#12417F" stroke-width="3"/><text x="100" y="31" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#12417F">Find us on SoCal Trades</text></svg>`;
 
 async function logView(slug, referrer) {
   const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -40,7 +38,15 @@ export default async (req) => {
   // Fire-and-forget the log so it can't slow the image response.
   logView(slug, referrer);
 
-  return new Response(BADGE_SVG, {
+  let svg = FALLBACK_SVG;
+  try {
+    const res = await fetch(new URL("/badge.svg", url.origin).href);
+    if (res.ok) svg = await res.text();
+  } catch {
+    // Use the fallback.
+  }
+
+  return new Response(svg, {
     headers: {
       "Content-Type": "image/svg+xml; charset=utf-8",
       "Cache-Control": "public, max-age=86400",
