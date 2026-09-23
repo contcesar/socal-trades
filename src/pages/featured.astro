@@ -83,7 +83,7 @@ const PHONE_TEL = "+19096989227";
 
       <button id="feat-btn" type="submit"
         class="tap-target rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90">
-        Send enquiry
+        Send
       </button>
     </form>
 
@@ -133,7 +133,7 @@ const PHONE_TEL = "+19096989227";
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         btn.disabled = false;
-        btn.textContent = "Send enquiry";
+        btn.textContent = "Send";
         showError(body.error || "Sorry, something went wrong. Please try again.");
         return;
       }
@@ -143,7 +143,7 @@ const PHONE_TEL = "+19096989227";
       successEl.scrollIntoView({ behavior: "smooth", block: "center" });
     } catch {
       btn.disabled = false;
-      btn.textContent = "Send enquiry";
+      btn.textContent = "Send";
       showError("Sorry, something went wrong. Please try again in a moment.");
     }
   });
