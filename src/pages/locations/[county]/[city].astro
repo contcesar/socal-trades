@@ -9,7 +9,12 @@ import {
   getBusinessesByCity,
   getTradeMap,
 } from "../../../lib/data";
-import { isIndexableCount } from "../../../lib/seo";
+import {
+  isIndexableCount,
+  cityTitle,
+  cityH1,
+  cityDescription,
+} from "../../../lib/seo";
 
 // One page per (county, city) pair that has a published business.
 export async function getStaticPaths() {
@@ -28,8 +33,9 @@ if (!county) return Astro.redirect("/404");
 const businesses = await getBusinessesByCity(county.slug, citySlug!);
 const tradeMap = await getTradeMap();
 
-const title = `Trades companies in ${cityName}, CA | SoCal Trades`;
-const description = `Trades companies serving ${cityName} in ${county.name} County, Southern California. Contact details and profiles.`;
+const title = cityTitle(cityName);
+const description = cityDescription(businesses.length, cityName);
+const h1 = cityH1(cityName);
 const noindex = !isIndexableCount(businesses.length);
 ---
 
@@ -45,7 +51,7 @@ const noindex = !isIndexableCount(businesses.length);
       <span>{cityName}</span>
     </nav>
     <h1 class="mt-2 text-3xl sm:text-4xl font-bold text-brand-blue">
-      Trades companies in {cityName}
+      {h1}
     </h1>
     <p class="mt-3 text-lg text-gray-700">
       {businesses.length}

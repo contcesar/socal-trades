@@ -10,7 +10,12 @@ import {
   getBusinessesByTrade,
   getCounties,
 } from "../../lib/data";
-import { isIndexableCount } from "../../lib/seo";
+import {
+  isIndexableCount,
+  tradeTitle,
+  tradeH1,
+  tradeDescription,
+} from "../../lib/seo";
 
 export async function getStaticPaths() {
   const trades = await getTrades();
@@ -27,8 +32,9 @@ const counties = await getCounties();
 const countyNames = new Set(businesses.map((b) => b.county));
 const activeCounties = counties.filter((c) => countyNames.has(c.name));
 
-const title = `${trade.name} in Southern California | SoCal Trades`;
-const description = `Find ${trade.name.toLowerCase()} companies across Southern California. Browse listings by city and county with contact details.`;
+const title = tradeTitle(trade.slug, trade.name);
+const description = tradeDescription(businesses.length, trade.slug, trade.name);
+const h1 = tradeH1(trade.slug, trade.name);
 const noindex = !isIndexableCount(businesses.length);
 ---
 
@@ -38,7 +44,7 @@ const noindex = !isIndexableCount(businesses.length);
   <section class="mx-auto max-w-7xl px-4 py-10">
     <div class="flex items-center gap-3">
       <span class="text-brand-red-dark"><TradeIcon icon={trade.icon} class="h-10 w-10" /></span>
-      <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">{trade.name}</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">{h1}</h1>
     </div>
     <p class="mt-3 text-lg text-gray-700">
       {businesses.length}
