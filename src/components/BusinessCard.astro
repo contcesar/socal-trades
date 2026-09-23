@@ -13,7 +13,7 @@ const photo = business.photo_urls[0] ?? null;
 const featured = business.featured === true;
 ---
 
-<article class={`group${featured ? " rounded-2xl border-2 p-2" : ""}`} style={featured ? "border-color:#F59E0B" : undefined}>
+<article class={`group flex h-full flex-col${featured ? " rounded-2xl border-2 p-2" : ""}`} style={featured ? "border-color:#F59E0B" : undefined}>
   <div class="relative">
     <a
       href={`/business/${business.slug}`}
