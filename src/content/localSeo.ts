@@ -26,11 +26,11 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
   // ---- County landings (all trades) ----
   "/locations/los-angeles/": {
     intro:
-      "Los Angeles County spans the coast at Long Beach and Santa Monica through the San Fernando Valley and out to the Antelope Valley, so a job in one city can look very different a few freeway exits away. Permits are handled by each city, not the county: work inside the City of Los Angeles goes through LADBS (the Los Angeles Department of Building and Safety), while cities like Long Beach, Pasadena and Torrance run their own building departments. Homes in unincorporated areas pull permits through Los Angeles County Public Works, Building and Safety. Much of the county's housing is old, with pre-1960 galvanized supply lines, cast-iron drains and undersized electrical panels that come up constantly on remodels and repairs. Hard water is common and shortens the life of water heaters and fixtures. Summer heat in the inland valleys drives heavy HVAC demand, and hillside and canyon neighborhoods sit in wildfire zones with extra defensible-space and material rules. Typical project costs vary widely by city and scope [VERIFY: typical cost ranges for LA County]. The companies below serve cities across the county; check each profile for the exact areas they cover before you call.",
+      "Los Angeles County spans the coast at Long Beach and Santa Monica through the San Fernando Valley and out to the Antelope Valley, so a job in one city can look very different a few freeway exits away. Permits are handled by each city, not the county: work inside the City of Los Angeles goes through LADBS (the Los Angeles Department of Building and Safety), while cities like Long Beach, Pasadena and Torrance run their own building departments. Homes in unincorporated areas pull permits through Los Angeles County Public Works, Building and Safety. Much of the county's housing is old, with pre-1960 galvanized supply lines, cast-iron drains and undersized electrical panels that come up constantly on remodels and repairs. Hard water is common and shortens the life of water heaters and fixtures. Summer heat in the inland valleys drives heavy HVAC demand, and hillside and canyon neighborhoods sit in wildfire zones with extra defensible-space and material rules. Costs vary widely by city, the age of the home and the scope of the work, so it's worth getting more than one quote. The companies below serve cities across the county; check each profile for the exact areas they cover before you call.",
     faqs: [
       {
         q: "Do I need a permit for work in Los Angeles County?",
-        a: "Usually yes for anything structural, electrical, plumbing, mechanical or a re-roof. In the City of Los Angeles permits go through LADBS; other cities run their own building departments, and unincorporated areas go through LA County Public Works, Building and Safety. Your contractor typically pulls the permit. [VERIFY: exact thresholds that require a permit]",
+        a: "Usually yes for anything structural, electrical, plumbing, mechanical or a re-roof. In the City of Los Angeles permits go through LADBS; other cities run their own building departments, and unincorporated areas go through LA County Public Works, Building and Safety. Your contractor typically pulls the permit and can tell you whether your specific job needs one.",
       },
       {
         q: "Are the companies listed here licensed?",
@@ -38,7 +38,7 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
       },
       {
         q: "How much do projects cost in Los Angeles County?",
-        a: "It depends heavily on the city, the age of the home and the scope. [VERIFY: typical cost ranges by trade for LA County] Get at least two written estimates so you can compare.",
+        a: "It depends heavily on the city, the age of the home and the scope of the work. Get at least two written estimates so you can compare fairly.",
       },
       {
         q: "How do I choose between companies?",
