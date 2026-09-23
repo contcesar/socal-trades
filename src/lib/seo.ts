@@ -178,6 +178,7 @@ const STATIC_PATHS = [
   "/list-your-company/",
   "/search/",
   "/saved/",
+  "/badge/",
 ];
 
 /**

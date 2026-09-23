@@ -1,0 +1,250 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const title = "Get Your SoCal Trades Badge | SoCal Trades";
+const description =
+  "Add a free SoCal Trades badge to your website. It shows customers you're a listed local company and links to your profile with your ratings and contact details.";
+
+// The badge image is served (and tracked) by netlify/functions/badge.mjs at
+// /badges/featured.svg. This inline copy is only the on-page preview.
+const previewSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="60" viewBox="0 0 160 60" role="img" aria-label="Find us on SoCal Trades"><rect x="1.5" y="1.5" width="157" height="57" rx="11" fill="#ffffff" stroke="#12417F" stroke-width="3"/><text x="80" y="25" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="0.5" fill="#4B5563">Find us on</text><text x="80" y="45" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="18" fill="#12417F">SoCal Trades</text></svg>`;
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteHeader slot="header" />
+
+  <section class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="text-3xl sm:text-4xl font-bold text-brand-blue">
+      Show customers you're listed on SoCal Trades
+    </h1>
+    <p class="mt-4 text-lg text-gray-800">
+      Adding the SoCal Trades badge to your website tells visitors you're a
+      verified local company. It links straight to your profile, where people
+      can see your ratings, service areas and contact details. It takes about
+      two minutes to add, and it's free. Paste one small snippet into your site
+      and you're done.
+    </p>
+
+    <div class="mt-8 flex flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white p-6">
+      <p class="text-base font-semibold text-gray-600">Badge preview</p>
+      <div set:html={previewSvg} />
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-brand-blue">Find your business</h2>
+      <p class="mt-2 text-lg text-gray-700">
+        Search for your listing to get your personal badge code.
+      </p>
+      <input
+        id="badge-search"
+        type="search"
+        autocomplete="off"
+        placeholder="Start typing your company name…"
+        class="tap-target mt-4 w-full rounded-lg border-2 border-gray-300 bg-white px-4 text-lg text-gray-900 focus:border-brand-blue"
+      />
+      <ul id="badge-results" class="mt-2 hidden divide-y divide-gray-100 rounded-lg border border-gray-200 bg-white"></ul>
+      <p id="badge-none" class="mt-2 hidden text-base text-gray-600">
+        No matches. Check the spelling, or
+        <a href="/list-your-company" class="text-brand-blue underline">list your company</a>.
+      </p>
+    </div>
+
+    <div id="badge-snippet-wrap" class="mt-8 hidden">
+      <h2 class="text-2xl font-bold text-brand-blue">
+        Your badge code for <span id="badge-picked-name" class="text-gray-900"></span>
+      </h2>
+      <div class="mt-3 flex flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white p-6">
+        <a id="badge-preview-link" href="#" target="_blank" rel="noopener">
+          <img id="badge-preview-img" src="" alt="Find us on SoCal Trades" width="160" height="60" />
+        </a>
+      </div>
+      <label for="badge-code" class="mt-4 block text-base font-semibold text-gray-800">
+        Copy this code into your website
+      </label>
+      <textarea
+        id="badge-code"
+        readonly
+        rows="4"
+        class="mt-2 w-full rounded-lg border-2 border-gray-300 bg-gray-50 p-3 font-mono text-sm text-gray-900"
+      ></textarea>
+      <button
+        id="badge-copy"
+        type="button"
+        class="tap-target mt-3 rounded-lg bg-brand-blue px-6 text-lg font-semibold text-white hover:opacity-90"
+      >
+        Copy code
+      </button>
+      <span id="badge-copied" class="ml-3 hidden text-base font-semibold text-green-700">Copied!</span>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-brand-blue">How to add it to your site</h2>
+      <div class="mt-4 space-y-3">
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer text-lg font-semibold text-gray-900">WordPress</summary>
+          <p class="mt-2 text-lg text-gray-800">
+            Edit your footer or a page, add a "Custom HTML" block, paste the
+            code, and update.
+          </p>
+        </details>
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer text-lg font-semibold text-gray-900">Wix</summary>
+          <p class="mt-2 text-lg text-gray-800">
+            Click Add, choose Embed Code, then Embed HTML. Paste the code, place
+            it where you want it, and publish.
+          </p>
+        </details>
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer text-lg font-semibold text-gray-900">Squarespace</summary>
+          <p class="mt-2 text-lg text-gray-800">
+            Add a "Code" block where you want the badge, paste the code, and
+            save.
+          </p>
+        </details>
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer text-lg font-semibold text-gray-900">GoDaddy Website Builder</summary>
+          <p class="mt-2 text-lg text-gray-800">
+            Add an "HTML" section, paste the code, and publish.
+          </p>
+        </details>
+        <details class="rounded-lg border border-gray-200 bg-white p-4">
+          <summary class="cursor-pointer text-lg font-semibold text-gray-900">Any other site</summary>
+          <p class="mt-2 text-lg text-gray-800">
+            Send the code to whoever manages your website and ask them to put it
+            in the footer.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-brand-blue">Questions</h2>
+      <dl class="mt-4 space-y-5">
+        <div>
+          <dt class="text-lg font-bold text-gray-900">Is it free?</dt>
+          <dd class="mt-1 text-lg text-gray-800">Yes. The badge is free to use.</dd>
+        </div>
+        <div>
+          <dt class="text-lg font-bold text-gray-900">Where should I put it?</dt>
+          <dd class="mt-1 text-lg text-gray-800">
+            The footer or your About page work well, so it shows on every page.
+          </dd>
+        </div>
+        <div>
+          <dt class="text-lg font-bold text-gray-900">Do I have to add it to stay listed?</dt>
+          <dd class="mt-1 text-lg text-gray-800">
+            No. The badge is optional and nothing about your listing depends on
+            it.
+          </dd>
+        </div>
+      </dl>
+      <p class="mt-6 text-lg text-gray-800">
+        Need a hand? <a href="/contact" class="text-brand-blue underline">Contact us</a>
+        and we'll help you add it.
+      </p>
+    </div>
+  </section>
+
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  const SITE = "https://socaltrades.net";
+  const input = document.getElementById("badge-search") as HTMLInputElement;
+  const results = document.getElementById("badge-results")!;
+  const none = document.getElementById("badge-none")!;
+  const wrap = document.getElementById("badge-snippet-wrap")!;
+  const nameEl = document.getElementById("badge-picked-name")!;
+  const code = document.getElementById("badge-code") as HTMLTextAreaElement;
+  const link = document.getElementById("badge-preview-link") as HTMLAnchorElement;
+  const img = document.getElementById("badge-preview-img") as HTMLImageElement;
+  const copyBtn = document.getElementById("badge-copy") as HTMLButtonElement;
+  const copied = document.getElementById("badge-copied")!;
+
+  type Row = { name: string; slug: string; city?: string };
+  let all: Row[] = [];
+
+  function snippet(slug: string): string {
+    return (
+      `<a href="${SITE}/business/${slug}/" target="_blank" rel="noopener">\n` +
+      `  <img src="${SITE}/badges/featured.svg?b=${slug}"\n` +
+      `       alt="Find us on SoCal Trades" width="160" height="60">\n` +
+      `</a>`
+    );
+  }
+
+  function select(row: Row): void {
+    nameEl.textContent = row.name;
+    code.value = snippet(row.slug);
+    link.href = `${SITE}/business/${row.slug}/`;
+    img.src = `${SITE}/badges/featured.svg?b=${row.slug}`;
+    wrap.classList.remove("hidden");
+    results.classList.add("hidden");
+    input.value = row.name;
+    copied.classList.add("hidden");
+    wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function render(matches: Row[]): void {
+    results.innerHTML = "";
+    if (matches.length === 0) {
+      results.classList.add("hidden");
+      none.classList.remove("hidden");
+      return;
+    }
+    none.classList.add("hidden");
+    for (const row of matches.slice(0, 8)) {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "block w-full px-4 py-3 text-left text-lg hover:bg-gray-100";
+      btn.textContent = row.city ? `${row.name} — ${row.city}` : row.name;
+      btn.addEventListener("click", () => select(row));
+      li.appendChild(btn);
+      results.appendChild(li);
+    }
+    results.classList.remove("hidden");
+  }
+
+  function search(q: string): void {
+    const s = q.trim().toLowerCase();
+    if (!s) {
+      results.classList.add("hidden");
+      none.classList.add("hidden");
+      return;
+    }
+    render(all.filter((r) => r.name.toLowerCase().includes(s)));
+  }
+
+  async function load(): Promise<void> {
+    try {
+      const res = await fetch("/businesses.json");
+      const data = await res.json();
+      all = data.map((b: any) => ({ name: b.name, slug: b.slug, city: b.city }));
+    } catch {
+      /* leave all empty; search just finds nothing */
+    }
+    // Pre-select from ?b=slug (used when a claimed company opens this page).
+    const pre = new URLSearchParams(location.search).get("b");
+    if (pre) {
+      const row = all.find((r) => r.slug === pre);
+      if (row) select(row);
+    }
+  }
+
+  input.addEventListener("input", () => search(input.value));
+  input.addEventListener("focus", () => search(input.value));
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(code.value);
+    } catch {
+      code.select();
+      document.execCommand("copy");
+    }
+    copied.classList.remove("hidden");
+  });
+
+  load();
+</script>

@@ -302,6 +302,17 @@ const jsonLd = graph([businessSchema(business)]);
         </section>
       )
     }
+
+    <p class="mt-6 text-base text-gray-600">
+      Listed here?{" "}
+      <a
+        href={business.claimed_by ? `/badge/?b=${business.slug}` : "/badge/"}
+        class="font-semibold text-brand-blue underline"
+      >
+        Get your badge
+      </a>{" "}
+      to show customers you're on SoCal Trades.
+    </p>
   </article>
 
   <script

@@ -119,6 +119,22 @@ create table if not exists subscribers (
 );
 
 -- ---------------------------------------------------------------------------
+-- Badge views — one row per request to /badges/featured.svg, written by the
+-- badge Netlify function (service role). No public policies, so only the
+-- service role can read/write. Lets admins see which companies show the badge.
+-- ---------------------------------------------------------------------------
+create table if not exists badge_events (
+  id         bigint generated always as identity primary key,
+  slug       text,
+  referrer   text,
+  day        date not null default current_date,
+  created_at timestamptz not null default now()
+);
+alter table badge_events enable row level security;
+create index if not exists badge_events_slug_idx on badge_events(slug);
+create index if not exists badge_events_day_idx  on badge_events(day);
+
+-- ---------------------------------------------------------------------------
 -- Admins — flag Supabase Auth users as admins
 -- ---------------------------------------------------------------------------
 create table if not exists admins (
