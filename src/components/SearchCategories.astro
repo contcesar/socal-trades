@@ -1,0 +1,42 @@
+---
+// Category dropdown shown under the search box on focus. Lists every trade
+// with a colored icon tile; typing filters the list. Clicking a category goes
+// to that trade page, while pressing Enter still submits a text search.
+import { getTrades } from "../lib/data";
+import TradeIcon from "./TradeIcon.astro";
+const trades = await getTrades();
+// A small palette cycled across categories for visual variety, like the mockup.
+const COLORS = ["#2E7D32", "#1F5FA8", "#C0872E", "#8E44AD", "#B0413E", "#0E7C7B", "#B5651D"];
+---
+
+<div
+  class="search-cats absolute left-0 right-0 top-full z-50 mt-2 hidden max-h-[70vh] overflow-auto rounded-2xl border border-gray-200 bg-white py-2 text-left shadow-xl"
+  role="listbox"
+  aria-label="Categories"
+>
+  <p class="search-cats-heading px-4 py-2 text-sm font-semibold text-gray-500">Categories</p>
+  <ul>
+    {
+      trades.map((t, i) => (
+        <li>
+          <a
+            href={`/trades/${t.slug}`}
+            class="search-cat flex items-center gap-3 px-3 py-2 hover:bg-gray-100"
+            data-name={t.name.toLowerCase()}
+          >
+            <span
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white"
+              style={`background:${COLORS[i % COLORS.length]}`}
+            >
+              <TradeIcon icon={t.icon} class="h-6 w-6" />
+            </span>
+            <span class="text-lg text-gray-800">{t.name}</span>
+          </a>
+        </li>
+      ))
+    }
+    <li class="search-cats-empty hidden px-4 py-3 text-base text-gray-500">
+      No matching categories. Press Enter to search.
+    </li>
+  </ul>
+</div>
