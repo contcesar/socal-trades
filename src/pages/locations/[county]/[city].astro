@@ -46,12 +46,16 @@ const h1 = cityH1(cityName);
 const noindex = !isIndexableCount(businesses.length);
 
 const content = getLocalContent(Astro.url.pathname);
-if (!content && !noindex) {
-  console.warn(`[seo] Missing local content entry for ${Astro.url.pathname} (indexable) — using generic intro.`);
+const reviewed = content?.reviewed === true;
+if (!reviewed && !noindex) {
+  console.warn(`[seo] ${Astro.url.pathname} is indexable but has ${content ? "unreviewed" : "no"} local content — using generic intro.`);
 }
-const introText =
-  content?.intro ?? (noindex ? null : genericIntro("trades companies", cityName));
-const faqs = content?.faqs ?? [];
+const introText = reviewed
+  ? content!.intro
+  : noindex
+    ? null
+    : genericIntro("trades companies", cityName);
+const faqs = reviewed ? content!.faqs : [];
 const nearbyLinks = await nearbyCityLinks(citySlug!);
 
 const jsonLd = graph([
@@ -61,7 +65,7 @@ const jsonLd = graph([
     { name: `${county.name} County`, path: `/locations/${county.slug}/` },
     { name: cityName },
   ]),
-  content?.reviewed && faqs.length ? faqSchema(faqs) : null,
+  faqs.length ? faqSchema(faqs) : null,
 ]);
 ---
 

@@ -60,16 +60,19 @@ const noindex = !isIndexableCount(businesses.length);
 
 // Local content: a reviewed entry if we have one, otherwise a generic intro on
 // indexable pages (and a build warning so missing entries are easy to spot).
+// Only reviewed content renders publicly; unreviewed drafts (with [VERIFY]
+// markers) fall back to the generic intro and never show their FAQs.
 const content = getLocalContent(Astro.url.pathname);
-if (!content && !noindex) {
-  console.warn(`[seo] Missing local content entry for ${Astro.url.pathname} (indexable) — using generic intro.`);
+const reviewed = content?.reviewed === true;
+if (!reviewed && !noindex) {
+  console.warn(`[seo] ${Astro.url.pathname} is indexable but has ${content ? "unreviewed" : "no"} local content — using generic intro.`);
 }
-const introText =
-  content?.intro ??
-  (noindex
+const introText = reviewed
+  ? content!.intro
+  : noindex
     ? null
-    : genericIntro(tradePlural(trade.slug, trade.name), `${county.name} County`));
-const faqs = content?.faqs ?? [];
+    : genericIntro(tradePlural(trade.slug, trade.name), `${county.name} County`);
+const faqs = reviewed ? content!.faqs : [];
 const relatedLinks = await relatedTradeCountyLinks(trade.slug, county.slug);
 
 // JSON-LD: ItemList + BreadcrumbList, and FAQPage only when the FAQs are
@@ -81,7 +84,7 @@ const jsonLd = graph([
     { name: trade.name, path: `/trades/${trade.slug}/` },
     { name: `${county.name} County` },
   ]),
-  content?.reviewed && faqs.length ? faqSchema(faqs) : null,
+  faqs.length ? faqSchema(faqs) : null,
 ]);
 ---
 
