@@ -63,6 +63,7 @@ create table if not exists businesses (
   photo_urls        text[] not null default '{}',
   status            business_status not null default 'draft',
   claimable         boolean not null default true,
+  featured          boolean not null default false,
   claimed_by        uuid references auth.users(id),
   claimed_at        timestamptz,
   created_at        timestamptz not null default now(),
@@ -79,6 +80,10 @@ alter table businesses drop constraint if exists businesses_trade_fkey;
 
 -- Per-business "allow claiming" toggle on already-created tables (no-op fresh).
 alter table businesses add column if not exists claimable boolean not null default true;
+
+-- Admin "featured" flag on already-created tables (no-op fresh). Up to 4
+-- companies are featured; the cap is enforced in the admin UI.
+alter table businesses add column if not exists featured boolean not null default false;
 
 create index if not exists businesses_trade_idx  on businesses(trade);
 create index if not exists businesses_county_idx on businesses(county);

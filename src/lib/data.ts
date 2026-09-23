@@ -116,10 +116,24 @@ export async function getBusinessBySlug(slug: string): Promise<Business | undefi
  */
 export async function getFeaturedBusinesses(limit = 8): Promise<Business[]> {
   const all = await getPublishedBusinesses();
-  // Highest rating first (unrated last), then keep name order as a tiebreak.
+  // Admin-featured companies (up to 4) come first, then the rest by highest
+  // rating (unrated last), keeping name order as a tiebreak.
   return [...all]
-    .sort((a, b) => (b.rating ?? -1) - (a.rating ?? -1))
+    .sort((a, b) => {
+      const fa = a.featured ? 1 : 0;
+      const fb = b.featured ? 1 : 0;
+      if (fa !== fb) return fb - fa;
+      return (b.rating ?? -1) - (a.rating ?? -1);
+    })
     .slice(0, limit);
+}
+
+/** Admin-featured companies, in rating order, capped at 4. */
+export async function getFeaturedPicks(): Promise<Business[]> {
+  return (await published())
+    .filter((b) => b.featured)
+    .sort((a, b) => (b.rating ?? -1) - (a.rating ?? -1))
+    .slice(0, 4);
 }
 
 /** Published businesses in a trade (primary or secondary), sorted by name. */

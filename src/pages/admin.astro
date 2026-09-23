@@ -142,6 +142,14 @@ const refData = JSON.stringify({
             Allow others to claim this profile
           </label>
 
+          <label class="flex items-center gap-3 rounded-lg border border-gray-200 p-4 text-base font-semibold text-gray-800">
+            <input id="f-feature" type="checkbox" class="h-5 w-5 shrink-0 rounded border-gray-300 accent-brand-blue" />
+            <span>
+              Feature this company
+              <span class="block text-sm font-normal text-gray-600">Featured companies (max 4) show first on the homepage with a highlighted card.</span>
+            </span>
+          </label>
+
           <div class="rounded-lg border border-gray-200 p-4">
             <label for="f-keywords" class="text-base font-semibold text-gray-800">Tags / keywords</label>
             <p class="mt-1 text-sm text-gray-600">
@@ -403,6 +411,8 @@ const refData = JSON.stringify({
       setVal("f-keywords", (b?.keywords || []).join(", "));
       (document.getElementById("f-claimable") as HTMLInputElement).checked =
         b?.claimable !== false;
+      (document.getElementById("f-feature") as HTMLInputElement).checked =
+        b?.featured === true;
       renderKeywordChips();
       showFeaturedPreview((b?.photo_urls || [])[0] || "");
       const statusEl0 = document.getElementById("f-featured-status")!;
@@ -438,6 +448,25 @@ const refData = JSON.stringify({
         formMsg.classList.remove("hidden");
         return;
       }
+      const id = val("f-id");
+
+      // Enforce the "up to 4 featured" cap before saving.
+      const wantFeatured = (document.getElementById("f-feature") as HTMLInputElement).checked;
+      if (wantFeatured) {
+        let q = supabase
+          .from("businesses")
+          .select("id", { count: "exact", head: true })
+          .eq("featured", true);
+        if (id) q = q.neq("id", id);
+        const { count, error: cErr } = await q;
+        if (!cErr && (count ?? 0) >= 4) {
+          formMsg.textContent =
+            "You can feature up to 4 companies. Un-feature another company first.";
+          formMsg.classList.remove("hidden");
+          return;
+        }
+      }
+
       const record: any = {
         name,
         slug: val("f-slug") || slugify(name),
@@ -461,10 +490,10 @@ const refData = JSON.stringify({
         photo_urls: arr("f-photos"),
         keywords: arr("f-keywords"),
         claimable: (document.getElementById("f-claimable") as HTMLInputElement).checked,
+        featured: wantFeatured,
         short_description: val("f-short"),
         long_description: val("f-long") || null,
       };
-      const id = val("f-id");
       const res = id
         ? await supabase.from("businesses").update(record).eq("id", id)
         : await supabase.from("businesses").insert(record);
