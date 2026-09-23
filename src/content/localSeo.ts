@@ -50,11 +50,11 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
 
   "/locations/orange/": {
     intro:
-      "Orange County runs from the beach cities of Huntington Beach and Newport Beach through master-planned Irvine and inland to Anaheim and Yorba Linda. Compared with older parts of Los Angeles, a lot of the housing here is newer and built to more recent codes, though the coastal cities and older neighborhoods in Santa Ana and Orange still have aging systems. Permits are issued by each city's building division rather than the county; the City of Irvine runs a One Stop Shop in its Community Development Department [VERIFY: exact office name and process for Irvine], and unincorporated areas go through OC Development Services. Many neighborhoods are governed by HOAs that add their own approval step for exterior work like roofing, paint colors, solar and fences, so budget time for that. Hard water is widespread and affects water heaters, tankless units and fixtures. Inland cities get hot in summer, pushing air-conditioning loads, while coastal salt air speeds up corrosion on metal fixtures and rooftop equipment. Costs vary by city and scope [VERIFY: typical cost ranges for Orange County]. The companies listed below serve cities across the county; check each profile for the areas they actually cover.",
+      "Orange County runs from the beach cities of Huntington Beach and Newport Beach through master-planned Irvine and inland to Anaheim and Yorba Linda. Compared with older parts of Los Angeles, a lot of the housing here is newer and built to more recent codes, though the coastal cities and older neighborhoods in Santa Ana and Orange still have aging systems. Permits are issued by each city's building division rather than the county; the City of Irvine runs a permit counter in its Community Development Department, and unincorporated areas go through OC Development Services. Many neighborhoods are governed by HOAs that add their own approval step for exterior work like roofing, paint colors, solar and fences, so budget time for that. Hard water is widespread and affects water heaters, tankless units and fixtures. Inland cities get hot in summer, pushing air-conditioning loads, while coastal salt air speeds up corrosion on metal fixtures and rooftop equipment. Costs vary by city and the scope of the work, so it's worth getting more than one quote. The companies listed below serve cities across the county; check each profile for the areas they actually cover.",
     faqs: [
       {
         q: "Who issues building permits in Orange County?",
-        a: "Each city's building division handles its own permits. Unincorporated areas go through OC Development Services. Your contractor usually pulls the permit for the work. [VERIFY: exact permit thresholds]",
+        a: "Each city's building division handles its own permits. Unincorporated areas go through OC Development Services. Your contractor usually pulls the permit and can tell you whether your specific job needs one.",
       },
       {
         q: "Will my HOA need to approve the work?",
@@ -62,10 +62,10 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
       },
       {
         q: "Do I need to worry about hard water here?",
-        a: "Hard water is common across Orange County and can shorten the life of water heaters and fixtures. [VERIFY: local water hardness details] Ask companies whether they recommend any treatment for your area.",
+        a: "Hard water is common across Orange County and can shorten the life of water heaters and fixtures. Ask companies whether they recommend any treatment for your area.",
       },
     ],
-    reviewed: false,
+    reviewed: true,
   },
 
   "/locations/san-diego/": {
