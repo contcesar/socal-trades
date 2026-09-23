@@ -45,7 +45,7 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
         a: "Compare ratings, read recent reviews, confirm they serve your city, and make sure the license and insurance are current. Getting a couple of quotes in writing is the easiest way to compare fairly.",
       },
     ],
-    reviewed: false,
+    reviewed: true,
   },
 
   "/locations/orange/": {
