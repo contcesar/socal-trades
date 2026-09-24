@@ -23,4 +23,5 @@ export const TRADES: Trade[] = [
   { id: "t21", name: "Paving", slug: "paving", icon: "road", sort_order: 21 },
   { id: "t24", name: "Site Services", slug: "site-services", icon: "porta-potty", sort_order: 24 },
   { id: "t25", name: "Dump Truck Hauling Service", slug: "dump-truck-hauling", icon: "dump-truck", sort_order: 25 },
+  { id: "t26", name: "Crane Service", slug: "crane-service", icon: "crane", sort_order: 26 },
 ];

@@ -59,6 +59,7 @@ export const TRADE_PLURAL: Record<string, string> = {
   paving: "Paving Contractors",
   "site-services": "Site Services Companies",
   "dump-truck-hauling": "Dump Truck Hauling Companies",
+  "crane-service": "Crane Services",
 };
 
 /** People-plural display name for a trade, falling back to the category name. */

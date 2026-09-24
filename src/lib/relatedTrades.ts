@@ -22,6 +22,7 @@ export const RELATED_TRADES: Record<string, string[]> = {
   paving: ["concrete-masonry", "excavation-services", "utility-contractors"],
   "site-services": ["utility-contractors", "excavation-services", "dump-truck-hauling"],
   "dump-truck-hauling": ["excavation-services", "site-services", "paving"],
+  "crane-service": ["scaffolding", "general-contractor", "excavation-services"],
 };
 
 export function relatedTradeSlugs(slug: string): string[] {

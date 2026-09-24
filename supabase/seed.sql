@@ -20,5 +20,6 @@ insert into trades (name, slug, icon, sort_order) values
   ('Utility Contractors', 'utility-contractors', 'plug', 20),
   ('Paving', 'paving', 'road', 21),
   ('Site Services', 'site-services', 'porta-potty', 24),
-  ('Dump Truck Hauling Service', 'dump-truck-hauling', 'dump-truck', 25)
+  ('Dump Truck Hauling Service', 'dump-truck-hauling', 'dump-truck', 25),
+  ('Crane Service', 'crane-service', 'crane', 26)
 on conflict (slug) do nothing;
