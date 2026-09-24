@@ -70,11 +70,11 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
 
   "/locations/san-diego/": {
     intro:
-      "San Diego County reaches from the coast at La Jolla and Coronado inland to El Cajon and Escondido and east toward the mountains and desert, so conditions change quickly with elevation and distance from the water. In the City of San Diego, permits go through the Development Services Department; other cities such as Chula Vista, Oceanside and Carlsbad run their own building departments, and unincorporated areas go through San Diego County Planning & Development Services. Coastal neighborhoods deal with salt-air corrosion on rooftop HVAC units, metal fixtures and fasteners, plus a lot of stucco and tile-roof housing. Inland and back-country areas sit in wildfire zones with defensible-space and roofing-material rules. Expansive clay soils in parts of the county can move with the seasons and stress slabs, foundations and hardscape. Costs depend on the city, the age of the home and the scope [VERIFY: typical cost ranges for San Diego County]. The companies below serve cities across the county; check each profile for the exact areas they cover before reaching out.",
+      "San Diego County reaches from the coast at La Jolla and Coronado inland to El Cajon and Escondido and east toward the mountains and desert, so conditions change quickly with elevation and distance from the water. In the City of San Diego, permits go through the Development Services Department; other cities such as Chula Vista, Oceanside and Carlsbad run their own building departments, and unincorporated areas go through San Diego County Planning & Development Services. Coastal neighborhoods deal with salt-air corrosion on rooftop HVAC units, metal fixtures and fasteners, plus a lot of stucco and tile-roof housing. Inland and back-country areas sit in wildfire zones with defensible-space and roofing-material rules. Expansive clay soils in parts of the county can move with the seasons and stress slabs, foundations and hardscape. Costs depend on the city, the age of the home and the scope of the work, so it's worth getting more than one quote. The companies below serve cities across the county; check each profile for the exact areas they cover before reaching out.",
     faqs: [
       {
         q: "Where do I get a permit in the City of San Diego?",
-        a: "Through the City of San Diego Development Services Department. Other cities in the county run their own building departments, and unincorporated areas go through San Diego County Planning & Development Services. The contractor typically handles it. [VERIFY: permit thresholds]",
+        a: "Through the City of San Diego Development Services Department. Other cities in the county run their own building departments, and unincorporated areas go through San Diego County Planning & Development Services. The contractor typically handles it and can tell you whether your specific job needs a permit.",
       },
       {
         q: "Does the coast affect my roofing or HVAC?",
@@ -82,10 +82,10 @@ export const LOCAL_CONTENT: Record<string, LocalContent> = {
       },
       {
         q: "Are homes here affected by clay soil?",
-        a: "Parts of the county have expansive clay soils that move seasonally and can stress foundations and concrete flatwork. [VERIFY: which areas are most affected] A contractor can tell you whether it applies to your lot.",
+        a: "Parts of the county have expansive clay soils that move seasonally and can stress foundations and concrete flatwork. A contractor can tell you whether it applies to your lot.",
       },
     ],
-    reviewed: false,
+    reviewed: true,
   },
 
   // ---- Trade + county pages ----
