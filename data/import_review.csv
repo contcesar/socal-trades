@@ -1,333 +1,333 @@
-company,city,county,assigned_trade,needs_category_review,has_description,classification,email,website
-"#1 Son Plumbing, Inc.",Redlands,San Bernardino,plumbing,,yes,$0 to $1 million,1sonplumbing@gmail.com,https://www.1sonplumbing.com
-"20/20 Plumbing & Heating, Inc.",Riverside,Riverside,plumbing,,no,>$3 million to $6 million,l.segarra@2020ph.com,https://www.2020ph.com
-"A & C Electric, Inc.",Rancho Cucamonga,San Bernardino,electrical,,no,$0 to $1 million,mike@ac-electricinc.com,
-A to Z Electrical,Laguna Hills,Orange,electrical,,no,>$3 million to $6 million,alina@atozelectricians.com,https://www.atozelectricians.com
-"A.J. Kirkwood and Associates, Inc.",Fullerton,Orange,electrical,,yes,>$100 million to $250 million,leah.zappia@ajk-a.com,https://www.ajk-a.com
-"Abigail Electric, Inc.",Alhambra,Los Angeles,electrical,,no,$0 to $1 million,ogomez@abigailelectric.com,
-"AC Pros, Inc.",Reseda,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,acprosinc@gmail.com,https://www.acprosinc.com
-"Access Electric, Inc.",Tustin,Orange,electrical,,no,>$6 million to $10 million,tabitha@accesselectricinc.com,https://www.accesselectricinc.com
-ACME Construction Supply,Santa Fe Springs,Los Angeles,general-contractor,,yes,Supplier,ginag@acmetool.com,https://www.acmetool.com
-"Advanced Electrical Technologies, Inc.",Murrieta,Riverside,electrical,,no,$0 to $1 million,pbrock@advelectech.com,https://www.advelectech.com
-"Air Control Systems, Inc.",Ontario,San Bernardino,hvac,,yes,>$20 million to $50 million,jleotaud@aircontrolsystems.net,https://www.aircontrolsystems.com
-"Air Design & Solutions, Inc.",Riverside,Riverside,general-contractor,YES,no,>$1 million to $3 million,jmyers@airdesign.solutions,
-"AK Constructors, Inc.",Corona,Riverside,electrical,,yes,>$3 million to $6 million,jen@akconstructors.com,https://www.akconstructors.com
-ALBD Electric & Cable,La Habra,Orange,electrical,,no,>$20 million to $50 million,chad@albdinc.com,https://www.albdinc.com
-All American Building Services,Santa Clarita,Los Angeles,general-contractor,,no,>$1 million to $3 million,anthony@allamericanrebuild.com,
-"All Star Air Systems, Inc.",Fountain Valley,Orange,general-contractor,,yes,>$1 million to $3 million,allstarairsystems@gmail.com,
-"Allegiance Air & Mechanical, Inc.",Victorville,San Bernardino,hvac,,no,>$1 million to $3 million,cl@allegianceairinc.com,https://www.allegianceairinc.com
-"Allegiance Electric, Inc.",Murrieta,Riverside,electrical,,no,>$1 million to $3 million,acentanni@allegianceelec.com,
-"Alliance Electrical Systems, Inc.",San Diego,San Diego,electrical,,no,$0 to $1 million,brad@absenergy.com,
-"Alpha Mechanical, LLC",El Cajon,San Diego,hvac,,yes,$0 to $1 million,jeidsmoe@alphamechanical.com,https://www.alphamechanical.com
-Alternative Power Partners LLC,Carlsbad,San Diego,general-contractor,YES,no,$0 to $1 million,dkbrian@altpowerpartners.com,https://www.altpowerpartners.com
-Amtek Construction,Orange,Orange,general-contractor,,no,>$3 million to $6 million,steven@amtekconstruction.com,https://www.amtekconstruction.com
-Anderson Air Conditioning L.P.,Fullerton,Orange,hvac,,yes,>$10 million to $20 million,mhaynam@amsofusa.com,https://www.amsofusa.com
-"Andulra Development, Inc.",Calabasas,Los Angeles,general-contractor,YES,no,$0 to $1 million,rwood@andulra.com,https://www.andulra.com
-"ANI Mechanical, Inc.",Burbank,Los Angeles,hvac,,no,$0 to $1 million,raymond@aniplumbing.com,
-AP Building Maintenance Inc.,Anaheim,Orange,general-contractor,,no,>$1 million to $3 million,andrew@apbuildinginc.com,https://www.apbuildinginc.com
-Apollo Electric,Torrance,Los Angeles,electrical,,no,$0 to $1 million,imoodie@apollonyc.com,
-"Apple Valley Communications, Inc.",Apple Valley,San Bernardino,general-contractor,YES,yes,>$20 million to $50 million,lcusack@avcsystems.com,https://www.applevalleycommunications.com
-"Aquila Energy, LLC",Vista,San Diego,general-contractor,YES,no,>$10 million to $20 million,dflick@aquilaenergy.com,https://www.aquilaenergy.com
-Arena Staffing,Ontario,San Bernardino,general-contractor,,yes,Associate,dave@arenastaffing.net,https://www.arenastaffing.net
-Aris Construction,Burbank,Los Angeles,general-contractor,,no,$0 to $1 million,aris@aconstruction.org,
-"Arrow Electric Construction Services, Inc.",Anaheim,Orange,electrical,,no,>$1 million to $3 million,arrowelectric@dslextreme.com,
-Arrow Lift,Agoura Hills,Los Angeles,general-contractor,YES,yes,>$3 million to $6 million,joe.newstrom@arrowlift.com,https://arrowlift.com
-"Arrowhead Mechanical, Inc.",San Bernardino,San Bernardino,hvac,,yes,>$3 million to $6 million,bids@arrowheadair.com,https://www.arrowheadair.com
-Artifex Plumbing Systems Group,Grand Terrace,San Bernardino,plumbing,,no,$0 to $1 million,artifexconstruction18@gmail.com,https://www.artifexpsg.com
-"Atkinson, Andelson, Loya, Ruud & Romo",Cerritos,Los Angeles,general-contractor,,yes,Associate,tlenz@aalrr.com,https://www.aalrr.com
-"Atlas Mechanical, Inc.",San Diego,San Diego,hvac,,no,>$3 million to $6 million,sam@atlasmechanical.com,
-Avram Electric,Mira Loma,Riverside,electrical,,no,>$1 million to $3 million,avramelectric@yahoo.com,
-"B & B Plumbing, Inc.",Anaheim,Orange,plumbing,,yes,>$1 million to $3 million,brianjohn@bbplumbinginc.com,https://www.bbplumbinginc.com
-Balfour Beatty,San Diego,San Diego,general-contractor,YES,no,Over $250 million,adelrio@balfourbeattyus.com,https://balfourbeattyus.com
-"Barden Electric, Inc.",Torrance,Los Angeles,electrical,,yes,>$3 million to $6 million,steves@bardenelectric.com,https://www.bardenelectric.com
-"BAS Plumbing, Inc.",Riverside,Riverside,plumbing,,no,>$3 million to $6 million,tom@bas-plumbing.com,https://www.bas-plumbing.com
-"Beach City Electric, Inc.",Huntington Beach,Orange,electrical,,no,>$1 million to $3 million,info@beachcityelectric.com,https://www.beachcityelectric.com
-Bergelectric Corp.,Carlsbad,San Diego,electrical,,no,>$20 million to $50 million,info@bergelectric.com,https://www.bergelectric.com
-BJ Development,Newhall,Los Angeles,general-contractor,YES,no,$0 to $1 million,bjdevelopmentconstruction@gmail.com,
-"Blackdog Electrical Systems, Inc.",Long Beach,Los Angeles,electrical,,no,>$1 million to $3 million,chris@blackdogelectricalsystems.com,https://www.blackdogelectricalsystems.com
-Blue Point Electric,Menifee,Riverside,electrical,,no,$0 to $1 million,nrodriguez@bluepointelectric.com,
-Blue Violet Networks,Fountain Valley,Orange,general-contractor,YES,yes,>$6 million to $10 million,dkim@blueviolet.net,https://www.bluevioletnetworks.com
-"Bon Air, Inc.",Los Angeles,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,brian@bonairinc.com,
-"Bravi Electric, Inc.",La Habra,Orange,electrical,,no,>$1 million to $3 million,al@bravielectric.com,https://www.bravielectric.com
-"Brett Wright Electric, Inc.",Riverside,Riverside,electrical,,no,>$1 million to $3 million,brett@bwelectriccorp.com,
-"Brian Devries Construction, Inc.",Santa Ana,Orange,concrete-masonry,,yes,$0 to $1 million,rico@devriescon.com,https://www.devriescon.com
-"Brudvik, Inc.",Palm Springs,Riverside,electrical,,yes,>$3 million to $6 million,briana@brudvikinc.com,https://www.brudvikelectric.com
-"Brycoll, LLC",Yorba Linda,Orange,general-contractor,,yes,Industry Professional,ken@brycollllc.com,https://www.brycollllc.com
-BTEC,Gardena,Los Angeles,general-contractor,YES,no,$0 to $1 million,tomtenney@msn.com,
-"Budget Electrical Contractors, Inc.",Redlands,San Bernardino,electrical,,no,>$1 million to $3 million,dcreger@becelectric.com,https://www.becelectric.com
-Building Resources,Glendora,Los Angeles,general-contractor,,no,>$20 million to $50 million,alatourelle@brco.com,
-"Burtch Trucking, Inc.",Bakersfield,Kern,concrete-masonry,,yes,>$3 million to $6 million,accounting@burtchconstruction.com,https://www.burtchconstruction.com
-"Buxcon Sheet Metal, Inc.",Santee,San Diego,general-contractor,YES,no,>$10 million to $20 million,gina@buxconsheetmetal.com,https://www.buxconsheetmetal.com
-C & L Refrigeration Corporation,Fullerton,Orange,hvac,,yes,>$50 million to $100 million,ljaslove@clref.com,https://www.clrefrigeration.com
-"Cal Pac Sheet Metal, Inc.",Santa Ana,Orange,roofing,,yes,>$1 million to $3 million,billing@calpacsheetmetal.com,https://www.calpacsheetmetal.com
-Caliba Inc.,Stanton,Orange,general-contractor,YES,no,>$3 million to $6 million,adam@calibainc.com,https://www.calibaincorporation.com
-California Boiler,Santa Ana,Orange,general-contractor,YES,no,>$20 million to $50 million,ganderson@californiaboiler.com,https://www.californiaboiler.com
-"Campbell Contracting, Inc.",Yucaipa,San Bernardino,general-contractor,YES,no,>$1 million to $3 million,bcampbell@titanelectricus.com,https://www.titanelectricus.com
-Case and Sons Construction,Anaheim,Orange,general-contractor,,no,>$1 million to $3 million,caseshop@caseandsons.com,
-CBIZ CPAs,Costa Mesa,Orange,general-contractor,,yes,Associate,warren.hennagin@marcumllp.com,https://www.marcumllp.com
-Cemas Inc.,Newhall,Los Angeles,general-contractor,,yes,>$1 million to $3 million,carlos@ornelaselectric.com,https://www.cemasinc.com
-"Center Electric Services, Inc.",Riverside,Riverside,electrical,,no,>$1 million to $3 million,mike@centerelectric.net,https://www.centerelectric.net
-"Centerpoint Communications, Inc.",Yorba Linda,Orange,general-contractor,YES,no,>$1 million to $3 million,jon@cpoint1.net,https://www.centerpointcommunications.com
-Challenger Sheet Metal,Santee,San Diego,roofing,,yes,>$1 million to $3 million,bobby@challengersm.com,https://www.challengersm.com
-"Champion Electric, Inc.",Riverside,Riverside,electrical,,yes,>$10 million to $20 million,estimating@championelec.com,https://www.championelec.com
-Chase Electric Company,Chino,San Bernardino,electrical,,no,>$1 million to $3 million,chase@chaseec.com,https://www.chaseec.com
-"Checkpoint Communications, Inc.",Huntington Beach,Orange,general-contractor,YES,yes,>$1 million to $3 million,jshoaff@ccomwire.com,https://www.checkpointcomm.com
-"Christian Brothers Mechanical Services, Inc.",Jurupa Valley,Riverside,hvac,,yes,>$20 million to $50 million,don@cbhvac.com,https://www.cbhvac.com
-"Circle City Electric, Inc.",Riverside,Riverside,electrical,,yes,>$10 million to $20 million,john.johnson@circlecityelectric.com,https://www.circlecityelectric.com
-Coast Construction Group,Lancaster,Los Angeles,general-contractor,,no,>$1 million to $3 million,trevor@coast-group.com,https://www.coast-group.com
-"Colonial Electric, Inc.",Chino,San Bernardino,electrical,,no,>$10 million to $20 million,garysr@colonialelectric.net,https://www.colonialelectric.net
-Combs Company Plumbing,Yucaipa,San Bernardino,plumbing,,no,$0 to $1 million,hcombs1955@aol.com,
-"Comfort & Hays Electric, Inc.",Upland,San Bernardino,electrical,,no,>$3 million to $6 million,mhays@comforthays.com,
-"Consolidated Contracting Services, Inc.",San Clemente,Orange,general-contractor,,yes,>$50 million to $100 million,cveje@consolidatedcontracting.com,https://www.consolidatedcontracting.com
-"Consolidated Mechanical Air Conditioning & Heating, Inc.",Pasadena,Los Angeles,hvac,,yes,$0 to $1 million,consolidmech@gmail.com,https://www.consolidatedmechanical.net
-"Construction Electric, Inc.",Riverside,Riverside,electrical,,yes,>$3 million to $6 million,kc@constructionelectric.com,https://www.constructionelectric.com
-"Continental Plumbing, Inc.",Jurupa Valley,Riverside,plumbing,,yes,>$1 million to $3 million,nathan.buckley@continentalplumbing.com,https://www.continentalplumbing.com
-"Control Electric, Inc.",Corona,Riverside,electrical,,yes,>$1 million to $3 million,info.controlelectric.net,https://www.controlelectric.net
-CORElectric Inc.,Santa Clarita,Los Angeles,electrical,,yes,,inquiry@corelectric.net,https://www.corelectric.net
-"Cove Electric, Inc.",Palm Desert,Riverside,electrical,,no,>$3 million to $6 million,dbojkovsky@coveelectric.com,https://www.coveelectric.com
-"Craig Mechanical, Inc.",Riverside,Riverside,plumbing,,yes,>$6 million to $10 million,frankc@craigmech.com,https://www.craigmech.com
-"Crawford & Bangs, LLP",Covina,Los Angeles,general-contractor,,yes,Associate,ttate@builderslaw.com,https://www.builderslaw.com
-"Crosby Plumbing, Inc.",Altadena,Los Angeles,plumbing,,no,$0 to $1 million,anthony@crosbyplumbing.net,
-"CRP Plumbing Company, Inc.",Redlands,San Bernardino,plumbing,,yes,>$1 million to $3 million,chris@crpplumbing.com,https://www.crpplumbing.com
-"Current Innovations Electric, Inc.",Long Beach,Los Angeles,electrical,,yes,$0 to $1 million,kmccormick@cie.contractors,https://www.currentinnovationselectric.com
-Cusick Electric Inc.,Camarillo,Ventura,electrical,,no,>$1 million to $3 million,casey@cusickelectric.com,https://www.cusickelectric.com
-"Cutler Power and Light, INC",Chino,San Bernardino,general-contractor,YES,no,$0 to $1 million,rcutler@cutlerpower.com,https://www.cutlerpower.com
-Data Specialties Inc.,Buena Park,Orange,general-contractor,YES,no,>$3 million to $6 million,jon@webuilddatacenters.com,https://www.webuilddatacenters.com
-"David Crowell Electric, Inc.",Irvine,Orange,electrical,,yes,>$3 million to $6 million,dave@davidcrowellelectric.com,https://www.davidcrowellelectric.com
-Davitt Inc. Dba Electrical Solutions,Thousand Palms,Riverside,electrical,,no,$0 to $1 million,info@electricalsolutions4you.com,
-"DCE Electric, Inc.",Valencia,Los Angeles,electrical,,yes,>$3 million to $6 million,kcoyle@dceelectric.com,
-"Delta Wye Electric, Inc.",Anaheim,Orange,electrical,,yes,>$6 million to $10 million,ckasalek@deltawye.com,https://www.deltawye.com
-Denver Industries,Van Nuys,Los Angeles,general-contractor,YES,no,$0 to $1 million,corina@denverinc.com,https://denverind.wixsite.com/denverindustries
-DEWALT,Ontario,San Bernardino,general-contractor,,yes,Supplier,andres.perez@sbdinc.com,https://www.dewalt.com
-"Digital Technologies, Inc.",Ontario,San Bernardino,general-contractor,YES,no,>$3 million to $6 million,dvillarreal@digitaltech.us.com,https://www.digitaltechnologies-inc.com
-"DMG SC, Inc.",Orange,Orange,general-contractor,YES,no,>$1 million to $3 million,roman@zaretskyengineering.com,
-Drain Vision,San Bernardino,San Bernardino,general-contractor,YES,no,$0 to $1 million,drainvision@gmail.com,https://www.drainvisionsewercamerainspections.com
-"DSP Electrical Contractors, Inc.",Lake Elsinore,Riverside,electrical,,no,>$1 million to $3 million,sperkins@dspelectric.com,
-Duo Electric,Riverside,Riverside,electrical,,no,$0 to $1 million,john@duo-electric.com,https://www.duo-electric.com
-EA Technology Solutions,Irvine,Orange,general-contractor,YES,no,>$1 million to $3 million,darlene@eatechsolutions.com,https://www.eatechsolutions.com
-Eaton Crouse Hinds-Eaton B-Line,San Diego,San Diego,general-contractor,YES,no,>$10 million to $20 million,pedrovilla@eaton.com,https://www.eaton.com
-Eclipse Lighting & Electrical,Anaheim,Orange,electrical,,no,>$10 million to $20 million,miker@eclipselightingservices.com,https://www.eclipselightingservices.com
-"Econolite Systems, Inc.",Anaheim,Orange,general-contractor,YES,yes,>$10 million to $20 million,cflores@econolite.com,https://www.econolite.com
-El Karnak Construction Inc.,Covina,Los Angeles,general-contractor,,yes,$0 to $1 million,info@elkarnakconstruction.com,
-"Electric Vehicle Infrastructures, Inc.",Upland,San Bernardino,electrical,,no,>$6 million to $10 million,asellers@evicharge.com,https://www.evicharge.com
-"Electrical Junkies, Inc.",Lake Elsinore,Riverside,electrical,,no,$0 to $1 million,socalelectricaljunkies@outlook.com,
-"Electrical Management Systems, Inc.",Placentia,Orange,electrical,,no,>$1 million to $3 million,info@electrical-ms.com,https://www.electrical-ms.com
-"Electro Tec Electrical Contractors, Inc.",Corona,Riverside,electrical,,no,$0 to $1 million,rcosta@electrotecinc.com,
-"Electromen, Inc.",Studio City,Los Angeles,general-contractor,YES,yes,$0 to $1 million,guzal@rbsolution.net,
-"Elite Air Conditioning, Inc.",Norco,Riverside,hvac,,no,$0 to $1 million,nick@elitehvacinc.com,https://www.elitehvacinc.com
-"Empyrean Plumbing, Inc.",Riverside,Riverside,plumbing,,no,>$10 million to $20 million,brooke@empyreanplumbing.com,https://www.empyreanplumbing.com
-EOS Worldwide,Redondo Beach,Los Angeles,general-contractor,YES,no,Industry Professional,ben.kelley@eosworldwide.com,https://www.eosworldwide.com/ben-kelley
-Erickson-Hall Construction Co.,Escondido,San Diego,general-contractor,,no,>$50 million to $100 million,rgonzalez@ericksonhall.com,https://www.ericksonhall.com
-"ETC Building & Design, Inc.",San Diego,San Diego,general-contractor,,no,>$6 million to $10 million,me@etcusa.net,https://www.etcusa.net
-"EV Infrastructure, LLC",Tustin,Orange,electrical,,yes,>$10 million to $20 million,achim@brytemove.com,https://www.evidb.com
-Exclusive Energy & Electric,Corona,Riverside,electrical,,yes,>$1 million to $3 million,walterj@exclusive-ca.com,https://www.exclusive-ca.com
-Exclusive Metal,Riverside,Riverside,general-contractor,YES,no,>$3 million to $6 million,albert@exclusivemetalinc.com,https://www.exclusivemetalinc.com
-"Expedite Fire, Inc. dba Lindley Fire",Anaheim,Orange,general-contractor,YES,no,>$3 million to $6 million,karlene@lindleyfire.com,https://www.lindleyfire.com
-"F.E.C. Electric, Inc.",Redlands,San Bernardino,electrical,,no,>$20 million to $50 million,ron@fec-electric.com,https://www.fec-electric.com
-Facilities Protection Systems,Brea,Orange,general-contractor,YES,no,>$6 million to $10 million,jgerard@fpsys.com,https://www.fpsys.com
-"Facility Builders & Erectors, Inc.",Anaheim,Orange,general-contractor,,yes,>$20 million to $50 million,kthomson@facilitybuilders.com,https://www.facilitybuilders.com
-"Facility Solutions Group, Inc.",Irvine,Orange,electrical,,yes,>$6 million to $10 million,scott.novy@fsgi.com,https://www.fsgi.com
-"Fairchild Plumbing & Mechanical, Inc.",Ontario,San Bernardino,plumbing,,no,>$1 million to $3 million,matt@fairchildplbg.com,
-"Federal Technology Solutions, Inc.",Corona,Riverside,general-contractor,YES,yes,>$3 million to $6 million,sales@federalsales.com,https://www.federalsales.com
-FedVet Construction,Temecula,Riverside,general-contractor,,no,>$10 million to $20 million,edgar@fedvet.com,
-"First Call Electric, Inc.",Tehachapi,Kern,electrical,,yes,$0 to $1 million,firstcallelect@gmail.com,
-"First Electric Systems, Inc.",Brea,Orange,electrical,,yes,>$1 million to $3 million,fesjason@gmail.com,
-"Fischer, Inc.",San Bernardino,San Bernardino,general-contractor,YES,no,>$6 million to $10 million,mfischer@fischercompanies.com,
-"Franklin Mechanical System, Inc.",Beaumont,Riverside,hvac,,no,>$1 million to $3 million,vinniefranklin@earthlink.net,
-Frize Corporation,City of Industry,Los Angeles,general-contractor,YES,no,>$20 million to $50 million,jsfrize@frizecorp.com,https://www.frizecorp.com
-Fullerton Electric Inc.,Fullerton,Orange,electrical,,no,>$1 million to $3 million,don@fullertonelectric.net,https://www.fullertonelectric.net
-Future Energy,Van Nuys,Los Angeles,general-contractor,YES,no,>$10 million to $20 million,vince.sp@futureenergytoday.com,
-"GA Technical Services, Inc.",Glendora,Los Angeles,electrical,,yes,$0 to $1 million,frank.cervantes@gatechservices.com,https://www.gatechservices.com
-Gavina Plumbing Inc.,Santa Clarita,Los Angeles,plumbing,,no,>$3 million to $6 million,gavinaplumbing@aol.com,https://www.gavinaplumbing.net
-"GBI Electric, Inc.",Palmdale,Los Angeles,electrical,,yes,>$1 million to $3 million,ggonzalez@gbielectric.com,https://www.gbielectric.com
-"GDL Best Contractors, Inc.",Whittier,Los Angeles,general-contractor,,yes,>$1 million to $3 million,franklbqp@msn.com,
-"George C. Hopkins Construction, Inc.",Glendale,Los Angeles,general-contractor,,yes,>$20 million to $50 million,ghopkins@hopkinsconstruction.com,https://www.hopkinsconstruction.com
-GFI Construction,Valencia,Los Angeles,electrical,,yes,$0 to $1 million,julie@gfielectrical.com,https://www.gfielectrical.com
-Global Diversified Voltage Services,Van Nuys,Los Angeles,electrical,,yes,$0 to $1 million,dcollins@gdvoltage.net,https://www.gdvoltage.com
-"Global Fire Technologies, Inc.",Glendale,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,gevorg@glofiretech.com,https://www.glofiretech.com
-"GMPI, LLC",Pinon Hills,San Bernardino,general-contractor,YES,no,$0 to $1 million,jesus@gmpi-plumbing.com,https://www.gmpi-plumbing.com
-"Go-Staff, Inc.",Anaheim,Orange,concrete-masonry,,yes,Associate,scott@go-staff.com,https://www.go-staff.com
-"Good & Roberts, LLC",Carlsbad,San Diego,general-contractor,,yes,>$20 million to $50 million,tcornell@gnrgc.com,https://www.gnrgc.com
-"Graybar Electric Co., Inc.",Diamond Bar,Los Angeles,electrical,,no,Supplier,jason.ghent@graybar.com,https://www.graybar.com
-GRC Industrial,Anaheim,Orange,general-contractor,YES,no,$0 to $1 million,ryan@grcindustrial.com,
-Green Convergence,Valencia,Los Angeles,roofing,,yes,$0 to $1 million,dj@greenconvergence.com,https://www.greenconvergence.com
-Halo Electric Company Inc.,Orange,Orange,electrical,,no,$0 to $1 million,admin@haloelectriccompany.com,
-Hansen’s Plumbing,Ventura,Ventura,plumbing,,no,,cary@hansensplumbing.com,
-Hard Hat Marketing Co.,Santa Ana,Orange,general-contractor,,yes,Associate,nick@hardhatmarketingco.com,https://www.hardhatmarketingco.com
-Helix Electric,Los Angeles,Los Angeles,electrical,,yes,>$20 million to $50 million,mmilne@helixelectric.com,https://www.helixelectric.com
-"HelmCo Electric, Inc.",Irvine,Orange,electrical,,yes,>$3 million to $6 million,michael@helmcoelectric.com,https://www.helmcoelectric.com
-"HPS Mechanical, Inc.",Bakersfield,Kern,plumbing,,yes,$0 to $1 million,sd@hpsmechanical.com,https://www.hpsmechanical.com
-HR Plumbing Inc.,Oceanside,San Diego,plumbing,,yes,$0 to $1 million,hrp@hr-plumbing.com,https://www.hr-plumbing.com
-Hydrotech Electric,Winchester,Riverside,electrical,,yes,>$1 million to $3 million,linda@hydrotechelectric.com,
-"I.E. - Pacific, Inc.",Escondido,San Diego,general-contractor,,yes,>$10 million to $20 million,estimating@iepacific.com,https://www.iepacific.com
-ICS Service,Riverside,Riverside,general-contractor,YES,yes,>$3 million to $6 million,j.abbasi@icsservice.net,https://www.icsservice.net
-"IDEAL Industries, Inc.",North Tustin,Orange,electrical,,yes,Supplier,kristen.pentolino@idealindustries.com,https://www.idealind.com
-Improved Plumbing Corporation,Lake Elsinore,Riverside,plumbing,,no,>$1 million to $3 million,s.molina@improvedplumbing.com,
-Independent Electric Co.,Wildomar,Riverside,electrical,,no,>$1 million to $3 million,tyson@indeelectric.com,https://www.independentelectricco.com
-Integrated Communications & Data,Glendora,Los Angeles,general-contractor,,yes,>$3 million to $6 million,fauten403@gmail.com,
-"Integrated Energy Group, LLC",Fontana,San Bernardino,general-contractor,,yes,$0 to $1 million,jen.hisey@ieconstruction.com,https://www.ieconstruction.com
-Integrity Electric,Anaheim,Orange,electrical,,no,$0 to $1 million,integrityelect@sbcglobal.net,https://www.integrityelec.com
-"Interpipe Contracting, Inc.",Santee,San Diego,plumbing,,yes,>$3 million to $6 million,info@interpipecontracting.com,
-"Inverter Technology, Inc.",Ventura,Ventura,general-contractor,YES,yes,>$1 million to $3 million,devin@invertertechnology.com,https://www.invertertechnology.com
-"Iteris, Inc.",Santa Ana,Orange,general-contractor,YES,no,$0 to $1 million,jbergera@iteris.com,https://www.iteris.com
-"ITX Construction/Consultants, Inc.",Costa Mesa,Orange,general-contractor,,yes,>$10 million to $20 million,eleanorm@itxconst.com,https://www.itxconstruction.com
-IWire Electric,Corona,Riverside,electrical,,no,$0 to $1 million,winnie@iwiresocal.com,
-J & A Plumbing LLC,Imperial,Imperial,plumbing,,no,>$1 million to $3 million,j.a_plumbing@hotmail.com,
-J Perez Electrical,Santa Fe Springs,Los Angeles,electrical,,no,$0 to $1 million,josep@jpelectric2000.com,
-"J. Miller Electric, Inc.",Hesperia,San Bernardino,electrical,,yes,>$1 million to $3 million,jmillerelectric@msn.com,https://www.jmillerelectric.net
-"J.H. Bryant, Jr., Inc.",Gardena,Los Angeles,electrical,,yes,>$6 million to $10 million,johnb@jhbryant.com,https://www.jhbryant.com
-JAM Corporation,Monrovia,Los Angeles,electrical,,yes,,lisa.brennan@jamfire.com,https://www.jamfire.com
-JDC Contracting,La Habra,Orange,general-contractor,,yes,>$1 million to $3 million,info@jdccontracting.com,https://www.jdccontracting.com
-JHS Tax & Consulting,Anaheim,Orange,general-contractor,,yes,Associate,ccleveland@jhstc.com,https://www.jhstc.com
-"JLK Rosenberger, LLP",Irvine,Orange,general-contractor,,yes,Associate,dluna@jlkrllp.com,https://www.jlkrosenberger.com
-"JPI Development Group, Inc.",Murrieta,Riverside,general-contractor,YES,no,>$6 million to $10 million,lillianh@jpidevelopment.com,
-JPS Electric Inc.,Rialto,San Bernardino,electrical,,no,$0 to $1 million,john@jps-electric.com,https://www.jps-electric.com
-"K&S Air Conditioning, Inc.",Orange,Orange,hvac,,yes,>$20 million to $50 million,steve@kandsair.com,https://www.kandsair.com
-K. E. Rodgers Inc.,Redlands,San Bernardino,plumbing,,yes,$0 to $1 million,jskinnerkerinc@gmail.com,
-"K.G.G. Electric, Inc.",Palmdale,Los Angeles,electrical,,yes,>$1 million to $3 million,kenny2@kggelectric.com,https://www.kggelectric.com
-"K2 General Contractors, Inc.",Irvine,Orange,general-contractor,,yes,>$3 million to $6 million,kris@k2generalcontractors.com,https://www.k2generalcontractors.com
-"KERCO, Inc.",Santa Fe Springs,Los Angeles,hvac,,yes,>$3 million to $6 million,james@kercoinc.com,https://www.kercoinc.com
-Kerns Inc. A California Corporation,Hesperia,San Bernardino,general-contractor,YES,no,>$10 million to $20 million,colleen@kernscon.com,http://kernscon.com
-"KT Industries, Inc.",Los Angeles,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,susana@kti.la,https://www.ktiengineering.com
-"Land Mark Electric, Inc.",Canoga Park,Los Angeles,electrical,,yes,,lsaitman@lmela.com,https://www.lmela.com
-"Laser Electric, Inc.",Escondido,San Diego,electrical,,no,>$1 million to $3 million,emilyhartnett@laserelectric.com,https://www.laserelectric.com
-"LCS Constructors, Inc.",Irvine,Orange,general-contractor,,yes,>$20 million to $50 million,eplosker@lcslab.com,https://www.lcslab.com
-Lectrfi Inc.,Chula Vista,San Diego,electrical,,yes,>$1 million to $3 million,bobby@lectrfi.com,
-"Leddy Power Systems, Inc.",Moorpark,Ventura,general-contractor,YES,no,>$1 million to $3 million,curt.leddy@leddypower.com,
-Leverage Information Systems,Ontario,San Bernardino,general-contractor,YES,no,>$10 million to $20 million,terryw@leverageis.com,https://www.leverageis.com
-Light & Power Inc.,Ventura,Ventura,electrical,,yes,>$1 million to $3 million,bruno@lightandpowerinc.com,https://www.lightandpowerinc.com
-"Lighting Technology Services, Inc.",Santa Ana,Orange,general-contractor,YES,yes,>$3 million to $6 million,jdillard@ltspropertyservices.net,https://www.ltspropertyservices.net
-"LightWerks Communication Systems, Inc.",Carson,Los Angeles,general-contractor,YES,yes,>$3 million to $6 million,driberi@lightwerks.com,https://www.lightwerks.com
-"M-Tech Glass, Inc.",Moreno Valley,Riverside,general-contractor,YES,no,>$1 million to $3 million,info@mtechglass.com,
-"M.R. Electrical, Inc.",Los Angeles,Los Angeles,electrical,,no,>$1 million to $3 million,mario@mrelectrical.org,https://www.mrcontractorca.com
-M3 Mechanical,Anaheim,Orange,hvac,,yes,>$10 million to $20 million,tony@m3hvac.com,https://www.m3hvac.com
-"MAC Electric, Inc.",Brea,Orange,electrical,,yes,>$3 million to $6 million,mcooper@macelectricinc.com,
-Mack P & S Construction Inc.,Wildomar,Riverside,general-contractor,,yes,$0 to $1 million,mackconst@gmail.com,
-Main Electric Supply,Santa Ana,Orange,electrical,,no,Supplier,dgermann@mainelectricsupply.com,
-Mammoth Electric,Anaheim,Orange,electrical,,no,>$20 million to $50 million,gil@mammoth.com,
-Marc Electric,Pico Rivera,Los Angeles,electrical,,no,>$1 million to $3 million,marcelectric4u@yahoo.com,
-McKinley Elevator Corporation,Irvine,Orange,general-contractor,YES,yes,>$10 million to $20 million,kevin.rusin@mckinleyelevator.com,https://www.mckinleyelevator.com
-"MEC, Inc.",Edwards Air Force Base,Kern,restoration-services,,yes,>$10 million to $20 million,dale@mec-inc.com,https://www.mec-inc.com
-Medrara HVAC LLC,Diamond Bar,Los Angeles,hvac,,no,$0 to $1 million,medrarahvac@gmail.com,https://www.medrarahvac.com
-Meier Plumbing Inc.,Anaheim,Orange,plumbing,,no,>$3 million to $6 million,granden@meierplumbing.com,https://www.meierplumbing.com
-"Mel Smith Electric, Inc.",Stanton,Orange,electrical,,yes,>$10 million to $20 million,mel@melsmithelectric.com,https://www.melsmithelectric.com
-"Mesa Energy Systems, Inc.",Irvine,Orange,general-contractor,YES,no,Over $250 million,rlake@emcor.net,https://www.mesaenergy.com
-Milender White,Newport Beach,Orange,utility-contractors,,yes,>$50 million to $100 million,amack@milenderwhite.com,https://www.milenderwhite.com
-MJR Plumbing,Baldwin Park,Los Angeles,plumbing,,no,>$1 million to $3 million,marcos@mjrplumbing.net,
-Morris & Garritano,Irvine,Orange,general-contractor,,yes,Associate,manelli@morrisgarritano.com,https://www.morrisgarritano.com
-"MPI - Miller Plumbing, Inc.",San Dimas,Los Angeles,plumbing,,no,>$3 million to $6 million,dave@mpiplumbing.com,https://www.mpiplumbing.com
-MTZ Electric LLC,Corona,Riverside,electrical,,no,>$1 million to $3 million,mmartinez@mtz-electric.com,
-"Mundy Electric, Inc.",Fullerton,Orange,electrical,,no,$0 to $1 million,mundymryan@aol.com,https://www.mundyelectric.net
-"MWC Group, Inc.",Adelanto,San Bernardino,general-contractor,,yes,>$10 million to $20 million,robert.masseth@mwcgroup.net,https://www.mwcgroup.net
-"New Automation Control Services, Inc.",Jurupa Valley,Riverside,electrical,,yes,$0 to $1 million,arturo@nacsbusiness.com,https://www.nacsbusiness.com
-"New Dimension Masonry, Inc.",San Diego,San Diego,concrete-masonry,,no,>$3 million to $6 million,info@ndminc.com,https://www.ndminc.com
-"NKS Mechanical Contracting, Inc.",Anaheim,Orange,hvac,,no,>$1 million to $3 million,nshmara@nksmechanical.com,https://www.nksmechanical.com
-NPI Concrete,Sylmar,Los Angeles,concrete-masonry,,no,$0 to $1 million,czarate@npiconcrete.com,https://www.npiconcrete.com
-Nustar Electric,Moreno Valley,Riverside,electrical,,no,$0 to $1 million,nustarelectric.nallely@gmail.com,
-O’Donnell Electric,Riverside,Riverside,electrical,,no,>$1 million to $3 million,odonnellelectric@gmail.com,https://www.odonnell-electric.com
-Oceans Electric Inc.,Woodland Hills,Los Angeles,electrical,,no,$0 to $1 million,production@oceanselectricinc.com,https://www.oceanselectricinc.com
-OmniDuct,Buena Park,Orange,hvac,,yes,Supplier,mbullock@omniduct.com,https://www.omniduct.com
-On Point Commercial Solar,Valencia,Los Angeles,general-contractor,YES,no,$0 to $1 million,darren@onpointepc.com,
-OneSource Distributors,Oceanside,San Diego,electrical,,yes,Supplier,kmcclure@1sourcedist.com,https://www.1sourcedist.com
-"Ontario Refrigeration Service, Inc.",Ontario,San Bernardino,hvac,,no,>$6 million to $10 million,ptalleur@ontref.com,https://www.ontref.com
-Optima Energy,Artesia,Los Angeles,utility-contractors,,yes,>$1 million to $3 million,young@opnrg.com,https://www.opnrg.com
-"Orange Electrical Contractors, Inc.",Orange,Orange,electrical,,no,>$1 million to $3 million,laurel@orangeelectricalinc.com,
-Orbit Industries,Bell Gardens,Los Angeles,electrical,,yes,Associate,aaron@orbitelectric.com,https://www.orbitelectric.com
-OSHA Training Institute Education Center California State Dominguez Hills,Carson,Los Angeles,general-contractor,YES,no,Industry Professional,osha@csudh.edu,https://www.csudh.edu/osha
-"Outsource, LLC",Los Angeles,Los Angeles,electrical,,yes,Associate,eric@outsource.net,https://www.outsource.net
-Ovis Electric Inc.,Anaheim,Orange,electrical,,yes,>$3 million to $6 million,ovi@oviselectric.com,https://www.oviselectric.com
-P&S Engineering Inc.,Los Angeles,Los Angeles,general-contractor,YES,no,$0 to $1 million,danielsungwork@gmail.com,
-P.E.I. Electric,Downey,Los Angeles,electrical,,no,$0 to $1 million,perezelectricinc@yahoo.com,
-Pacific Energy Construction Corp.,Northridge,Los Angeles,general-contractor,,no,,tina@pacnrg.com,https://www.pacnrg.com
-"Pacific Rim MechanicalContractors, Inc.",San Diego,San Diego,hvac,,no,>$20 million to $50 million,jmouritzen@prmech.com,https://www.prmech.com
-Pacific West Industries Inc.,Orange,Orange,hvac,,yes,>$6 million to $10 million,lauren.p@pacwestac.com,https://www.pacwestac.com
-"Pardess Air, Inc.",Los Angeles,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,estimating@pardessair.com,
-"PCN3, Inc.",Los Alamitos,Orange,general-contractor,,yes,>$50 million to $100 million,info@pcn3.com,https://www.pcn3.com
-Peak Controls,Costa Mesa,Orange,general-contractor,YES,no,$0 to $1 million,robertg@peakcontrolsca.com,
-"Platinum Construction, Inc.",Stanton,Orange,general-contractor,,no,>$6 million to $10 million,ckail@platconinc.com,
-"POLO Engineering, Inc.",Castaic,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,jennifer@poloengineeringinc.com,https://www.poloengineeringinc.com
-"Ponderosa Electric, Inc.",Palm Desert,Riverside,electrical,,no,$0 to $1 million,peidale@aol.com,
-"Power Pro Plus, Inc.",Rialto,San Bernardino,general-contractor,YES,no,>$1 million to $3 million,foliden@pppi.us,
-Power Rise Electric Inc.,Rancho Cucamonga,San Bernardino,electrical,,no,$0 to $1 million,mike.fonseca@prelectric-inc.com,https://www.prelectric-inc.com
-"Power Technology Electric Company, Inc.",Santa Ana,Orange,electrical,,no,>$1 million to $3 million,patricia@ptelectric.net,
-Pramira Inc.,Brea,Orange,general-contractor,,yes,>$20 million to $50 million,david.krajniak@pramira.com,https://www.pramira.com
-"PrimeNet Data Systems, Inc.",Arcadia,Los Angeles,general-contractor,YES,no,$0 to $1 million,daniel@primenetdatasystems.com,
-"Pro Tech Electric, Inc.",Corona,Riverside,electrical,,no,$0 to $1 million,jdprotech@earthlink.net,
-Pro-Craft Construction,Redlands,San Bernardino,plumbing,,yes,>$20 million to $50 million,info@procraftci.com,https://www.procraftci.com
-"Pyro-Comm Systems, Inc.",Irvine,Orange,general-contractor,YES,no,>$20 million to $50 million,jsleigh@pyrocomm.com,
-"R.I.C. Construction Co., Inc.",Hesperia,San Bernardino,general-contractor,,no,>$10 million to $20 million,donald.mangold@ricconstruction.com,https://www.ricconstruction.com
-"RA Electric, Inc.",Northridge,Los Angeles,electrical,,yes,,james@raelectric.net,https://www.raelectric.net
-Radiant Electric LLC,Santa Ana,Orange,electrical,,yes,$0 to $1 million,sam.rdnt@gmail.com,https://www.rdntservices.com
-"Rancho Pacific Electric Construction, Inc.",Rancho Cucamonga,San Bernardino,electrical,,yes,>$50 million to $100 million,scottr@rpeinc.net,https://www.ranchopacificelectric.com
-"Rancho Pacific Electric, Inc.",Rancho Cucamonga,San Bernardino,electrical,,yes,$0 to $1 million,scottr@rpeinc.net,https://www.ranchopacificelectric.com
-"RDM Electric Company, Inc.",Ontario,San Bernardino,electrical,,yes,>$20 million to $50 million,diane@rdmcompanies.com,https://www.rdmcompanies.com
-"Red Dragon Electric, Inc.",Garden Grove,Orange,electrical,,no,>$1 million to $3 million,alfredo@reddragonelectric.com,
-"Redlands Plumbing, Heating & Air Conditioning",Redlands,San Bernardino,plumbing,,yes,$0 to $1 million,tminer@plumbingandair.com,https://www.plumbingandair.com
-"REN Power Systems, Inc.",Canyon Lake,Riverside,electrical,,yes,>$3 million to $6 million,chris@renpowersystems.com,https://www.renpowersystems.com
-"Renewable Construction Services, Inc.",Escondido,San Diego,roofing,,yes,>$10 million to $20 million,lkennedy@renewablecsi.com,https://www.renewablecsi.com
-"Renewable Energy Partners, Inc.",Corona,Riverside,general-contractor,YES,no,>$6 million to $10 million,tony.springer@renewepi.com,https://www.renewepi.com
-"Retrofit Service Company, Inc.",Rancho Cucamonga,San Bernardino,hvac,,yes,>$3 million to $6 million,rsc@retrofitsc.com,https://www.retrofitsc.com
-"Rhino Electrical Construction, Inc.",Fontana,San Bernardino,electrical,,no,$0 to $1 million,rhinoelec@aol.com,
-Right Wire Electric Inc.,Santa Ana,Orange,electrical,,no,$0 to $1 million,rightwireelectric@yahoo.com,
-"Risher Sutherland, Inc. dba United Contractors",San Bernardino,San Bernardino,roofing,,yes,>$3 million to $6 million,info@united-contractors.us,https://www.united-contractors.us
-RJ Electric,Orange,Orange,electrical,,yes,>$1 million to $3 million,paul@rjelectric.com,https://www.rjelectric.com
-RNL Electric,Burbank,Los Angeles,electrical,,yes,$0 to $1 million,boblorden@att.net,
-Rodco Electric Inc.,Rialto,San Bernardino,electrical,,yes,$0 to $1 million,services@rodcoelectrical.com,
-RSVC Company,Riverside,Riverside,plumbing,,yes,>$50 million to $100 million,mark@rsvc.com,https://www.rsvc.com
-"Russell Sigler, Inc.",Brea,Orange,hvac,,yes,>$10 million to $20 million,jmyers@siglers.com,https://www.siglercommercial.com
-"Ryan Electric, Inc.",Ontario,San Bernardino,electrical,,yes,>$1 million to $3 million,ryanelectricinc@verizon.net,
-"Rye Electric, Inc.",Laguna Niguel,Orange,electrical,,no,$0 to $1 million,cgolden@ryecompany.com,https://www.ryecompany.com
-"Rymax Electric, Inc.",Upland,San Bernardino,electrical,,no,$0 to $1 million,rymaxelectric@gmail.com,
-Safeway Building Systems Inc. dba Safeway Electric,Riverside,Riverside,electrical,,yes,>$6 million to $10 million,jkrystafik@safewaybsi.com,https://www.safewaybsi.com
-"Sanchez Enterprises, Inc. DBA Sanchez Electric",Chino,San Bernardino,electrical,,yes,$0 to $1 million,sergio@sanchezelectric.com,
-"Santa Clarita Electrical, Inc.",Valencia,Los Angeles,electrical,,yes,$0 to $1 million,monty@santaclaritaelectrical.com,
-"Seco Electric & Lighting, Inc.",Yorba Linda,Orange,electrical,,no,$0 to $1 million,secoelectricandlighting@gmail.com,
-Sergent Construction,Santa Paula,Ventura,general-contractor,,yes,>$6 million to $10 million,info@sergentconstruction.com,https://www.sergentconstruction.com
-Shaw Electric Inc.,Anaheim,Orange,electrical,,no,>$1 million to $3 million,mshaw@shawelectriccompany.com,https://www.shawelectriccompany.com
-SI Testing,Alta Loma,San Bernardino,general-contractor,YES,no,>$6 million to $10 million,tyler@sitesting.net,https://www.sitesting.net
-"Simco Mechanical, Inc.",Altadena,Los Angeles,hvac,,no,$0 to $1 million,cesar@simcomechanical.com,
-Skybridge Renewables LLC,Aliso Viejo,Orange,general-contractor,YES,no,>$3 million to $6 million,jason@skybridgeenergy.com,
-SoCal Communications Group,Artesia,Los Angeles,general-contractor,YES,yes,>$1 million to $3 million,info@mysocalgroup.com,https://www.mysocalgroup.com
-Solar Discovery,Northridge,Los Angeles,general-contractor,YES,no,>$1 million to $3 million,ariel@solarpricediscovery.com,https://www.solarpricediscovery.com
-"South Bay Heating & Air Conditioning, Inc.",Long Beach,Los Angeles,hvac,,yes,>$3 million to $6 million,dmiller@southbayhvac.com,https://www.southbayhvac.com
-"South Coast Electrical, Inc.",Anaheim,Orange,electrical,,no,>$1 million to $3 million,jritter@scfacilityservices.com,https://www.scfacilityservices.com
-"Southern California West Coast Electric, Inc.",Banning,Riverside,electrical,,yes,>$10 million to $20 million,jeannie@scwce.com,https://www.scwce.com
-Southwest Industrial Electric,Los Angeles,Los Angeles,electrical,,yes,>$6 million to $10 million,cristiano@southwestelectric.com,https://www.southwestelectric.com
-"Strang Heating and Air Conditioning, Inc.",El Cajon,San Diego,hvac,,no,>$1 million to $3 million,strangheating@sbcglobal.net,https://www.strangheatingandair.com
-"Stronghold Engineering, Inc.",Perris,Riverside,electrical,,yes,>$50 million to $100 million,bb@teamsei.com,https://www.strongholdengineering.com
-"Sunwest Electric, Inc.",Anaheim,Orange,electrical,,no,>$20 million to $50 million,bpariseau@sunwestelect.com,https://www.sunwestelectric.net
-"Synergy Systems Integration, LLC",Sherman Oaks,Los Angeles,general-contractor,YES,no,$0 to $1 million,mcruz@synergyllcemail.com,https://www.synergysystemsintegration.com
-Tax & Financial Group (TFG),Newport Beach,Orange,general-contractor,,yes,Associate,seth.walston@tfgroup.com,https://www.tfgroup.com
-TechNet Partners Inc.,Carlsbad,San Diego,general-contractor,YES,yes,>$6 million to $10 million,bschumann@techpartners.com,https://www.technetpartners.com
-"Tekworks, Inc.",San Diego,San Diego,general-contractor,YES,yes,>$20 million to $50 million,krogers@paladintechnologies.com,https://www.tekworks.com
-Temp Power Systems,Rancho Santa Margarita,Orange,electrical,,yes,>$3 million to $6 million,cyates@temppower.com,https://www.temppower.com
-Teracom Services,Orange,Orange,general-contractor,YES,no,>$6 million to $10 million,lmiller@teracomservice.com,https://www.teracomservices.com
-Time & Alarm Systems,Mira Loma,Riverside,general-contractor,YES,yes,>$6 million to $10 million,keithsenn@timeandalarm.com,https://www.timeandalarm.com
-TK Electric,Orange,Orange,electrical,,no,>$1 million to $3 million,toddk@tkelectric.biz,
-Tradesmen International,Cypress,Orange,general-contractor,,yes,Associate,robert.kazahaya@tradesmeninternational.com,https://www.tradesmeninternational.com
-Trans Electric LLC,Thousand Oaks,Ventura,electrical,,no,$0 to $1 million,businessops@transelectricllc.com,
-Trench Shoring Company,Compton,Los Angeles,scaffolding,,yes,Associate,ryanm@trenchshoring.com,https://www.trenchshoring.com
-"Tri-Pacific Heating and Air Conditioning, LLP",Fullerton,Orange,hvac,,no,>$6 million to $10 million,cknight@amsofusa.com,
-Tri-Power Electrical Contractors,Upland,San Bernardino,electrical,,yes,$0 to $1 million,ray@tripowerelectric.com,https://www.tripowerelectric.com
-"Tricore Enterprises, Inc.",Riverside,Riverside,general-contractor,YES,yes,>$1 million to $3 million,david@thetricoreteam.com,https://www.thetricoreteam.com
-Triple C Electric Inc.,Valencia,Los Angeles,electrical,,yes,>$1 million to $3 million,chris@triplecelectric.com,
-"TRL Systems, Inc.",Rancho Cucamonga,San Bernardino,general-contractor,YES,no,>$20 million to $50 million,mpurdy@trlsystems.com,https://www.trlsystems.com
-"TVEC, Inc.",Grand Terrace,San Bernardino,general-contractor,YES,no,>$1 million to $3 million,svega@tvecelectric.com,
-"Tyler Lighting Services, Inc.",Placentia,Orange,general-contractor,YES,no,>$1 million to $3 million,tyler@tylerlighting.com,https://www.tylerlighting.com
-"Valencia Sheet Metal, Inc.",Pacoima,Los Angeles,general-contractor,YES,yes,>$1 million to $3 million,office@valenciasheetmetal.com,
-Vazz Electric,Anaheim,Orange,electrical,,no,$0 to $1 million,vazzelectric@gmail.com,https://www.vazzelectric.com
-Vc Brite Electric,Oxnard,Ventura,electrical,,no,$0 to $1 million,arturo@vcbriteelectric.com,
-"VCCT, Inc.",La Verne,Los Angeles,general-contractor,YES,no,>$3 million to $6 million,djeric@vacomtech.com,https://www.vacomtech.com
-Vector USA,Torrance,Los Angeles,general-contractor,YES,yes,>$10 million to $20 million,ltagumasi@vectorusa.com,https://www.vectorusa.com
-"Veteran Communication Services, Inc.",Chino,San Bernardino,general-contractor,YES,no,$0 to $1 million,vetcommservice@vetcomm.com,https://www.vetcomm.com
-Veteran Electrical Power Systems Inc.,Sylmar,Los Angeles,electrical,,no,>$3 million to $6 million,sergio@vet-eps.com,https://www.vet-eps.com
-VHL Plumbing Inc.,Burbank,Los Angeles,plumbing,,no,,vince@vhlplumbing.com,https://www.vhlplumbing.com
-"Wakeland Electric, Inc.",Corona,Riverside,electrical,,no,>$1 million to $3 million,pamela@wakelandeletric.com; bids@wakelandelectric.com,https://www.wakelandelectric.com
-Wallace Electrical Services Inc.,Orange,Orange,electrical,,yes,>$1 million to $3 million,wallaceelectricjmw@gmail.com,
-"Wallace P. Johnson Plumbing and Heating, Inc.",Anaheim,Orange,plumbing,,yes,,dan@johnsonplumbing.com,https://www.johnsonplumbing.com
-Walters Wholesale Electric,Brea,Orange,electrical,,yes,Supplier,corporate@walterswholesale.com,https://www.walterswholesale.com
-WCC Technologies Group,Chino,San Bernardino,general-contractor,YES,no,>$3 million to $6 million,cory.escano@wcctechgroup.com,https://www.wccable.com
-West Coast Air Conditioning Co. Inc.,El Cajon,San Diego,hvac,,no,>$50 million to $100 million,mfisher@wcac.com,
-Wu and Associates,San Diego,San Diego,restoration-services,,yes,$0 to $1 million,kirby.wu@wuassociates.com,https://wuassociates.com
-"XPRESS Electric, Inc.",Sun Valley,Los Angeles,electrical,,no,$0 to $1 million,xpresselectric@yahoo.com,https://www.xpresselectric.com
-Z3 Plumbing,La Habra,Orange,plumbing,,yes,>$3 million to $6 million,adam@z3plumbing.com,
+company,city,county,assigned_trade,match_reason,needs_category_review,has_description,classification,email,website
+"#1 Son Plumbing, Inc.",Redlands,San Bernardino,plumbing,backflow,,yes,$0 to $1 million,1sonplumbing@gmail.com,https://www.1sonplumbing.com
+"20/20 Plumbing & Heating, Inc.",Riverside,Riverside,plumbing,plumb,,no,>$3 million to $6 million,l.segarra@2020ph.com,https://www.2020ph.com
+"A & C Electric, Inc.",Rancho Cucamonga,San Bernardino,electrical,electric,,no,$0 to $1 million,mike@ac-electricinc.com,
+A to Z Electrical,Laguna Hills,Orange,electrical,electric,,no,>$3 million to $6 million,alina@atozelectricians.com,https://www.atozelectricians.com
+"A.J. Kirkwood and Associates, Inc.",Fullerton,Orange,electrical,electric,,yes,>$100 million to $250 million,leah.zappia@ajk-a.com,https://www.ajk-a.com
+"Abigail Electric, Inc.",Alhambra,Los Angeles,electrical,electric,,no,$0 to $1 million,ogomez@abigailelectric.com,
+"AC Pros, Inc.",Reseda,Los Angeles,hvac, ac ,,no,>$1 million to $3 million,acprosinc@gmail.com,https://www.acprosinc.com
+"Access Electric, Inc.",Tustin,Orange,electrical,electric,,no,>$6 million to $10 million,tabitha@accesselectricinc.com,https://www.accesselectricinc.com
+ACME Construction Supply,Santa Fe Springs,Los Angeles,general-contractor,construction,,yes,Supplier,ginag@acmetool.com,https://www.acmetool.com
+"Advanced Electrical Technologies, Inc.",Murrieta,Riverside,electrical,electric,,no,$0 to $1 million,pbrock@advelectech.com,https://www.advelectech.com
+"Air Control Systems, Inc.",Ontario,San Bernardino,hvac,hvac,,yes,>$20 million to $50 million,jleotaud@aircontrolsystems.net,https://www.aircontrolsystems.com
+"Air Design & Solutions, Inc.",Riverside,Riverside,hvac,air(name),,no,>$1 million to $3 million,jmyers@airdesign.solutions,
+"AK Constructors, Inc.",Corona,Riverside,electrical,electric,,yes,>$3 million to $6 million,jen@akconstructors.com,https://www.akconstructors.com
+ALBD Electric & Cable,La Habra,Orange,electrical,electric,,no,>$20 million to $50 million,chad@albdinc.com,https://www.albdinc.com
+All American Building Services,Santa Clarita,Los Angeles,general-contractor,(default),YES,no,>$1 million to $3 million,anthony@allamericanrebuild.com,
+"All Star Air Systems, Inc.",Fountain Valley,Orange,general-contractor,construction,,yes,>$1 million to $3 million,allstarairsystems@gmail.com,
+"Allegiance Air & Mechanical, Inc.",Victorville,San Bernardino,hvac,air(name),,no,>$1 million to $3 million,cl@allegianceairinc.com,https://www.allegianceairinc.com
+"Allegiance Electric, Inc.",Murrieta,Riverside,electrical,electric,,no,>$1 million to $3 million,acentanni@allegianceelec.com,
+"Alliance Electrical Systems, Inc.",San Diego,San Diego,electrical,electric,,no,$0 to $1 million,brad@absenergy.com,
+"Alpha Mechanical, LLC",El Cajon,San Diego,hvac,hvac,,yes,$0 to $1 million,jeidsmoe@alphamechanical.com,https://www.alphamechanical.com
+Alternative Power Partners LLC,Carlsbad,San Diego,general-contractor,(default),YES,no,$0 to $1 million,dkbrian@altpowerpartners.com,https://www.altpowerpartners.com
+Amtek Construction,Orange,Orange,general-contractor,construction,,no,>$3 million to $6 million,steven@amtekconstruction.com,https://www.amtekconstruction.com
+Anderson Air Conditioning L.P.,Fullerton,Orange,hvac,air conditioning,,yes,>$10 million to $20 million,mhaynam@amsofusa.com,https://www.amsofusa.com
+"Andulra Development, Inc.",Calabasas,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,rwood@andulra.com,https://www.andulra.com
+"ANI Mechanical, Inc.",Burbank,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,raymond@aniplumbing.com,
+AP Building Maintenance Inc.,Anaheim,Orange,general-contractor,(default),YES,no,>$1 million to $3 million,andrew@apbuildinginc.com,https://www.apbuildinginc.com
+Apollo Electric,Torrance,Los Angeles,electrical,electric,,no,$0 to $1 million,imoodie@apollonyc.com,
+"Apple Valley Communications, Inc.",Apple Valley,San Bernardino,electrical,low voltage,,yes,>$20 million to $50 million,lcusack@avcsystems.com,https://www.applevalleycommunications.com
+"Aquila Energy, LLC",Vista,San Diego,general-contractor,(default),YES,no,>$10 million to $20 million,dflick@aquilaenergy.com,https://www.aquilaenergy.com
+Arena Staffing,Ontario,San Bernardino,general-contractor,construction,,yes,Associate,dave@arenastaffing.net,https://www.arenastaffing.net
+Aris Construction,Burbank,Los Angeles,general-contractor,construction,,no,$0 to $1 million,aris@aconstruction.org,
+"Arrow Electric Construction Services, Inc.",Anaheim,Orange,electrical,electric,,no,>$1 million to $3 million,arrowelectric@dslextreme.com,
+Arrow Lift,Agoura Hills,Los Angeles,general-contractor,(default),YES,yes,>$3 million to $6 million,joe.newstrom@arrowlift.com,https://arrowlift.com
+"Arrowhead Mechanical, Inc.",San Bernardino,San Bernardino,hvac,hvac,,yes,>$3 million to $6 million,bids@arrowheadair.com,https://www.arrowheadair.com
+Artifex Plumbing Systems Group,Grand Terrace,San Bernardino,plumbing,plumb,,no,$0 to $1 million,artifexconstruction18@gmail.com,https://www.artifexpsg.com
+"Atkinson, Andelson, Loya, Ruud & Romo",Cerritos,Los Angeles,general-contractor,construction,,yes,Associate,tlenz@aalrr.com,https://www.aalrr.com
+"Atlas Mechanical, Inc.",San Diego,San Diego,general-contractor,(default),YES,no,>$3 million to $6 million,sam@atlasmechanical.com,
+Avram Electric,Mira Loma,Riverside,electrical,electric,,no,>$1 million to $3 million,avramelectric@yahoo.com,
+"B & B Plumbing, Inc.",Anaheim,Orange,plumbing,plumb,,yes,>$1 million to $3 million,brianjohn@bbplumbinginc.com,https://www.bbplumbinginc.com
+Balfour Beatty,San Diego,San Diego,general-contractor,(default),YES,no,Over $250 million,adelrio@balfourbeattyus.com,https://balfourbeattyus.com
+"Barden Electric, Inc.",Torrance,Los Angeles,electrical,electric,,yes,>$3 million to $6 million,steves@bardenelectric.com,https://www.bardenelectric.com
+"BAS Plumbing, Inc.",Riverside,Riverside,plumbing,plumb,,no,>$3 million to $6 million,tom@bas-plumbing.com,https://www.bas-plumbing.com
+"Beach City Electric, Inc.",Huntington Beach,Orange,electrical,electric,,no,>$1 million to $3 million,info@beachcityelectric.com,https://www.beachcityelectric.com
+Bergelectric Corp.,Carlsbad,San Diego,electrical,electric,,no,>$20 million to $50 million,info@bergelectric.com,https://www.bergelectric.com
+BJ Development,Newhall,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,bjdevelopmentconstruction@gmail.com,
+"Blackdog Electrical Systems, Inc.",Long Beach,Los Angeles,electrical,electric,,no,>$1 million to $3 million,chris@blackdogelectricalsystems.com,https://www.blackdogelectricalsystems.com
+Blue Point Electric,Menifee,Riverside,electrical,electric,,no,$0 to $1 million,nrodriguez@bluepointelectric.com,
+Blue Violet Networks,Fountain Valley,Orange,electrical,communications,,yes,>$6 million to $10 million,dkim@blueviolet.net,https://www.bluevioletnetworks.com
+"Bon Air, Inc.",Los Angeles,Los Angeles,hvac,air(name),,no,>$1 million to $3 million,brian@bonairinc.com,
+"Bravi Electric, Inc.",La Habra,Orange,electrical,electric,,no,>$1 million to $3 million,al@bravielectric.com,https://www.bravielectric.com
+"Brett Wright Electric, Inc.",Riverside,Riverside,electrical,electric,,no,>$1 million to $3 million,brett@bwelectriccorp.com,
+"Brian Devries Construction, Inc.",Santa Ana,Orange,concrete-masonry,concrete,,yes,$0 to $1 million,rico@devriescon.com,https://www.devriescon.com
+"Brudvik, Inc.",Palm Springs,Riverside,electrical,electric,,yes,>$3 million to $6 million,briana@brudvikinc.com,https://www.brudvikelectric.com
+"Brycoll, LLC",Yorba Linda,Orange,general-contractor,construction,,yes,Industry Professional,ken@brycollllc.com,https://www.brycollllc.com
+BTEC,Gardena,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,tomtenney@msn.com,
+"Budget Electrical Contractors, Inc.",Redlands,San Bernardino,electrical,electric,,no,>$1 million to $3 million,dcreger@becelectric.com,https://www.becelectric.com
+Building Resources,Glendora,Los Angeles,general-contractor,(default),YES,no,>$20 million to $50 million,alatourelle@brco.com,
+"Burtch Trucking, Inc.",Bakersfield,Kern,concrete-masonry,concrete,,yes,>$3 million to $6 million,accounting@burtchconstruction.com,https://www.burtchconstruction.com
+"Buxcon Sheet Metal, Inc.",Santee,San Diego,general-contractor,(default),YES,no,>$10 million to $20 million,gina@buxconsheetmetal.com,https://www.buxconsheetmetal.com
+C & L Refrigeration Corporation,Fullerton,Orange,hvac,hvac,,yes,>$50 million to $100 million,ljaslove@clref.com,https://www.clrefrigeration.com
+"Cal Pac Sheet Metal, Inc.",Santa Ana,Orange,roofing,roof,,yes,>$1 million to $3 million,billing@calpacsheetmetal.com,https://www.calpacsheetmetal.com
+Caliba Inc.,Stanton,Orange,general-contractor,(default),YES,no,>$3 million to $6 million,adam@calibainc.com,https://www.calibaincorporation.com
+California Boiler,Santa Ana,Orange,general-contractor,(default),YES,no,>$20 million to $50 million,ganderson@californiaboiler.com,https://www.californiaboiler.com
+"Campbell Contracting, Inc.",Yucaipa,San Bernardino,general-contractor,(default),YES,no,>$1 million to $3 million,bcampbell@titanelectricus.com,https://www.titanelectricus.com
+Case and Sons Construction,Anaheim,Orange,general-contractor,construction,,no,>$1 million to $3 million,caseshop@caseandsons.com,
+CBIZ CPAs,Costa Mesa,Orange,general-contractor,construction,,yes,Associate,warren.hennagin@marcumllp.com,https://www.marcumllp.com
+Cemas Inc.,Newhall,Los Angeles,general-contractor,(default),YES,yes,>$1 million to $3 million,carlos@ornelaselectric.com,https://www.cemasinc.com
+"Center Electric Services, Inc.",Riverside,Riverside,electrical,electric,,no,>$1 million to $3 million,mike@centerelectric.net,https://www.centerelectric.net
+"Centerpoint Communications, Inc.",Yorba Linda,Orange,electrical,communications,,no,>$1 million to $3 million,jon@cpoint1.net,https://www.centerpointcommunications.com
+Challenger Sheet Metal,Santee,San Diego,roofing,roof,,yes,>$1 million to $3 million,bobby@challengersm.com,https://www.challengersm.com
+"Champion Electric, Inc.",Riverside,Riverside,electrical,electric,,yes,>$10 million to $20 million,estimating@championelec.com,https://www.championelec.com
+Chase Electric Company,Chino,San Bernardino,electrical,electric,,no,>$1 million to $3 million,chase@chaseec.com,https://www.chaseec.com
+"Checkpoint Communications, Inc.",Huntington Beach,Orange,electrical,low voltage,,yes,>$1 million to $3 million,jshoaff@ccomwire.com,https://www.checkpointcomm.com
+"Christian Brothers Mechanical Services, Inc.",Jurupa Valley,Riverside,hvac,hvac,,yes,>$20 million to $50 million,don@cbhvac.com,https://www.cbhvac.com
+"Circle City Electric, Inc.",Riverside,Riverside,electrical,electric,,yes,>$10 million to $20 million,john.johnson@circlecityelectric.com,https://www.circlecityelectric.com
+Coast Construction Group,Lancaster,Los Angeles,general-contractor,construction,,no,>$1 million to $3 million,trevor@coast-group.com,https://www.coast-group.com
+"Colonial Electric, Inc.",Chino,San Bernardino,electrical,electric,,no,>$10 million to $20 million,garysr@colonialelectric.net,https://www.colonialelectric.net
+Combs Company Plumbing,Yucaipa,San Bernardino,plumbing,plumb,,no,$0 to $1 million,hcombs1955@aol.com,
+"Comfort & Hays Electric, Inc.",Upland,San Bernardino,electrical,electric,,no,>$3 million to $6 million,mhays@comforthays.com,
+"Consolidated Contracting Services, Inc.",San Clemente,Orange,general-contractor,general contract,,yes,>$50 million to $100 million,cveje@consolidatedcontracting.com,https://www.consolidatedcontracting.com
+"Consolidated Mechanical Air Conditioning & Heating, Inc.",Pasadena,Los Angeles,hvac,hvac,,yes,$0 to $1 million,consolidmech@gmail.com,https://www.consolidatedmechanical.net
+"Construction Electric, Inc.",Riverside,Riverside,electrical,electric,,yes,>$3 million to $6 million,kc@constructionelectric.com,https://www.constructionelectric.com
+"Continental Plumbing, Inc.",Jurupa Valley,Riverside,plumbing,plumb,,yes,>$1 million to $3 million,nathan.buckley@continentalplumbing.com,https://www.continentalplumbing.com
+"Control Electric, Inc.",Corona,Riverside,hvac,hvac,,yes,>$1 million to $3 million,info.controlelectric.net,https://www.controlelectric.net
+CORElectric Inc.,Santa Clarita,Los Angeles,electrical,electric,,yes,,inquiry@corelectric.net,https://www.corelectric.net
+"Cove Electric, Inc.",Palm Desert,Riverside,electrical,electric,,no,>$3 million to $6 million,dbojkovsky@coveelectric.com,https://www.coveelectric.com
+"Craig Mechanical, Inc.",Riverside,Riverside,plumbing,plumb,,yes,>$6 million to $10 million,frankc@craigmech.com,https://www.craigmech.com
+"Crawford & Bangs, LLP",Covina,Los Angeles,general-contractor,construction,,yes,Associate,ttate@builderslaw.com,https://www.builderslaw.com
+"Crosby Plumbing, Inc.",Altadena,Los Angeles,plumbing,plumb,,no,$0 to $1 million,anthony@crosbyplumbing.net,
+"CRP Plumbing Company, Inc.",Redlands,San Bernardino,plumbing,plumb,,yes,>$1 million to $3 million,chris@crpplumbing.com,https://www.crpplumbing.com
+"Current Innovations Electric, Inc.",Long Beach,Los Angeles,electrical,electric,,yes,$0 to $1 million,kmccormick@cie.contractors,https://www.currentinnovationselectric.com
+Cusick Electric Inc.,Camarillo,Ventura,electrical,electric,,no,>$1 million to $3 million,casey@cusickelectric.com,https://www.cusickelectric.com
+"Cutler Power and Light, INC",Chino,San Bernardino,general-contractor,(default),YES,no,$0 to $1 million,rcutler@cutlerpower.com,https://www.cutlerpower.com
+Data Specialties Inc.,Buena Park,Orange,general-contractor,(default),YES,no,>$3 million to $6 million,jon@webuilddatacenters.com,https://www.webuilddatacenters.com
+"David Crowell Electric, Inc.",Irvine,Orange,electrical,electric,,yes,>$3 million to $6 million,dave@davidcrowellelectric.com,https://www.davidcrowellelectric.com
+Davitt Inc. Dba Electrical Solutions,Thousand Palms,Riverside,electrical,electric,,no,$0 to $1 million,info@electricalsolutions4you.com,
+"DCE Electric, Inc.",Valencia,Los Angeles,electrical,electric,,yes,>$3 million to $6 million,kcoyle@dceelectric.com,
+"Delta Wye Electric, Inc.",Anaheim,Orange,electrical,electric,,yes,>$6 million to $10 million,ckasalek@deltawye.com,https://www.deltawye.com
+Denver Industries,Van Nuys,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,corina@denverinc.com,https://denverind.wixsite.com/denverindustries
+DEWALT,Ontario,San Bernardino,general-contractor,builders,,yes,Supplier,andres.perez@sbdinc.com,https://www.dewalt.com
+"Digital Technologies, Inc.",Ontario,San Bernardino,general-contractor,(default),YES,no,>$3 million to $6 million,dvillarreal@digitaltech.us.com,https://www.digitaltechnologies-inc.com
+"DMG SC, Inc.",Orange,Orange,general-contractor,(default),YES,no,>$1 million to $3 million,roman@zaretskyengineering.com,
+Drain Vision,San Bernardino,San Bernardino,general-contractor,(default),YES,no,$0 to $1 million,drainvision@gmail.com,https://www.drainvisionsewercamerainspections.com
+"DSP Electrical Contractors, Inc.",Lake Elsinore,Riverside,electrical,electric,,no,>$1 million to $3 million,sperkins@dspelectric.com,
+Duo Electric,Riverside,Riverside,electrical,electric,,no,$0 to $1 million,john@duo-electric.com,https://www.duo-electric.com
+EA Technology Solutions,Irvine,Orange,general-contractor,(default),YES,no,>$1 million to $3 million,darlene@eatechsolutions.com,https://www.eatechsolutions.com
+Eaton Crouse Hinds-Eaton B-Line,San Diego,San Diego,general-contractor,(default),YES,no,>$10 million to $20 million,pedrovilla@eaton.com,https://www.eaton.com
+Eclipse Lighting & Electrical,Anaheim,Orange,electrical,electric,,no,>$10 million to $20 million,miker@eclipselightingservices.com,https://www.eclipselightingservices.com
+"Econolite Systems, Inc.",Anaheim,Orange,general-contractor,(default),YES,yes,>$10 million to $20 million,cflores@econolite.com,https://www.econolite.com
+El Karnak Construction Inc.,Covina,Los Angeles,general-contractor,general contract,,yes,$0 to $1 million,info@elkarnakconstruction.com,
+"Electric Vehicle Infrastructures, Inc.",Upland,San Bernardino,electrical,electric,,no,>$6 million to $10 million,asellers@evicharge.com,https://www.evicharge.com
+"Electrical Junkies, Inc.",Lake Elsinore,Riverside,electrical,electric,,no,$0 to $1 million,socalelectricaljunkies@outlook.com,
+"Electrical Management Systems, Inc.",Placentia,Orange,electrical,electric,,no,>$1 million to $3 million,info@electrical-ms.com,https://www.electrical-ms.com
+"Electro Tec Electrical Contractors, Inc.",Corona,Riverside,electrical,electric,,no,$0 to $1 million,rcosta@electrotecinc.com,
+"Electromen, Inc.",Studio City,Los Angeles,general-contractor,design/build,,yes,$0 to $1 million,guzal@rbsolution.net,
+"Elite Air Conditioning, Inc.",Norco,Riverside,hvac,air conditioning,,no,$0 to $1 million,nick@elitehvacinc.com,https://www.elitehvacinc.com
+"Empyrean Plumbing, Inc.",Riverside,Riverside,plumbing,plumb,,no,>$10 million to $20 million,brooke@empyreanplumbing.com,https://www.empyreanplumbing.com
+EOS Worldwide,Redondo Beach,Los Angeles,general-contractor,(default),YES,no,Industry Professional,ben.kelley@eosworldwide.com,https://www.eosworldwide.com/ben-kelley
+Erickson-Hall Construction Co.,Escondido,San Diego,general-contractor,construction,,no,>$50 million to $100 million,rgonzalez@ericksonhall.com,https://www.ericksonhall.com
+"ETC Building & Design, Inc.",San Diego,San Diego,general-contractor,(default),YES,no,>$6 million to $10 million,me@etcusa.net,https://www.etcusa.net
+"EV Infrastructure, LLC",Tustin,Orange,electrical,electric,,yes,>$10 million to $20 million,achim@brytemove.com,https://www.evidb.com
+Exclusive Energy & Electric,Corona,Riverside,electrical,electric,,yes,>$1 million to $3 million,walterj@exclusive-ca.com,https://www.exclusive-ca.com
+Exclusive Metal,Riverside,Riverside,general-contractor,(default),YES,no,>$3 million to $6 million,albert@exclusivemetalinc.com,https://www.exclusivemetalinc.com
+"Expedite Fire, Inc. dba Lindley Fire",Anaheim,Orange,general-contractor,(default),YES,no,>$3 million to $6 million,karlene@lindleyfire.com,https://www.lindleyfire.com
+"F.E.C. Electric, Inc.",Redlands,San Bernardino,electrical,electric,,no,>$20 million to $50 million,ron@fec-electric.com,https://www.fec-electric.com
+Facilities Protection Systems,Brea,Orange,general-contractor,(default),YES,no,>$6 million to $10 million,jgerard@fpsys.com,https://www.fpsys.com
+"Facility Builders & Erectors, Inc.",Anaheim,Orange,general-contractor,general contract,,yes,>$20 million to $50 million,kthomson@facilitybuilders.com,https://www.facilitybuilders.com
+"Facility Solutions Group, Inc.",Irvine,Orange,electrical,electric,,yes,>$6 million to $10 million,scott.novy@fsgi.com,https://www.fsgi.com
+"Fairchild Plumbing & Mechanical, Inc.",Ontario,San Bernardino,plumbing,plumb,,no,>$1 million to $3 million,matt@fairchildplbg.com,
+"Federal Technology Solutions, Inc.",Corona,Riverside,electrical,low voltage,,yes,>$3 million to $6 million,sales@federalsales.com,https://www.federalsales.com
+FedVet Construction,Temecula,Riverside,general-contractor,construction,,no,>$10 million to $20 million,edgar@fedvet.com,
+"First Call Electric, Inc.",Tehachapi,Kern,electrical,electric,,yes,$0 to $1 million,firstcallelect@gmail.com,
+"First Electric Systems, Inc.",Brea,Orange,electrical,electric,,yes,>$1 million to $3 million,fesjason@gmail.com,
+"Fischer, Inc.",San Bernardino,San Bernardino,general-contractor,(default),YES,no,>$6 million to $10 million,mfischer@fischercompanies.com,
+"Franklin Mechanical System, Inc.",Beaumont,Riverside,general-contractor,(default),YES,no,>$1 million to $3 million,vinniefranklin@earthlink.net,
+Frize Corporation,City of Industry,Los Angeles,general-contractor,(default),YES,no,>$20 million to $50 million,jsfrize@frizecorp.com,https://www.frizecorp.com
+Fullerton Electric Inc.,Fullerton,Orange,electrical,electric,,no,>$1 million to $3 million,don@fullertonelectric.net,https://www.fullertonelectric.net
+Future Energy,Van Nuys,Los Angeles,general-contractor,(default),YES,no,>$10 million to $20 million,vince.sp@futureenergytoday.com,
+"GA Technical Services, Inc.",Glendora,Los Angeles,electrical,electric,,yes,$0 to $1 million,frank.cervantes@gatechservices.com,https://www.gatechservices.com
+Gavina Plumbing Inc.,Santa Clarita,Los Angeles,plumbing,plumb,,no,>$3 million to $6 million,gavinaplumbing@aol.com,https://www.gavinaplumbing.net
+"GBI Electric, Inc.",Palmdale,Los Angeles,electrical,electric,,yes,>$1 million to $3 million,ggonzalez@gbielectric.com,https://www.gbielectric.com
+"GDL Best Contractors, Inc.",Whittier,Los Angeles,general-contractor,general contract,,yes,>$1 million to $3 million,franklbqp@msn.com,
+"George C. Hopkins Construction, Inc.",Glendale,Los Angeles,general-contractor,general contract,,yes,>$20 million to $50 million,ghopkins@hopkinsconstruction.com,https://www.hopkinsconstruction.com
+GFI Construction,Valencia,Los Angeles,electrical,electric,,yes,$0 to $1 million,julie@gfielectrical.com,https://www.gfielectrical.com
+Global Diversified Voltage Services,Van Nuys,Los Angeles,electrical,electric,,yes,$0 to $1 million,dcollins@gdvoltage.net,https://www.gdvoltage.com
+"Global Fire Technologies, Inc.",Glendale,Los Angeles,general-contractor,(default),YES,no,>$1 million to $3 million,gevorg@glofiretech.com,https://www.glofiretech.com
+"GMPI, LLC",Pinon Hills,San Bernardino,general-contractor,(default),YES,no,$0 to $1 million,jesus@gmpi-plumbing.com,https://www.gmpi-plumbing.com
+"Go-Staff, Inc.",Anaheim,Orange,concrete-masonry,cement,,yes,Associate,scott@go-staff.com,https://www.go-staff.com
+"Good & Roberts, LLC",Carlsbad,San Diego,general-contractor,general contract,,yes,>$20 million to $50 million,tcornell@gnrgc.com,https://www.gnrgc.com
+"Graybar Electric Co., Inc.",Diamond Bar,Los Angeles,electrical,electric,,no,Supplier,jason.ghent@graybar.com,https://www.graybar.com
+GRC Industrial,Anaheim,Orange,general-contractor,(default),YES,no,$0 to $1 million,ryan@grcindustrial.com,
+Green Convergence,Valencia,Los Angeles,electrical,solar,,yes,$0 to $1 million,dj@greenconvergence.com,https://www.greenconvergence.com
+Halo Electric Company Inc.,Orange,Orange,electrical,electric,,no,$0 to $1 million,admin@haloelectriccompany.com,
+Hansen’s Plumbing,Ventura,Ventura,plumbing,plumb,,no,,cary@hansensplumbing.com,
+Hard Hat Marketing Co.,Santa Ana,Orange,general-contractor,construction,,yes,Associate,nick@hardhatmarketingco.com,https://www.hardhatmarketingco.com
+Helix Electric,Los Angeles,Los Angeles,electrical,electric,,yes,>$20 million to $50 million,mmilne@helixelectric.com,https://www.helixelectric.com
+"HelmCo Electric, Inc.",Irvine,Orange,electrical,electric,,yes,>$3 million to $6 million,michael@helmcoelectric.com,https://www.helmcoelectric.com
+"HPS Mechanical, Inc.",Bakersfield,Kern,plumbing,plumb,,yes,$0 to $1 million,sd@hpsmechanical.com,https://www.hpsmechanical.com
+HR Plumbing Inc.,Oceanside,San Diego,plumbing,plumb,,yes,$0 to $1 million,hrp@hr-plumbing.com,https://www.hr-plumbing.com
+Hydrotech Electric,Winchester,Riverside,electrical,electric,,yes,>$1 million to $3 million,linda@hydrotechelectric.com,
+"I.E. - Pacific, Inc.",Escondido,San Diego,general-contractor,construction,,yes,>$10 million to $20 million,estimating@iepacific.com,https://www.iepacific.com
+ICS Service,Riverside,Riverside,electrical,low voltage,,yes,>$3 million to $6 million,j.abbasi@icsservice.net,https://www.icsservice.net
+"IDEAL Industries, Inc.",North Tustin,Orange,electrical,electric,,yes,Supplier,kristen.pentolino@idealindustries.com,https://www.idealind.com
+Improved Plumbing Corporation,Lake Elsinore,Riverside,plumbing,plumb,,no,>$1 million to $3 million,s.molina@improvedplumbing.com,
+Independent Electric Co.,Wildomar,Riverside,electrical,electric,,no,>$1 million to $3 million,tyson@indeelectric.com,https://www.independentelectricco.com
+Integrated Communications & Data,Glendora,Los Angeles,electrical,communications,,yes,>$3 million to $6 million,fauten403@gmail.com,
+"Integrated Energy Group, LLC",Fontana,San Bernardino,electrical,solar,,yes,$0 to $1 million,jen.hisey@ieconstruction.com,https://www.ieconstruction.com
+Integrity Electric,Anaheim,Orange,electrical,electric,,no,$0 to $1 million,integrityelect@sbcglobal.net,https://www.integrityelec.com
+"Interpipe Contracting, Inc.",Santee,San Diego,plumbing,plumb,,yes,>$3 million to $6 million,info@interpipecontracting.com,
+"Inverter Technology, Inc.",Ventura,Ventura,general-contractor,(default),YES,yes,>$1 million to $3 million,devin@invertertechnology.com,https://www.invertertechnology.com
+"Iteris, Inc.",Santa Ana,Orange,general-contractor,(default),YES,no,$0 to $1 million,jbergera@iteris.com,https://www.iteris.com
+"ITX Construction/Consultants, Inc.",Costa Mesa,Orange,general-contractor,general contract,,yes,>$10 million to $20 million,eleanorm@itxconst.com,https://www.itxconstruction.com
+IWire Electric,Corona,Riverside,electrical,electric,,no,$0 to $1 million,winnie@iwiresocal.com,
+J & A Plumbing LLC,Imperial,Imperial,plumbing,plumb,,no,>$1 million to $3 million,j.a_plumbing@hotmail.com,
+J Perez Electrical,Santa Fe Springs,Los Angeles,electrical,electric,,no,$0 to $1 million,josep@jpelectric2000.com,
+"J. Miller Electric, Inc.",Hesperia,San Bernardino,electrical,electric,,yes,>$1 million to $3 million,jmillerelectric@msn.com,https://www.jmillerelectric.net
+"J.H. Bryant, Jr., Inc.",Gardena,Los Angeles,electrical,electric,,yes,>$6 million to $10 million,johnb@jhbryant.com,https://www.jhbryant.com
+JAM Corporation,Monrovia,Los Angeles,electrical,electric,,yes,,lisa.brennan@jamfire.com,https://www.jamfire.com
+JDC Contracting,La Habra,Orange,general-contractor,(default),YES,yes,>$1 million to $3 million,info@jdccontracting.com,https://www.jdccontracting.com
+JHS Tax & Consulting,Anaheim,Orange,general-contractor,construction,,yes,Associate,ccleveland@jhstc.com,https://www.jhstc.com
+"JLK Rosenberger, LLP",Irvine,Orange,general-contractor,construction,,yes,Associate,dluna@jlkrllp.com,https://www.jlkrosenberger.com
+"JPI Development Group, Inc.",Murrieta,Riverside,general-contractor,(default),YES,no,>$6 million to $10 million,lillianh@jpidevelopment.com,
+JPS Electric Inc.,Rialto,San Bernardino,electrical,electric,,no,$0 to $1 million,john@jps-electric.com,https://www.jps-electric.com
+"K&S Air Conditioning, Inc.",Orange,Orange,hvac,hvac,,yes,>$20 million to $50 million,steve@kandsair.com,https://www.kandsair.com
+K. E. Rodgers Inc.,Redlands,San Bernardino,plumbing,plumb,,yes,$0 to $1 million,jskinnerkerinc@gmail.com,
+"K.G.G. Electric, Inc.",Palmdale,Los Angeles,electrical,electric,,yes,>$1 million to $3 million,kenny2@kggelectric.com,https://www.kggelectric.com
+"K2 General Contractors, Inc.",Irvine,Orange,general-contractor,general contract,,yes,>$3 million to $6 million,kris@k2generalcontractors.com,https://www.k2generalcontractors.com
+"KERCO, Inc.",Santa Fe Springs,Los Angeles,hvac,refrigeration,,yes,>$3 million to $6 million,james@kercoinc.com,https://www.kercoinc.com
+Kerns Inc. A California Corporation,Hesperia,San Bernardino,general-contractor,(default),YES,no,>$10 million to $20 million,colleen@kernscon.com,http://kernscon.com
+"KT Industries, Inc.",Los Angeles,Los Angeles,general-contractor,(default),YES,no,>$1 million to $3 million,susana@kti.la,https://www.ktiengineering.com
+"Land Mark Electric, Inc.",Canoga Park,Los Angeles,electrical,electric,,yes,,lsaitman@lmela.com,https://www.lmela.com
+"Laser Electric, Inc.",Escondido,San Diego,electrical,electric,,no,>$1 million to $3 million,emilyhartnett@laserelectric.com,https://www.laserelectric.com
+"LCS Constructors, Inc.",Irvine,Orange,general-contractor,general contract,,yes,>$20 million to $50 million,eplosker@lcslab.com,https://www.lcslab.com
+Lectrfi Inc.,Chula Vista,San Diego,electrical,electric,,yes,>$1 million to $3 million,bobby@lectrfi.com,
+"Leddy Power Systems, Inc.",Moorpark,Ventura,general-contractor,(default),YES,no,>$1 million to $3 million,curt.leddy@leddypower.com,
+Leverage Information Systems,Ontario,San Bernardino,general-contractor,(default),YES,no,>$10 million to $20 million,terryw@leverageis.com,https://www.leverageis.com
+Light & Power Inc.,Ventura,Ventura,electrical,electric,,yes,>$1 million to $3 million,bruno@lightandpowerinc.com,https://www.lightandpowerinc.com
+"Lighting Technology Services, Inc.",Santa Ana,Orange,electrical,lighting,,yes,>$3 million to $6 million,jdillard@ltspropertyservices.net,https://www.ltspropertyservices.net
+"LightWerks Communication Systems, Inc.",Carson,Los Angeles,general-contractor,(default),YES,yes,>$3 million to $6 million,driberi@lightwerks.com,https://www.lightwerks.com
+"M-Tech Glass, Inc.",Moreno Valley,Riverside,general-contractor,(default),YES,no,>$1 million to $3 million,info@mtechglass.com,
+"M.R. Electrical, Inc.",Los Angeles,Los Angeles,electrical,electric,,no,>$1 million to $3 million,mario@mrelectrical.org,https://www.mrcontractorca.com
+M3 Mechanical,Anaheim,Orange,hvac,hvac,,yes,>$10 million to $20 million,tony@m3hvac.com,https://www.m3hvac.com
+"MAC Electric, Inc.",Brea,Orange,electrical,electric,,yes,>$3 million to $6 million,mcooper@macelectricinc.com,
+Mack P & S Construction Inc.,Wildomar,Riverside,general-contractor,construction,,yes,$0 to $1 million,mackconst@gmail.com,
+Main Electric Supply,Santa Ana,Orange,electrical,electric,,no,Supplier,dgermann@mainelectricsupply.com,
+Mammoth Electric,Anaheim,Orange,electrical,electric,,no,>$20 million to $50 million,gil@mammoth.com,
+Marc Electric,Pico Rivera,Los Angeles,electrical,electric,,no,>$1 million to $3 million,marcelectric4u@yahoo.com,
+McKinley Elevator Corporation,Irvine,Orange,general-contractor,(default),YES,yes,>$10 million to $20 million,kevin.rusin@mckinleyelevator.com,https://www.mckinleyelevator.com
+"MEC, Inc.",Edwards Air Force Base,Kern,restoration-services,restoration,,yes,>$10 million to $20 million,dale@mec-inc.com,https://www.mec-inc.com
+Medrara HVAC LLC,Diamond Bar,Los Angeles,hvac,hvac,,no,$0 to $1 million,medrarahvac@gmail.com,https://www.medrarahvac.com
+Meier Plumbing Inc.,Anaheim,Orange,plumbing,plumb,,no,>$3 million to $6 million,granden@meierplumbing.com,https://www.meierplumbing.com
+"Mel Smith Electric, Inc.",Stanton,Orange,electrical,electric,,yes,>$10 million to $20 million,mel@melsmithelectric.com,https://www.melsmithelectric.com
+"Mesa Energy Systems, Inc.",Irvine,Orange,general-contractor,(default),YES,no,Over $250 million,rlake@emcor.net,https://www.mesaenergy.com
+Milender White,Newport Beach,Orange,utility-contractors,utility,,yes,>$50 million to $100 million,amack@milenderwhite.com,https://www.milenderwhite.com
+MJR Plumbing,Baldwin Park,Los Angeles,plumbing,plumb,,no,>$1 million to $3 million,marcos@mjrplumbing.net,
+Morris & Garritano,Irvine,Orange,general-contractor,construction,,yes,Associate,manelli@morrisgarritano.com,https://www.morrisgarritano.com
+"MPI - Miller Plumbing, Inc.",San Dimas,Los Angeles,plumbing,plumb,,no,>$3 million to $6 million,dave@mpiplumbing.com,https://www.mpiplumbing.com
+MTZ Electric LLC,Corona,Riverside,electrical,electric,,no,>$1 million to $3 million,mmartinez@mtz-electric.com,
+"Mundy Electric, Inc.",Fullerton,Orange,electrical,electric,,no,$0 to $1 million,mundymryan@aol.com,https://www.mundyelectric.net
+"MWC Group, Inc.",Adelanto,San Bernardino,general-contractor,construction,,yes,>$10 million to $20 million,robert.masseth@mwcgroup.net,https://www.mwcgroup.net
+"New Automation Control Services, Inc.",Jurupa Valley,Riverside,electrical,electric,,yes,$0 to $1 million,arturo@nacsbusiness.com,https://www.nacsbusiness.com
+"New Dimension Masonry, Inc.",San Diego,San Diego,concrete-masonry,masonry,,no,>$3 million to $6 million,info@ndminc.com,https://www.ndminc.com
+"NKS Mechanical Contracting, Inc.",Anaheim,Orange,general-contractor,(default),YES,no,>$1 million to $3 million,nshmara@nksmechanical.com,https://www.nksmechanical.com
+NPI Concrete,Sylmar,Los Angeles,concrete-masonry,concrete,,no,$0 to $1 million,czarate@npiconcrete.com,https://www.npiconcrete.com
+Nustar Electric,Moreno Valley,Riverside,electrical,electric,,no,$0 to $1 million,nustarelectric.nallely@gmail.com,
+O’Donnell Electric,Riverside,Riverside,electrical,electric,,no,>$1 million to $3 million,odonnellelectric@gmail.com,https://www.odonnell-electric.com
+Oceans Electric Inc.,Woodland Hills,Los Angeles,electrical,electric,,no,$0 to $1 million,production@oceanselectricinc.com,https://www.oceanselectricinc.com
+OmniDuct,Buena Park,Orange,hvac,hvac,,yes,Supplier,mbullock@omniduct.com,https://www.omniduct.com
+On Point Commercial Solar,Valencia,Los Angeles,electrical,solar,,no,$0 to $1 million,darren@onpointepc.com,
+OneSource Distributors,Oceanside,San Diego,electrical,electric,,yes,Supplier,kmcclure@1sourcedist.com,https://www.1sourcedist.com
+"Ontario Refrigeration Service, Inc.",Ontario,San Bernardino,hvac,refrigeration,,no,>$6 million to $10 million,ptalleur@ontref.com,https://www.ontref.com
+Optima Energy,Artesia,Los Angeles,utility-contractors,utility,,yes,>$1 million to $3 million,young@opnrg.com,https://www.opnrg.com
+"Orange Electrical Contractors, Inc.",Orange,Orange,electrical,electric,,no,>$1 million to $3 million,laurel@orangeelectricalinc.com,
+Orbit Industries,Bell Gardens,Los Angeles,electrical,electric,,yes,Associate,aaron@orbitelectric.com,https://www.orbitelectric.com
+OSHA Training Institute Education Center California State Dominguez Hills,Carson,Los Angeles,general-contractor,(default),YES,no,Industry Professional,osha@csudh.edu,https://www.csudh.edu/osha
+"Outsource, LLC",Los Angeles,Los Angeles,electrical,electric,,yes,Associate,eric@outsource.net,https://www.outsource.net
+Ovis Electric Inc.,Anaheim,Orange,electrical,electric,,yes,>$3 million to $6 million,ovi@oviselectric.com,https://www.oviselectric.com
+P&S Engineering Inc.,Los Angeles,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,danielsungwork@gmail.com,
+P.E.I. Electric,Downey,Los Angeles,electrical,electric,,no,$0 to $1 million,perezelectricinc@yahoo.com,
+Pacific Energy Construction Corp.,Northridge,Los Angeles,general-contractor,construction,,no,,tina@pacnrg.com,https://www.pacnrg.com
+"Pacific Rim MechanicalContractors, Inc.",San Diego,San Diego,general-contractor,"contractors, inc",,no,>$20 million to $50 million,jmouritzen@prmech.com,https://www.prmech.com
+Pacific West Industries Inc.,Orange,Orange,hvac,hvac,,yes,>$6 million to $10 million,lauren.p@pacwestac.com,https://www.pacwestac.com
+"Pardess Air, Inc.",Los Angeles,Los Angeles,hvac,air(name),,no,>$1 million to $3 million,estimating@pardessair.com,
+"PCN3, Inc.",Los Alamitos,Orange,general-contractor,general contract,,yes,>$50 million to $100 million,info@pcn3.com,https://www.pcn3.com
+Peak Controls,Costa Mesa,Orange,general-contractor,(default),YES,no,$0 to $1 million,robertg@peakcontrolsca.com,
+"Platinum Construction, Inc.",Stanton,Orange,general-contractor,construction,,no,>$6 million to $10 million,ckail@platconinc.com,
+"POLO Engineering, Inc.",Castaic,Los Angeles,general-contractor,(default),YES,no,>$1 million to $3 million,jennifer@poloengineeringinc.com,https://www.poloengineeringinc.com
+"Ponderosa Electric, Inc.",Palm Desert,Riverside,electrical,electric,,no,$0 to $1 million,peidale@aol.com,
+"Power Pro Plus, Inc.",Rialto,San Bernardino,general-contractor,(default),YES,no,>$1 million to $3 million,foliden@pppi.us,
+Power Rise Electric Inc.,Rancho Cucamonga,San Bernardino,electrical,electric,,no,$0 to $1 million,mike.fonseca@prelectric-inc.com,https://www.prelectric-inc.com
+"Power Technology Electric Company, Inc.",Santa Ana,Orange,electrical,electric,,no,>$1 million to $3 million,patricia@ptelectric.net,
+Pramira Inc.,Brea,Orange,general-contractor,construction,,yes,>$20 million to $50 million,david.krajniak@pramira.com,https://www.pramira.com
+"PrimeNet Data Systems, Inc.",Arcadia,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,daniel@primenetdatasystems.com,
+"Pro Tech Electric, Inc.",Corona,Riverside,electrical,electric,,no,$0 to $1 million,jdprotech@earthlink.net,
+Pro-Craft Construction,Redlands,San Bernardino,plumbing,plumb,,yes,>$20 million to $50 million,info@procraftci.com,https://www.procraftci.com
+"Pyro-Comm Systems, Inc.",Irvine,Orange,general-contractor,(default),YES,no,>$20 million to $50 million,jsleigh@pyrocomm.com,
+"R.I.C. Construction Co., Inc.",Hesperia,San Bernardino,general-contractor,construction,,no,>$10 million to $20 million,donald.mangold@ricconstruction.com,https://www.ricconstruction.com
+"RA Electric, Inc.",Northridge,Los Angeles,electrical,electric,,yes,,james@raelectric.net,https://www.raelectric.net
+Radiant Electric LLC,Santa Ana,Orange,electrical,electric,,yes,$0 to $1 million,sam.rdnt@gmail.com,https://www.rdntservices.com
+"Rancho Pacific Electric Construction, Inc.",Rancho Cucamonga,San Bernardino,electrical,electric,,yes,>$50 million to $100 million,scottr@rpeinc.net,https://www.ranchopacificelectric.com
+"Rancho Pacific Electric, Inc.",Rancho Cucamonga,San Bernardino,electrical,electric,,yes,$0 to $1 million,scottr@rpeinc.net,https://www.ranchopacificelectric.com
+"RDM Electric Company, Inc.",Ontario,San Bernardino,electrical,electric,,yes,>$20 million to $50 million,diane@rdmcompanies.com,https://www.rdmcompanies.com
+"Red Dragon Electric, Inc.",Garden Grove,Orange,electrical,electric,,no,>$1 million to $3 million,alfredo@reddragonelectric.com,
+"Redlands Plumbing, Heating & Air Conditioning",Redlands,San Bernardino,plumbing,plumb,,yes,$0 to $1 million,tminer@plumbingandair.com,https://www.plumbingandair.com
+"REN Power Systems, Inc.",Canyon Lake,Riverside,electrical,electric,,yes,>$3 million to $6 million,chris@renpowersystems.com,https://www.renpowersystems.com
+"Renewable Construction Services, Inc.",Escondido,San Diego,electrical,solar,,yes,>$10 million to $20 million,lkennedy@renewablecsi.com,https://www.renewablecsi.com
+"Renewable Energy Partners, Inc.",Corona,Riverside,general-contractor,(default),YES,no,>$6 million to $10 million,tony.springer@renewepi.com,https://www.renewepi.com
+"Retrofit Service Company, Inc.",Rancho Cucamonga,San Bernardino,hvac,hvac,,yes,>$3 million to $6 million,rsc@retrofitsc.com,https://www.retrofitsc.com
+"Rhino Electrical Construction, Inc.",Fontana,San Bernardino,electrical,electric,,no,$0 to $1 million,rhinoelec@aol.com,
+Right Wire Electric Inc.,Santa Ana,Orange,electrical,electric,,no,$0 to $1 million,rightwireelectric@yahoo.com,
+"Risher Sutherland, Inc. dba United Contractors",San Bernardino,San Bernardino,roofing,roof,,yes,>$3 million to $6 million,info@united-contractors.us,https://www.united-contractors.us
+RJ Electric,Orange,Orange,electrical,electric,,yes,>$1 million to $3 million,paul@rjelectric.com,https://www.rjelectric.com
+RNL Electric,Burbank,Los Angeles,electrical,electric,,yes,$0 to $1 million,boblorden@att.net,
+Rodco Electric Inc.,Rialto,San Bernardino,electrical,electric,,yes,$0 to $1 million,services@rodcoelectrical.com,
+RSVC Company,Riverside,Riverside,plumbing,plumb,,yes,>$50 million to $100 million,mark@rsvc.com,https://www.rsvc.com
+"Russell Sigler, Inc.",Brea,Orange,hvac,hvac,,yes,>$10 million to $20 million,jmyers@siglers.com,https://www.siglercommercial.com
+"Ryan Electric, Inc.",Ontario,San Bernardino,electrical,electric,,yes,>$1 million to $3 million,ryanelectricinc@verizon.net,
+"Rye Electric, Inc.",Laguna Niguel,Orange,electrical,electric,,no,$0 to $1 million,cgolden@ryecompany.com,https://www.ryecompany.com
+"Rymax Electric, Inc.",Upland,San Bernardino,electrical,electric,,no,$0 to $1 million,rymaxelectric@gmail.com,
+Safeway Building Systems Inc. dba Safeway Electric,Riverside,Riverside,electrical,electric,,yes,>$6 million to $10 million,jkrystafik@safewaybsi.com,https://www.safewaybsi.com
+"Sanchez Enterprises, Inc. DBA Sanchez Electric",Chino,San Bernardino,electrical,electric,,yes,$0 to $1 million,sergio@sanchezelectric.com,
+"Santa Clarita Electrical, Inc.",Valencia,Los Angeles,electrical,electric,,yes,$0 to $1 million,monty@santaclaritaelectrical.com,
+"Seco Electric & Lighting, Inc.",Yorba Linda,Orange,electrical,electric,,no,$0 to $1 million,secoelectricandlighting@gmail.com,
+Sergent Construction,Santa Paula,Ventura,general-contractor,construction,,yes,>$6 million to $10 million,info@sergentconstruction.com,https://www.sergentconstruction.com
+Shaw Electric Inc.,Anaheim,Orange,electrical,electric,,no,>$1 million to $3 million,mshaw@shawelectriccompany.com,https://www.shawelectriccompany.com
+SI Testing,Alta Loma,San Bernardino,general-contractor,(default),YES,no,>$6 million to $10 million,tyler@sitesting.net,https://www.sitesting.net
+"Simco Mechanical, Inc.",Altadena,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,cesar@simcomechanical.com,
+Skybridge Renewables LLC,Aliso Viejo,Orange,general-contractor,(default),YES,no,>$3 million to $6 million,jason@skybridgeenergy.com,
+SoCal Communications Group,Artesia,Los Angeles,electrical,communications,,yes,>$1 million to $3 million,info@mysocalgroup.com,https://www.mysocalgroup.com
+Solar Discovery,Northridge,Los Angeles,electrical,solar,,no,>$1 million to $3 million,ariel@solarpricediscovery.com,https://www.solarpricediscovery.com
+"South Bay Heating & Air Conditioning, Inc.",Long Beach,Los Angeles,hvac,hvac,,yes,>$3 million to $6 million,dmiller@southbayhvac.com,https://www.southbayhvac.com
+"South Coast Electrical, Inc.",Anaheim,Orange,electrical,electric,,no,>$1 million to $3 million,jritter@scfacilityservices.com,https://www.scfacilityservices.com
+"Southern California West Coast Electric, Inc.",Banning,Riverside,electrical,electric,,yes,>$10 million to $20 million,jeannie@scwce.com,https://www.scwce.com
+Southwest Industrial Electric,Los Angeles,Los Angeles,electrical,electric,,yes,>$6 million to $10 million,cristiano@southwestelectric.com,https://www.southwestelectric.com
+"Strang Heating and Air Conditioning, Inc.",El Cajon,San Diego,hvac,heating,,no,>$1 million to $3 million,strangheating@sbcglobal.net,https://www.strangheatingandair.com
+"Stronghold Engineering, Inc.",Perris,Riverside,electrical,electric,,yes,>$50 million to $100 million,bb@teamsei.com,https://www.strongholdengineering.com
+"Sunwest Electric, Inc.",Anaheim,Orange,electrical,electric,,no,>$20 million to $50 million,bpariseau@sunwestelect.com,https://www.sunwestelectric.net
+"Synergy Systems Integration, LLC",Sherman Oaks,Los Angeles,general-contractor,(default),YES,no,$0 to $1 million,mcruz@synergyllcemail.com,https://www.synergysystemsintegration.com
+Tax & Financial Group (TFG),Newport Beach,Orange,general-contractor,construction,,yes,Associate,seth.walston@tfgroup.com,https://www.tfgroup.com
+TechNet Partners Inc.,Carlsbad,San Diego,electrical,low voltage,,yes,>$6 million to $10 million,bschumann@techpartners.com,https://www.technetpartners.com
+"Tekworks, Inc.",San Diego,San Diego,electrical,lighting,,yes,>$20 million to $50 million,krogers@paladintechnologies.com,https://www.tekworks.com
+Temp Power Systems,Rancho Santa Margarita,Orange,electrical,electric,,yes,>$3 million to $6 million,cyates@temppower.com,https://www.temppower.com
+Teracom Services,Orange,Orange,general-contractor,(default),YES,no,>$6 million to $10 million,lmiller@teracomservice.com,https://www.teracomservices.com
+Time & Alarm Systems,Mira Loma,Riverside,electrical,low voltage,,yes,>$6 million to $10 million,keithsenn@timeandalarm.com,https://www.timeandalarm.com
+TK Electric,Orange,Orange,electrical,electric,,no,>$1 million to $3 million,toddk@tkelectric.biz,
+Tradesmen International,Cypress,Orange,general-contractor,construction,,yes,Associate,robert.kazahaya@tradesmeninternational.com,https://www.tradesmeninternational.com
+Trans Electric LLC,Thousand Oaks,Ventura,electrical,electric,,no,$0 to $1 million,businessops@transelectricllc.com,
+Trench Shoring Company,Compton,Los Angeles,scaffolding,shoring,,yes,Associate,ryanm@trenchshoring.com,https://www.trenchshoring.com
+"Tri-Pacific Heating and Air Conditioning, LLP",Fullerton,Orange,hvac,heating,,no,>$6 million to $10 million,cknight@amsofusa.com,
+Tri-Power Electrical Contractors,Upland,San Bernardino,electrical,electric,,yes,$0 to $1 million,ray@tripowerelectric.com,https://www.tripowerelectric.com
+"Tricore Enterprises, Inc.",Riverside,Riverside,general-contractor,(default),YES,yes,>$1 million to $3 million,david@thetricoreteam.com,https://www.thetricoreteam.com
+Triple C Electric Inc.,Valencia,Los Angeles,electrical,electric,,yes,>$1 million to $3 million,chris@triplecelectric.com,
+"TRL Systems, Inc.",Rancho Cucamonga,San Bernardino,general-contractor,(default),YES,no,>$20 million to $50 million,mpurdy@trlsystems.com,https://www.trlsystems.com
+"TVEC, Inc.",Grand Terrace,San Bernardino,general-contractor,(default),YES,no,>$1 million to $3 million,svega@tvecelectric.com,
+"Tyler Lighting Services, Inc.",Placentia,Orange,electrical,lighting,,no,>$1 million to $3 million,tyler@tylerlighting.com,https://www.tylerlighting.com
+"Valencia Sheet Metal, Inc.",Pacoima,Los Angeles,general-contractor,(default),YES,yes,>$1 million to $3 million,office@valenciasheetmetal.com,
+Vazz Electric,Anaheim,Orange,electrical,electric,,no,$0 to $1 million,vazzelectric@gmail.com,https://www.vazzelectric.com
+Vc Brite Electric,Oxnard,Ventura,electrical,electric,,no,$0 to $1 million,arturo@vcbriteelectric.com,
+"VCCT, Inc.",La Verne,Los Angeles,general-contractor,(default),YES,no,>$3 million to $6 million,djeric@vacomtech.com,https://www.vacomtech.com
+Vector USA,Torrance,Los Angeles,general-contractor,(default),YES,yes,>$10 million to $20 million,ltagumasi@vectorusa.com,https://www.vectorusa.com
+"Veteran Communication Services, Inc.",Chino,San Bernardino,general-contractor,(default),YES,no,$0 to $1 million,vetcommservice@vetcomm.com,https://www.vetcomm.com
+Veteran Electrical Power Systems Inc.,Sylmar,Los Angeles,electrical,electric,,no,>$3 million to $6 million,sergio@vet-eps.com,https://www.vet-eps.com
+VHL Plumbing Inc.,Burbank,Los Angeles,plumbing,plumb,,no,,vince@vhlplumbing.com,https://www.vhlplumbing.com
+"Wakeland Electric, Inc.",Corona,Riverside,electrical,electric,,no,>$1 million to $3 million,pamela@wakelandeletric.com; bids@wakelandelectric.com,https://www.wakelandelectric.com
+Wallace Electrical Services Inc.,Orange,Orange,electrical,electric,,yes,>$1 million to $3 million,wallaceelectricjmw@gmail.com,
+"Wallace P. Johnson Plumbing and Heating, Inc.",Anaheim,Orange,plumbing,plumb,,yes,,dan@johnsonplumbing.com,https://www.johnsonplumbing.com
+Walters Wholesale Electric,Brea,Orange,electrical,electric,,yes,Supplier,corporate@walterswholesale.com,https://www.walterswholesale.com
+WCC Technologies Group,Chino,San Bernardino,general-contractor,(default),YES,no,>$3 million to $6 million,cory.escano@wcctechgroup.com,https://www.wccable.com
+West Coast Air Conditioning Co. Inc.,El Cajon,San Diego,hvac,air conditioning,,no,>$50 million to $100 million,mfisher@wcac.com,
+Wu and Associates,San Diego,San Diego,restoration-services,restoration,,yes,$0 to $1 million,kirby.wu@wuassociates.com,https://wuassociates.com
+"XPRESS Electric, Inc.",Sun Valley,Los Angeles,electrical,electric,,no,$0 to $1 million,xpresselectric@yahoo.com,https://www.xpresselectric.com
+Z3 Plumbing,La Habra,Orange,plumbing,plumb,,yes,>$3 million to $6 million,adam@z3plumbing.com,
