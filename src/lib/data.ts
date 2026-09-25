@@ -116,13 +116,19 @@ export async function getBusinessBySlug(slug: string): Promise<Business | undefi
  */
 export async function getFeaturedBusinesses(limit = 8): Promise<Business[]> {
   const all = await getPublishedBusinesses();
-  // Admin-featured companies (up to 4) come first, then the rest by highest
-  // rating (unrated last), keeping name order as a tiebreak.
+  // Ordering for the homepage carousel:
+  //   1. Companies with an explicit featured_rank, lowest first.
+  //   2. Then admin-featured (highlighted) companies.
+  //   3. Then highest rating (unrated last).
+  // getPublishedBusinesses is name-sorted, so ties keep alphabetical order.
   return [...all]
     .sort((a, b) => {
-      const fa = a.featured ? 1 : 0;
-      const fb = b.featured ? 1 : 0;
-      if (fa !== fb) return fb - fa;
+      const ra = a.featured_rank ?? Infinity;
+      const rb = b.featured_rank ?? Infinity;
+      if (ra !== rb) return ra - rb;
+      const fa = a.featured ? 0 : 1;
+      const fb = b.featured ? 0 : 1;
+      if (fa !== fb) return fa - fb;
       return (b.rating ?? -1) - (a.rating ?? -1);
     })
     .slice(0, limit);

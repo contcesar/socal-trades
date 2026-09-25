@@ -146,8 +146,15 @@ const refData = JSON.stringify({
             <input id="f-feature" type="checkbox" class="h-5 w-5 shrink-0 rounded border-gray-300 accent-brand-blue" />
             <span>
               Feature this company
-              <span class="block text-sm font-normal text-gray-600">Featured companies (max 4) show first on the homepage with a highlighted card.</span>
+              <span class="block text-sm font-normal text-gray-600">Featured companies (max 4) show with a highlighted card.</span>
             </span>
+          </label>
+
+          <label class="block rounded-lg border border-gray-200 p-4">
+            <span class="text-base font-semibold text-gray-800">Homepage order</span>
+            <span class="block text-sm font-normal text-gray-600">Position in the top companies carousel (1 = first). Leave blank to auto-order by featured then rating.</span>
+            <input id="f-rank" type="number" min="1" step="1" inputmode="numeric"
+              class="tap-target mt-2 w-32 rounded-lg border-2 border-gray-300 bg-white px-3 text-lg font-normal text-gray-900 focus:border-brand-blue" />
           </label>
 
           <div class="rounded-lg border border-gray-200 p-4">
@@ -413,6 +420,7 @@ const refData = JSON.stringify({
         b?.claimable !== false;
       (document.getElementById("f-feature") as HTMLInputElement).checked =
         b?.featured === true;
+      setVal("f-rank", b?.featured_rank ?? "");
       renderKeywordChips();
       showFeaturedPreview((b?.photo_urls || [])[0] || "");
       const statusEl0 = document.getElementById("f-featured-status")!;
@@ -491,6 +499,7 @@ const refData = JSON.stringify({
         keywords: arr("f-keywords"),
         claimable: (document.getElementById("f-claimable") as HTMLInputElement).checked,
         featured: wantFeatured,
+        featured_rank: num("f-rank"),
         short_description: val("f-short"),
         long_description: val("f-long") || null,
       };

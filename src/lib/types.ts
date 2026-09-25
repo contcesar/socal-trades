@@ -49,11 +49,16 @@ export interface Business {
   photo_urls: string[];
   status: BusinessStatus;
   /**
-   * Admin-picked "featured" flag. Up to 4 companies can be featured; they sort
-   * to the top of the home carousel and render with a highlighted card. The
-   * cap is enforced in the admin UI, not the type.
+   * Admin-picked "featured" flag. Up to 4 companies can be featured; they
+   * render with a highlighted card. The cap is enforced in the admin UI.
    */
   featured?: boolean;
+  /**
+   * Explicit position in the homepage "top companies" carousel. Lower shows
+   * first; null/undefined means unranked (fills in after ranked ones by
+   * featured flag then rating). Admin-controlled.
+   */
+  featured_rank?: number | null;
   /**
    * Whether visitors may claim this profile. Admin-controlled. Undefined/true
    * means claimable (the default); false hides the claim option.

@@ -64,6 +64,7 @@ create table if not exists businesses (
   status            business_status not null default 'draft',
   claimable         boolean not null default true,
   featured          boolean not null default false,
+  featured_rank     integer,
   claimed_by        uuid references auth.users(id),
   claimed_at        timestamptz,
   created_at        timestamptz not null default now(),
@@ -84,6 +85,10 @@ alter table businesses add column if not exists claimable boolean not null defau
 -- Admin "featured" flag on already-created tables (no-op fresh). Up to 4
 -- companies are featured; the cap is enforced in the admin UI.
 alter table businesses add column if not exists featured boolean not null default false;
+
+-- Homepage carousel ordering on already-created tables (no-op fresh). Lower
+-- number shows first; null is unranked.
+alter table businesses add column if not exists featured_rank integer;
 
 create index if not exists businesses_trade_idx  on businesses(trade);
 create index if not exists businesses_county_idx on businesses(county);
