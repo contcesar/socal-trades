@@ -30,7 +30,7 @@ const TRADE_SLUGS = new Set([
 
 const COUNTIES = new Set([
   "Los Angeles", "Orange", "San Diego", "Riverside", "San Bernardino",
-  "Ventura", "Imperial", "Kern",
+  "Ventura", "Santa Barbara", "Imperial", "Kern",
 ]);
 
 function slugify(input) {
