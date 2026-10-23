@@ -1,6 +1,6 @@
 import type { Trade } from "./types";
 
-// The 21 launch categories. Seeded here now; the same rows go into the
+// The trade categories. Seeded here now; the same rows go into the
 // Supabase `trades` table later (see supabase/schema.sql).
 export const TRADES: Trade[] = [
   { id: "t01", name: "Plumbing", slug: "plumbing", icon: "droplet", sort_order: 1 },
@@ -20,4 +20,22 @@ export const TRADES: Trade[] = [
   { id: "t24", name: "Site Services", slug: "site-services", icon: "porta-potty", sort_order: 24 },
   { id: "t25", name: "Dump Truck Hauling Service", slug: "dump-truck-hauling", icon: "dump-truck", sort_order: 25 },
   { id: "t26", name: "Crane Service", slug: "crane-service", icon: "crane", sort_order: 26 },
+  { id: "t27", name: "ADU & Garage Conversions", slug: "adu-builders", icon: "adu", sort_order: 27 },
+  { id: "t28", name: "Seismic Retrofit & Foundation", slug: "seismic-retrofit-foundation", icon: "foundation", sort_order: 28 },
+  { id: "t29", name: "Fire Hardening & Brush Clearance", slug: "fire-hardening", icon: "flame", sort_order: 29 },
+  { id: "t30", name: "Drought-Tolerant Landscaping & Irrigation", slug: "drought-tolerant-landscaping", icon: "sprout", sort_order: 30 },
+  { id: "t31", name: "EV Charger Installation", slug: "ev-charger-installation", icon: "ev-charger", sort_order: 31 },
+  { id: "t32", name: "Demolition", slug: "demolition", icon: "wrecking-ball", sort_order: 32 },
+  { id: "t33", name: "Framing & Carpentry", slug: "framing-carpentry", icon: "framing", sort_order: 33 },
+  { id: "t34", name: "Structural Steel & Welding", slug: "structural-steel-welding", icon: "i-beam", sort_order: 34 },
+  { id: "t35", name: "Fire Sprinklers & Fire Protection", slug: "fire-protection", icon: "fire-sprinkler", sort_order: 35 },
+  { id: "t36", name: "Low Voltage (Security, AV & Networking)", slug: "low-voltage", icon: "network", sort_order: 36 },
+  { id: "t37", name: "Concrete Pumping", slug: "concrete-pumping", icon: "concrete-pump", sort_order: 37 },
+  { id: "t38", name: "Saw Cutting & Core Drilling", slug: "saw-cutting-core-drilling", icon: "saw-blade", sort_order: 38 },
+  { id: "t39", name: "Roll-Off Dumpsters", slug: "roll-off-dumpsters", icon: "dumpster", sort_order: 39 },
+  { id: "t40", name: "Equipment Rental", slug: "equipment-rental", icon: "tag", sort_order: 40 },
+  { id: "t41", name: "Land Surveying", slug: "land-surveying", icon: "tripod", sort_order: 41 },
+  { id: "t42", name: "Traffic Control", slug: "traffic-control", icon: "cone", sort_order: 42 },
+  { id: "t43", name: "SWPPP & Erosion Control", slug: "swppp-erosion-control", icon: "silt-fence", sort_order: 43 },
+  { id: "t44", name: "Hydro-Excavation & Potholing", slug: "hydro-excavation", icon: "hydro-vac", sort_order: 44 },
 ];

@@ -1,4 +1,4 @@
--- Seed the 21 trade categories. Run after schema.sql. Slugs and icons match
+-- Seed the trade categories. Run after schema.sql. Slugs and icons match
 -- src/lib/trades.ts so the swap to Supabase is seamless.
 insert into trades (name, slug, icon, sort_order) values
   ('Plumbing', 'plumbing', 'droplet', 1),
@@ -17,5 +17,23 @@ insert into trades (name, slug, icon, sort_order) values
   ('Paving', 'paving', 'road', 21),
   ('Site Services', 'site-services', 'porta-potty', 24),
   ('Dump Truck Hauling Service', 'dump-truck-hauling', 'dump-truck', 25),
-  ('Crane Service', 'crane-service', 'crane', 26)
+  ('Crane Service', 'crane-service', 'crane', 26),
+  ('ADU & Garage Conversions', 'adu-builders', 'adu', 27),
+  ('Seismic Retrofit & Foundation', 'seismic-retrofit-foundation', 'foundation', 28),
+  ('Fire Hardening & Brush Clearance', 'fire-hardening', 'flame', 29),
+  ('Drought-Tolerant Landscaping & Irrigation', 'drought-tolerant-landscaping', 'sprout', 30),
+  ('EV Charger Installation', 'ev-charger-installation', 'ev-charger', 31),
+  ('Demolition', 'demolition', 'wrecking-ball', 32),
+  ('Framing & Carpentry', 'framing-carpentry', 'framing', 33),
+  ('Structural Steel & Welding', 'structural-steel-welding', 'i-beam', 34),
+  ('Fire Sprinklers & Fire Protection', 'fire-protection', 'fire-sprinkler', 35),
+  ('Low Voltage (Security, AV & Networking)', 'low-voltage', 'network', 36),
+  ('Concrete Pumping', 'concrete-pumping', 'concrete-pump', 37),
+  ('Saw Cutting & Core Drilling', 'saw-cutting-core-drilling', 'saw-blade', 38),
+  ('Roll-Off Dumpsters', 'roll-off-dumpsters', 'dumpster', 39),
+  ('Equipment Rental', 'equipment-rental', 'tag', 40),
+  ('Land Surveying', 'land-surveying', 'tripod', 41),
+  ('Traffic Control', 'traffic-control', 'cone', 42),
+  ('SWPPP & Erosion Control', 'swppp-erosion-control', 'silt-fence', 43),
+  ('Hydro-Excavation & Potholing', 'hydro-excavation', 'hydro-vac', 44)
 on conflict (slug) do nothing;

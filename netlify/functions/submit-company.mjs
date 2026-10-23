@@ -16,10 +16,16 @@ import { isBusinessEmail } from "./lib/freeEmailDomains.mjs";
 
 const TRADE_SLUGS = new Set([
   "plumbing", "electrical", "hvac", "roofing", "general-contractor",
-  "landscaping", "painting", "flooring", "concrete-masonry",
-  "fencing", "garage-doors", "generator-services",
-  "scaffolding", "excavation-services", "remodelers", "restoration-services",
+  "landscaping", "painting", "concrete-masonry", "generator-services",
+  "scaffolding", "excavation-services", "restoration-services",
   "utility-contractors", "paving", "site-services", "dump-truck-hauling",
+  "crane-service", "adu-builders", "seismic-retrofit-foundation",
+  "fire-hardening", "drought-tolerant-landscaping", "ev-charger-installation",
+  "demolition", "framing-carpentry", "structural-steel-welding",
+  "fire-protection", "low-voltage", "concrete-pumping",
+  "saw-cutting-core-drilling", "roll-off-dumpsters", "equipment-rental",
+  "land-surveying", "traffic-control", "swppp-erosion-control",
+  "hydro-excavation",
 ]);
 
 const COUNTIES = new Set([
