@@ -1,6 +1,6 @@
 import type { County } from "./types";
 
-// The eight counties covered at launch. County name strings on a business
+// The counties we cover. County name strings on a business
 // must match one of these exactly.
 export const COUNTIES: County[] = [
   { name: "Los Angeles", slug: "los-angeles" },
@@ -9,6 +9,7 @@ export const COUNTIES: County[] = [
   { name: "Riverside", slug: "riverside" },
   { name: "San Bernardino", slug: "san-bernardino" },
   { name: "Ventura", slug: "ventura" },
+  { name: "Santa Barbara", slug: "santa-barbara" },
   { name: "Imperial", slug: "imperial" },
   { name: "Kern", slug: "kern" },
 ];

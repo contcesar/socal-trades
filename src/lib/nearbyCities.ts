@@ -46,6 +46,13 @@ export const NEARBY_CITIES: Record<string, string[]> = {
   "thousand-oaks": ["newbury-park", "westlake-village", "camarillo", "simi-valley"],
   "simi-valley": ["thousand-oaks", "moorpark", "chatsworth"],
 
+  // Santa Barbara County
+  "santa-barbara": ["goleta", "montecito", "carpinteria", "summerland"],
+  "goleta": ["santa-barbara", "isla-vista", "montecito", "buellton"],
+  "santa-maria": ["orcutt", "lompoc", "guadalupe", "nipomo"],
+  "lompoc": ["vandenberg-village", "buellton", "solvang", "santa-maria"],
+  "carpinteria": ["santa-barbara", "summerland", "montecito", "ventura"],
+
   // Kern County
   "bakersfield": ["shafter", "delano", "arvin", "tehachapi", "taft"],
   "taft": ["bakersfield", "maricopa"],
