@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Free Project Planner | SoCal Trades"
+  description="Check out a free project planner to help you plan your next trades project."
+>
+  <SiteHeader slot="header" />
+  <section class="mx-auto max-w-2xl px-4 py-10 text-lg text-gray-800">
+    <h1 class="text-3xl font-bold text-brand-blue">Free Project Planner</h1>
+    <p class="mt-4">
+      Planning a project? Check out this free project planner to help you keep
+      track of the work from start to finish.
+    </p>
+    <p class="mt-6">
+      <a
+        href="https://github.com/contcesar/project-planner/discussions"
+        target="_blank"
+        rel="noopener"
+        class="inline-block rounded-lg bg-brand-blue px-5 py-3 font-semibold text-brand-cream hover:opacity-90"
+      >
+        Check out the project planner
+      </a>
+    </p>
+  </section>
+  <SiteFooter slot="footer" />
+</BaseLayout>
