@@ -196,6 +196,7 @@ const STATIC_PATHS = [
   "/saved/",
   "/badge/",
   "/featured/",
+  "/project-planner/",
 ];
 
 /**
